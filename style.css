@@ -2,4 +2,20 @@ form {
     display: flex;
     flex-direction: column;
     align-items: start;
+    margin-inline: auto;
+    width: max-content
+}
+#logo {
+    display: block;
+    height: 6rem;
+}
+footer {
+    text-align: center;
+}
+main {
+    min-height: 90vh;
+}
+nav ul {
+    list-style: none;
+    padding-left: 0;
 }
