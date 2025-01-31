@@ -1,21 +1,7 @@
 <html lang="en">
-    <head>
-        <title>Northern Phish &amp; Loan</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="style.css" rel="stylesheet">
-    </head>
+    <?php include "include/head.php" ?>
     <body>
-        <header>
-            <h1><img id="logo" src="logo.webp" alt="Northern Fish & Loan logo"></h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php include "include/header.php" ?>
         <main>
             <p>Hello, World!</p>
             <p>This is the registration page.</p>
