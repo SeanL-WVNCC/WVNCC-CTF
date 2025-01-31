@@ -2,6 +2,7 @@
     <head>
         <title>WVNCC CTF</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -18,6 +19,14 @@
         <main>
             <p>Hello, World!</p>
             <p>This is the login page.</p>
+            <form aria-labelledby="login-heading">
+                <h2 id="login-heading">Login</h2>
+                <label for="username-field">Username</label>
+                <input id="username-field" type="text" name="username" required>
+                <label for="password-field">Password</label>
+                <input id="password-field" type="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
         </main>
         <footer>
             <p>This website is a service of West Virginia Northern Community College.</p>
