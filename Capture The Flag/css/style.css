@@ -1,0 +1,122 @@
+/*Used this color palette: https://colorhunt.co/palette/aa3a3aa4b787f4f4f4f8e4b7*/
+
+body {
+    background-color: rgba(252, 231, 223, 0.562);
+}
+
+
+/* All Text */
+
+p, li, h2, h4 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/* Header */
+
+#main_nav {
+    background-color: rgba(170, 58, 58, 0.2);
+    padding: 25px 25px 25px 25px;
+    border-style: inset;
+    border-color: brown;
+    background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
+}
+
+#main_nav > li {
+    display: inline-block;
+    padding: 20px 15px 1px 15px;
+    font-size: 1.5vmax;
+    font-weight: bold;
+}
+
+#second_nav {
+    background-image: linear-gradient(to bottom left, rgba(248, 228, 183, 0.3), rgba(248, 228, 183, 10));
+    border-style: inset;
+    border-color: rgb(180, 150, 129);
+}
+
+#second_nav > li {
+    display: inline-block;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 12px;
+    font-size: 1.5vmax;
+    font-weight: bold;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: rgb(195, 199, 207);
+}
+
+img {
+    width: 42%;
+    height: auto;
+    border-style: inset;
+    border-color: brown;
+}
+
+
+/* Ad Section */
+
+.ad_section {
+    border-style: groove;
+    border-radius: 10px;
+    border-width: 5px;
+    border-color: rgb(180, 150, 129);
+    text-align: center;
+    padding: 20px 25px 25px 25px;
+    background-image: linear-gradient(to bottom left, rgba(248, 228, 183, 0.3), rgba(248, 228, 183, 10));
+}
+
+.ad_section > h2 {
+    font-size: 1.8vmax;
+}
+
+.ad_section > p {
+    font-size: 1.5vmax;
+}
+
+
+/* Offers */
+
+.offers {
+    display: flex;
+    font-size: 1.3vmax;
+    padding: 20px 10px 25px 25px;
+}
+
+.offer {
+    border-style: groove;
+    border-radius: 8px;
+    border-color: rgb(189, 178, 151);
+    background-image: linear-gradient(to bottom right, rgba(225, 231, 188, 0.5), rgba(139, 148, 117, 0.432));
+}
+
+.offer > p {
+    text-align: center;
+}
+
+.offer > h4 {
+    padding-left: 7px;
+}
+
+
+/* Footer */
+
+footer {
+    border-style: groove;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: brown;
+    background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
+}
+
+footer > p {
+    padding-left: 10px;
+    font-weight: bold;
+}
