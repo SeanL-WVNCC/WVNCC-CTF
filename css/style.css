@@ -1,13 +1,12 @@
 /*Used this color palette: https://colorhunt.co/palette/aa3a3aa4b787f4f4f4f8e4b7*/
 
-body {
+body, main {
     background-color: rgba(252, 231, 223, 0.562);
     margin: 0;
 }
 
 main {
     min-height: 30vmax;
-    padding-inline: 1em;
 }
 
 /* All Text */
@@ -21,7 +20,8 @@ p, li, h2, h4 {
 
 header div {
     background-color: rgba(170, 58, 58, 0.2);
-    padding: 25px 25px 25px 25px;
+    padding: 2em;
+    padding-bottom: 0;
     border-style: inset;
     border-color: brown;
     background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
@@ -29,8 +29,6 @@ header div {
 
 #primary-navigation li {
     display: inline-block;
-    padding: 20px 15px 1px 15px;
-    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -38,15 +36,23 @@ header div {
     background-image: linear-gradient(to bottom left, rgba(248, 228, 183, 0.3), rgba(248, 228, 183, 10));
     border-style: inset;
     border-color: rgb(180, 150, 129);
+    li {
+        display: inline-block;
+        font-weight: bold;
+    }
 }
 
-#secondary-navigation li {
-    display: inline-block;
-    padding-top: 10px;
-    padding-right: 15px;
-    padding-bottom: 12px;
-    font-size: 1.5rem;
-    font-weight: bold;
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+nav li {
+    margin: 0;
+    padding: 0;
+    a {
+        display: block;
+        padding: 1em;
+    }
 }
 
 a:link, a:visited {
@@ -70,47 +76,38 @@ body > header img {
 
 .ad_section {
     border-style: groove;
-    border-radius: 10px;
     border-width: 5px;
     border-color: rgb(180, 150, 129);
-    text-align: center;
-    padding: 20px 25px 25px 25px;
+    padding: 1.8em 2em 2em 2em;
     background-image: linear-gradient(to bottom left, rgba(248, 228, 183, 0.3), rgba(248, 228, 183, 10));
+    h2 {
+        margin-block: .25em
+    }
 }
-
-.ad_section > h2 {
-    font-size: 1.8rem;
-}
-
-.ad_section > p {
-    font-size: 1.5rem;
-}
-
 
 /* Offers */
 
 .offers {
     display: flex;
-    font-size: 1.3rem;
-    padding: 20px 10px 25px 25px;
+    padding: 1em;
+    gap: 1em;
 }
 
 .offers > * {
+    padding-inline: 1em;
+    padding-block: 2em;
     border-style: groove;
     border-radius: 8px;
     border-color: rgb(189, 178, 151);
     background-image: linear-gradient(to bottom right, rgba(225, 231, 188, 0.5), rgba(139, 148, 117, 0.432));
+    h2 {
+        text-align: center;
+        margin: .25em;
+    }
+    p {
+        margin: 0;
+    }
 }
-
-.offers > * p {
-    text-align: center;
-}
-
-.offers > * h2 {
-    padding-left: .5em;
-    font-size: 1.5rem;
-}
-
 
 /* Footer */
 
@@ -120,16 +117,9 @@ footer {
     border-bottom-width: 1px;
     border-color: brown;
     background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
-}
-
-footer > p {
-    padding-left: 10px;
-    font-weight: bold;
-}
-
-@media screen and (max-device-width: 60ch)  {
-    .offers {
-        flex-direction: column;
+    padding: 1em;
+    p {
+        font-weight: bold;
     }
 }
 
@@ -141,4 +131,21 @@ form {
     align-items: start;
     margin-inline: auto;
     width: max-content
+}
+
+/* Responsive: these styles apply when viewed on a small screen (mobile) */
+
+@media screen and (max-device-width: 80ch)  {
+    .offers {
+        flex-direction: column;
+    }
+}
+
+/* Even smaller */
+
+@media screen and (max-device-width: 40ch)  {
+    h1 a, h1 a img {
+        display: block;
+        width: 100%;
+    }
 }
