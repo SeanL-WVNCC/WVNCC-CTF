@@ -2,6 +2,7 @@
 
 body {
     background-color: rgba(252, 231, 223, 0.562);
+    margin: 0;
 }
 
 
@@ -14,7 +15,7 @@ p, li, h2, h4 {
 
 /* Header */
 
-#main_nav {
+header div {
     background-color: rgba(170, 58, 58, 0.2);
     padding: 25px 25px 25px 25px;
     border-style: inset;
@@ -22,25 +23,25 @@ p, li, h2, h4 {
     background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
 }
 
-#main_nav > li {
+#primary-navigation li {
     display: inline-block;
     padding: 20px 15px 1px 15px;
-    font-size: 1.5vmax;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
-#second_nav {
+#secondary-navigation {
     background-image: linear-gradient(to bottom left, rgba(248, 228, 183, 0.3), rgba(248, 228, 183, 10));
     border-style: inset;
     border-color: rgb(180, 150, 129);
 }
 
-#second_nav > li {
+#secondary-navigation li {
     display: inline-block;
     padding-top: 10px;
     padding-right: 15px;
     padding-bottom: 12px;
-    font-size: 1.5vmax;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -53,8 +54,8 @@ a:hover {
     color: rgb(195, 199, 207);
 }
 
-img {
-    width: 42%;
+body > header img {
+    width: min(max(42%, 200px), 80%);
     height: auto;
     border-style: inset;
     border-color: brown;
@@ -74,11 +75,11 @@ img {
 }
 
 .ad_section > h2 {
-    font-size: 1.8vmax;
+    font-size: 1.8rem;
 }
 
 .ad_section > p {
-    font-size: 1.5vmax;
+    font-size: 1.5rem;
 }
 
 
@@ -86,23 +87,24 @@ img {
 
 .offers {
     display: flex;
-    font-size: 1.3vmax;
+    font-size: 1.3rem;
     padding: 20px 10px 25px 25px;
 }
 
-.offer {
+.offers > * {
     border-style: groove;
     border-radius: 8px;
     border-color: rgb(189, 178, 151);
     background-image: linear-gradient(to bottom right, rgba(225, 231, 188, 0.5), rgba(139, 148, 117, 0.432));
 }
 
-.offer > p {
+.offers > * p {
     text-align: center;
 }
 
-.offer > h4 {
-    padding-left: 7px;
+.offers > * h2 {
+    padding-left: .5em;
+    font-size: 1.5rem;
 }
 
 
@@ -119,4 +121,10 @@ footer {
 footer > p {
     padding-left: 10px;
     font-weight: bold;
+}
+
+@media screen and (max-device-width: 60ch)  {
+    .offers {
+        flex-direction: column;
+    }
 }
