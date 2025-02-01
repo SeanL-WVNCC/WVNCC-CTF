@@ -5,6 +5,10 @@ body {
     margin: 0;
 }
 
+main {
+    min-height: 30vmax;
+    padding-inline: 1em;
+}
 
 /* All Text */
 
@@ -127,4 +131,14 @@ footer > p {
     .offers {
         flex-direction: column;
     }
+}
+
+/* Login forms */
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-inline: auto;
+    width: max-content
 }

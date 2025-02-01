@@ -1,35 +1,58 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Northern Phish &amp; Loan</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Everyone's names will go here">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="style.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="icon" type="img/x-icon" href="./img/logo.png">
+        <title>Northern Phish &amp; Loan</title>
     </head>
     <body>
         <header>
-            <h1><img id="logo" src="logo.webp" alt="Northern Fish & Loan logo"></h1>
-            <nav>
+            <div>
+                <h1><a href="index.html"><img src="./img/logo.png" alt="Northern Phish and Loan"></a></h1>
+                <nav id="primary-navigation" aria-label="Site Navigation">
+                    <ul>
+                        <!--Proper links will be added when we combine pages-->
+                        <li><a href="index.html">Home</a></li>
+                        <li><a>About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Signup</a></li>
+                        <li><a>Profile</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <!--Rename to what the page with upload functionality will be called-->
+                        <li><a>Placeholder</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!--Nonfunctional nav; typical bank website secondary nav-->
+            <!--We can change/remove this at a later point-->
+            <nav id="secondary-navigation" aria-label="Our Accounts">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a>Checking</a></li>
+                    <li><a>Savings &amp; CDs</a></li>
+                    <li><a>Credit Cards</a></li>
+                    <li><a>Personal</a></li>
+                    <li><a>Business</a></li>
+                    <li><a>Financial Education</a></li>
                 </ul>
             </nav>
         </header>
         <main>
-            <p>Hello, World!</p>
-            <p>This is the login page.</p>
-            <form aria-labelledby="login-heading">
-                <h2 id="login-heading">Login</h2>
-                <label for="username-field">Username</label>
-                <input id="username-field" type="text" name="username" required>
-                <label for="password-field">Password</label>
-                <input id="password-field" type="password" name="password" required>
-                <button type="submit">Login</button>
-            </form>
+        <form aria-labelledby="login-heading">
+            <h2 id="login-heading">Login</h2>
+            <label for="username-field">Username</label>
+            <input id="username-field" type="text" name="username" required>
+            <label for="password-field">Password</label>
+            <input id="password-field" type="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
         </main>
         <footer>
-            <p>This website is a service of West Virginia Northern Community College.</p>
+            <!--Will add everyone's names at a later point - waiting in case anyone else joins-->
+            <p>Designed by: Names here | Call Us: XXX-XXX-XXXX | Our Address: 1234 Bank Street | Email us at: northernphish@email.com</p>
         </footer>
     </body>
 </html>
