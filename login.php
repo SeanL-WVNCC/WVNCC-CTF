@@ -1,10 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
     <?php include "include/head.php" ?>
     <body>
         <?php include "include/header.php" ?>
+        <!--Typical bank website elements-->
         <main>
-            <p>Hello, World!</p>
-            <p>This is the login page.</p>
             <form aria-labelledby="login-heading">
                 <h2 id="login-heading">Login</h2>
                 <label for="username-field">Username</label>
@@ -14,8 +14,6 @@
                 <button type="submit">Login</button>
             </form>
         </main>
-        <footer>
-            <p>This website is a service of West Virginia Northern Community College.</p>
-        </footer>
+        <?php include "include/footer.php" ?>
     </body>
 </html>

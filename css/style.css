@@ -1,0 +1,172 @@
+/*Used this color palette: https://colorhunt.co/palette/aa3a3aa4b787f4f4f4f8e4b7*/
+
+body, main {
+    background-color: rgba(252, 231, 223, 0.562);
+    margin: 0;
+}
+
+main {
+    min-height: 45vmax;
+}
+
+/* All Text */
+
+p, li, h2, h4 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/* Header */
+
+header div {
+    display: flex;
+    align-items: center;
+    background-color: rgba(170, 58, 58, 0.2);
+    border-style: inset;
+    border-color: brown;
+    background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
+}
+
+#primary-navigation ul {
+    display: flex;
+    list-style: none;
+    font-weight: bold;
+    flex-wrap: wrap;
+}
+
+#secondary-navigation {
+    background-image: linear-gradient(to bottom left, rgba(248, 228, 183, 0.3), rgba(248, 228, 183, 10));
+    border-style: inset;
+    border-color: rgb(180, 150, 129);
+    li {
+        display: inline-block;
+        font-weight: bold;
+    }
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+nav li {
+    margin: 0;
+    padding: 0;
+    a {
+        display: block;
+        padding: 1em;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: rgb(195, 199, 207);
+}
+
+h1 {
+    margin: 0;
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    img {
+        height: 3rem;
+        border-style: inset;
+        border-color: brown;
+    }
+}
+
+
+/* Ad Section */
+
+.ad_section {
+    border-style: groove;
+    border-width: 5px;
+    border-color: rgb(180, 150, 129);
+    padding: 1.8em 2em 2em 2em;
+    background-image: linear-gradient(to bottom left, rgba(248, 228, 183, 0.3), rgba(248, 228, 183, 10));
+    h2 {
+        margin-block: .25em
+    }
+}
+
+/* Offers */
+
+.offers {
+    display: flex;
+    padding: 1em;
+    gap: 1em;
+}
+
+.offers > * {
+    padding-inline: 1em;
+    padding-block: 2em;
+    border-style: groove;
+    border-radius: 8px;
+    border-color: rgb(189, 178, 151);
+    background-image: linear-gradient(to bottom right, rgba(225, 231, 188, 0.5), rgba(139, 148, 117, 0.432));
+    h2 {
+        text-align: center;
+        margin: .25em;
+    }
+    p {
+        margin: 0;
+    }
+}
+
+/* Footer */
+
+footer {
+    border-style: groove;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: brown;
+    background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
+    padding: 1em;
+    p {
+        font-weight: bold;
+    }
+}
+
+/* Login forms */
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-inline: auto;
+    width: max-content
+}
+
+/* Responsive styles for tablets and smaller */
+
+@media screen and (max-device-width: 80ch)  {
+    .offers {
+        flex-direction: column;
+    }
+}
+
+/* Responsive styles for phones */
+
+@media screen and (max-device-width: 40ch)  {
+    header div {
+        display: block;
+    }
+    h1 a, h1 a img {
+        display: block;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+}
+
+/* God I hate content-box */
+* {
+    box-sizing: border-box !important;
+}
