@@ -6,7 +6,7 @@ body, main {
 }
 
 main {
-    min-height: 30vmax;
+    min-height: 45vmax;
 }
 
 /* All Text */
@@ -19,17 +19,19 @@ p, li, h2, h4 {
 /* Header */
 
 header div {
+    display: flex;
+    align-items: center;
     background-color: rgba(170, 58, 58, 0.2);
-    padding: 2em;
-    padding-bottom: 0;
     border-style: inset;
     border-color: brown;
     background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
 }
 
-#primary-navigation li {
-    display: inline-block;
+#primary-navigation ul {
+    display: flex;
+    list-style: none;
     font-weight: bold;
+    flex-wrap: wrap;
 }
 
 #secondary-navigation {
@@ -52,6 +54,8 @@ nav li {
     a {
         display: block;
         padding: 1em;
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -64,11 +68,18 @@ a:hover {
     color: rgb(195, 199, 207);
 }
 
-body > header img {
-    width: min(max(42%, 200px), 80%);
-    height: auto;
-    border-style: inset;
-    border-color: brown;
+h1 {
+    margin: 0;
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    img {
+        height: 3rem;
+        border-style: inset;
+        border-color: brown;
+    }
 }
 
 
@@ -133,7 +144,7 @@ form {
     width: max-content
 }
 
-/* Responsive: these styles apply when viewed on a small screen (mobile) */
+/* Responsive styles for tablets and smaller */
 
 @media screen and (max-device-width: 80ch)  {
     .offers {
@@ -141,11 +152,21 @@ form {
     }
 }
 
-/* Even smaller */
+/* Responsive styles for phones */
 
 @media screen and (max-device-width: 40ch)  {
+    header div {
+        display: block;
+    }
     h1 a, h1 a img {
         display: block;
         width: 100%;
+        height: auto;
+        box-sizing: border-box;
     }
+}
+
+/* God I hate content-box */
+* {
+    box-sizing: border-box !important;
 }
