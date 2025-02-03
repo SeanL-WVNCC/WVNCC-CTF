@@ -4,15 +4,15 @@
         <nav id="primary-navigation" aria-label="Site Navigation">
             <ul>
                 <!--Proper links will be added when we combine pages-->
-                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php?page=include/home.php">Home</a></li>
                 <li><a>About Us</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="register.php">Signup</a></li>
+                <li><a href="index.php?page=include/login.php">Login</a></li>
+                <li><a href="index.php?page=include/register.php">Signup</a></li>
                 <li><a>Profile</a></li>
-                <li><a href="feedback.php">Feedback</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="index.php?page=include/feedback.php">Feedback</a></li>
+                <li><a href="index.php?page=include/contact.php">Contact</a></li>
                 <!--Rename to what the page with upload functionality will be called-->
-                <li><a href="template.php">Placeholder</a></li>
+                <li><a>Placeholder</a></li>
             </ul>
         </nav>
     </div>
