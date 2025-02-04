@@ -3,36 +3,26 @@
     <?php include "include/head.php" ?>
     <body>
         <?php include "include/header.php" ?>
-        <!--Typical bank website elements-->
-        <main>
-            <section class="ad_section" aria-labelledby="checking-bonus-ad">
-                <h2 id="checking-bonus-ad">Advertisement about a checking bonus</h2>
-                <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Litora orci posuere libero purus facilisi; blandit non.
-                Erat ornare nam posuere natoque euismod magnis rhoncus. Lorem ipsum odor amet, consectetuer adipiscing elit.
-                Litora orci posuere libero purus facilisi; blandit non. Lorem ipsum odor amet, consectetuer adipiscing elit.
-                Litora orci posuere libero purus facilisi; blandit non.</p>
-            </section>
-            <section class="offers">
-                <div>
-                    <h2>Another checking offer</h2>
-                    <p>Lorem ipsum odor amet, consectetuer adipiscing elit.
-                    Litora orci posuere libero purus facilisi; blandit non.
-                    Erat ornare nam posuere natoque euismod magnis rhoncus.</p>
-                </div>
-                <div>
-                    <h2>Student account offer</h2>
-                    <p>Lorem ipsum odor amet, consectetuer adipiscing elit.
-                    Litora orci posuere libero purus facilisi; blandit non.
-                    Erat ornare nam posuere natoque euismod magnis rhoncus.</p>
-                </div>
-                <div>
-                    <h2>Mobile app (doesn't exist)</h2>
-                    <p>Lorem ipsum odor amet, consectetuer adipiscing elit.
-                    Litora orci posuere libero purus facilisi; blandit non.
-                    Erat ornare nam posuere natoque euismod magnis rhoncus.</p>
-                </div>
-            </section>
-        </main>
+         <?php
+
+            $includeDirectory = "/var/www/html";
+            $isVulnerableToPathTraversal = True; // Modify this to enable/disable path traversal attack
+            $pageToInclude = $_GET["page"];
+            if($isVulnerableToPathTraversal) {
+                // If path traversal is possible, divulge in comment
+                echo "<!-- INSECURE: this code is vulnerable to a path traversal attack. -->";
+            }
+            if(file_exists($pageToInclude))  {
+                $pageToInclude = realpath($pageToInclude);
+                // Make sure the included folder is in the "includes" folder... sometimes
+                if(str_starts_with($pageToInclude, $includeDirectory) or $isVulnerableToPathTraversal) {
+                    include $pageToInclude;
+                }
+            } else {
+                echo "<main></main>";
+            }
+
+         ?>
         <?php include "include/footer.php" ?>
     </body>
 </html>
