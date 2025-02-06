@@ -1,4 +1,4 @@
-# 01/28/2025 Meeting 1 summary - Josephine P.
+# 01/30/2025 Meeting 1 summary - Josephine P.
 ## Attendees:
 * Vikram Tugali (Organizer/Customer)
 * Jeremy Doolin (To-be Supervisor)
