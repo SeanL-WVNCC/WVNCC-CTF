@@ -1,7 +1,7 @@
 /*Used this color palette: https://colorhunt.co/palette/aa3a3aa4b787f4f4f4f8e4b7*/
 
 body, main {
-    background-color: rgba(252, 231, 223, 0.562);
+    background-color: #FCECE5;
     margin: 0;
 }
 
@@ -21,10 +21,9 @@ p, li, h2, h4 {
 header div {
     display: flex;
     align-items: center;
-    background-color: rgba(170, 58, 58, 0.2);
     border-style: inset;
     border-color: brown;
-    background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
+    background-image: linear-gradient(to bottom left, #DEAEAB, #B24B4B);
 }
 
 #primary-navigation ul {
@@ -35,7 +34,7 @@ header div {
 }
 
 #secondary-navigation {
-    background-image: linear-gradient(to bottom left, rgba(248, 228, 183, 0.3), rgba(248, 228, 183, 10));
+    background-image: linear-gradient(to bottom left, #FBEDDB, #F8E4B8);
     border-style: inset;
     border-color: rgb(180, 150, 129);
     li {
@@ -90,7 +89,7 @@ h1 {
     border-width: 5px;
     border-color: rgb(180, 150, 129);
     padding: 1.8em 2em 2em 2em;
-    background-image: linear-gradient(to bottom left, rgba(248, 228, 183, 0.3), rgba(248, 228, 183, 10));
+    background-image: linear-gradient(to bottom left, #FBEDDB, #F8E4B8);
     h2 {
         margin-block: .25em
     }
@@ -110,7 +109,7 @@ h1 {
     border-style: groove;
     border-radius: 8px;
     border-color: rgb(189, 178, 151);
-    background-image: linear-gradient(to bottom right, rgba(225, 231, 188, 0.5), rgba(139, 148, 117, 0.432));
+    background-image: linear-gradient(to bottom right, #EEE9CF, #CCC6B5);
     h2 {
         text-align: center;
         margin: .25em;
@@ -127,7 +126,7 @@ footer {
     border-top-width: 1px;
     border-bottom-width: 1px;
     border-color: brown;
-    background-image: linear-gradient(to bottom left, rgba(170, 58, 58, 0.2), rgba(170, 58, 58, 0.9));
+    background-image: linear-gradient(to bottom left, #EBCAC7, #B55151);
     padding: 1em;
     p {
         font-weight: bold;
