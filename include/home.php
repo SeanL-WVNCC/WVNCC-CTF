@@ -1,4 +1,4 @@
-<main>
+<main id="main" style="margin: 0"> <!-- I know that inline styles be bad, pardon the hack -->
     <section class="ad_section" aria-labelledby="checking-bonus-ad">
         <h2 id="checking-bonus-ad">Advertisement about a checking bonus</h2>
         <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Litora orci posuere libero purus facilisi; blandit non.

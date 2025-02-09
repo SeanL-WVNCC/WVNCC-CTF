@@ -1,12 +1,13 @@
 /*Used this color palette: https://colorhunt.co/palette/aa3a3aa4b787f4f4f4f8e4b7*/
 
-body, main {
+body {
     background-color: #FCECE5;
     margin: 0;
 }
 
 main {
     min-height: 45vmax;
+    margin: 1em;
 }
 
 /* All Text */
@@ -64,7 +65,10 @@ a:link, a:visited {
 }
 
 a:hover {
-    color: rgb(195, 199, 207);
+    /* color: rgb(195, 199, 207);
+    Changed from color to underline due to contast issues, feel free
+    to change back if you can make it AA rating or higher -Sean*/
+    text-decoration: underline;
 }
 
 h1 {
@@ -168,4 +172,23 @@ form {
 /* God I hate content-box */
 * {
     box-sizing: border-box !important;
+}
+
+/* Keyboard users get an outline while navigating */
+nav *:focus {
+    outline: 2px solid white;
+}
+
+#skip-link {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+#skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
 }
