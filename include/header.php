@@ -15,16 +15,14 @@
             </ul>
         </nav>
     </div>
-    <!--Nonfunctional secondary nav; placeholder content for now-->
-    <!--We can change/remove this at a later point-->
     <nav id="secondary-navigation" aria-label="Our Accounts">
         <ul>
-            <li><a href="index.php?page=include/placeholder.php">Checking</a></li>
-            <li><a href="index.php?page=include/placeholder.php">Savings &amp; CDs</a></li>
-            <li><a href="index.php?page=include/placeholder.php">Credit Cards</a></li>
-            <li><a href="index.php?page=include/placeholder.php">Personal</a></li>
-            <li><a href="index.php?page=include/placeholder.php">Business</a></li>
-            <li><a href="index.php?page=include/placeholder.php">Financial Education</a></li>
+            <li><a href="index.php?page=include/checking.php">Checking</a></li>
+            <li><a href="index.php?page=include/savings.php">Savings &amp; CDs</a></li>
+            <li><a href="index.php?page=include/credit-cards.php">Credit Cards</a></li>
+            <li><a href="index.php?page=include/personal.php">Personal</a></li>
+            <li><a href="index.php?page=include/business.php">Business</a></li>
+            <li><a href="index.php?page=include/financial-education.php">Financial Education</a></li>
         </ul>
     </nav>
 </header>
