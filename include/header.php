@@ -12,6 +12,8 @@
                 <li><a href="index.php?page=include/feedback.php">Feedback</a></li>
                 <li><a href="index.php?page=include/contact.php">Contact</a></li>
                 <li><a href="index.php?page=include/mobile-deposit.php">Mobile deposit</a></li>
+                <li><a href="index.php?page=include/dashboard.php">Dashboard</a></li>
+                <li><a href="index.php?page=include/new-account.php">Open account</a></li>
             </ul>
         </nav>
     </div>

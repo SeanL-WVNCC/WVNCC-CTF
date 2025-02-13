@@ -59,15 +59,41 @@ nav li {
     }
 }
 
-a:link, a:visited {
+/* Default link styling */
+a:visited, a:visited {
+    color: blue;
     text-decoration: none;
-    color: inherit;
 }
 
+/* Keyboard users */
+a:focus {
+    outline: 2px solid blue;
+    text-decoration: underline;
+}
+
+/* Non-keyboard users hovering */
 a:hover {
     /* color: rgb(195, 199, 207);
     Changed from color to underline due to contast issues, feel free
     to change back if you can make it AA rating or higher -Sean*/
+    outline: none;
+    text-decoration: underline;
+}
+
+/* Nav links override default link style */
+nav a, nav a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Keyboard users, nav */
+nav a:focus {
+    outline: 2px solid white;
+}
+
+/* Non-keyboard users hovering, nav */
+a:hover {
+    outline: none;
     text-decoration: underline;
 }
 
@@ -172,11 +198,6 @@ form {
 /* God I hate content-box */
 * {
     box-sizing: border-box !important;
-}
-
-/* Keyboard users get an outline while navigating */
-nav *:focus {
-    outline: 2px solid white;
 }
 
 #skip-link {
