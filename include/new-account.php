@@ -9,6 +9,7 @@
             <option value="checking">Checking</option>
             <option value="saving">Saving</option>
             <option value="credit">Credit</option>
+            <option value="student">Student special</option>
         </select>
         <label for="account-nickname-field">Account nickname</label>
         <input id="account-nickname-field" type="text" name="account-nickname" title="What would you like this account to be called?">
