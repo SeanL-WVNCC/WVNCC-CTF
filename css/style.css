@@ -38,10 +38,9 @@ header div {
     background-image: linear-gradient(to bottom left, #FBEDDB, #F8E4B8);
     border-style: inset;
     border-color: rgb(180, 150, 129);
-    li {
-        display: inline-block;
-        font-weight: bold;
-    }
+    float: left;
+    width: 15%;
+    height: 100%;
 }
 
 nav ul {
@@ -119,6 +118,8 @@ h1 {
     border-width: 5px;
     border-color: rgb(180, 150, 129);
     padding: 1.8em 2em 2em 2em;
+    width: 60%;
+    align-content: center;
     background-image: linear-gradient(to bottom left, #FBEDDB, #F8E4B8);
     h2 {
         margin-block: .25em
@@ -129,11 +130,15 @@ h1 {
 
 .offers {
     display: flex;
-    padding: 1em;
+    flex-direction: column;
+    width: 25%;
+    float: right;
+    padding-bottom: 1em;
     gap: 1em;
 }
 
 .offers > * {
+    flex-direction: column;
     padding-inline: 1em;
     padding-block: 2em;
     border-style: groove;
@@ -158,7 +163,12 @@ footer {
     border-bottom-width: 1px;
     border-color: brown;
     background-image: linear-gradient(to bottom left, #EBCAC7, #B55151);
+    text-align: center;
     padding: 1em;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     p {
         font-weight: bold;
     }
@@ -216,4 +226,10 @@ form {
     position: static;
     width: auto;
     height: auto;
+}
+
+section {
+    align-content: center;
+    width: 60%;
+    text-align: center;
 }

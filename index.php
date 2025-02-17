@@ -3,6 +3,9 @@
     <?php include "include/head.php" ?>
     <body>
         <?php include "include/header.php" ?>
+        <div>
+            <?php include 'include/section.php';?>
+        </div>
          <?php
 
             $includeDirectory = "/var/www/html";
