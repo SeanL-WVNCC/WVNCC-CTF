@@ -1,0 +1,29 @@
+
+/* Responsive styles for desktop */
+@media screen and (min-width: 100ch)  {
+    body > div {
+        display: grid;
+        grid-template-columns: auto 1fr 30ch;
+        min-height: 100vh;
+    }
+}
+
+/* Responsive styles for tablets and smaller */
+@media screen and (max-width: 80ch)  {
+    .offers {
+        flex-direction: column;
+    }
+}
+
+/* Responsive styles for phones */
+
+@media screen and (max-width: 40ch)  {
+
+    header {
+        flex-direction: column;
+    }
+    #secondary-navigation {
+        /* Naw bruh we don't need it 🗿 */
+        display: none;
+    }
+}

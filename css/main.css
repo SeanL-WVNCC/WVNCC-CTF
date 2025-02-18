@@ -1,0 +1,77 @@
+/*Used this color palette: https://colorhunt.co/palette/aa3a3aa4b787f4f4f4f8e4b7*/
+
+body {
+    background-color: #FCECE5;
+    margin: 0;
+}
+
+main {
+    margin: 1em;
+}
+
+/* All Text */
+
+p, li, h2, h4 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Default link styling */
+a:visited, a:visited {
+    color: blue;
+    text-decoration: none;
+}
+
+/* Keyboard users */
+a:focus {
+    outline: 2px solid blue;
+    text-decoration: underline;
+}
+
+/* Non-keyboard users hovering */
+a:hover {
+    /* color: rgb(195, 199, 207);
+    Changed from color to underline due to contast issues, feel free
+    to change back if you can make it AA rating or higher -Sean*/
+    outline: none;
+    text-decoration: underline;
+}
+
+/* Nav links override default link style */
+nav a, nav a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Keyboard users, nav */
+nav a:focus {
+    outline: 2px solid white;
+}
+
+/* Non-keyboard users hovering, nav */
+a:hover {
+    outline: none;
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-inline: auto;
+    width: max-content;
+    background-color: white;
+    padding: 1.5em;
+    margin-block: 5em;
+    border-radius: 1em;
+    border: 1px solid black;
+}
+
+/* God I hate content-box */
+* {
+    box-sizing: border-box !important;
+}
+
+section {
+    align-content: center;
+    text-align: center;
+}
