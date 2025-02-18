@@ -1,2 +1,0 @@
-# Possible attacks
-* `index.html` accepts a query string parameter `page` that is vulnerable to a path traversal attack. When the page is served, the value of `page` is interpreted as a file path. If the file exists, it is loaded into the page. The intended behavior is that only files within the `./include/` directory will be loaded, but this is not the case. A value of `page=/etc/passwd` will disclose sensitive system information.
