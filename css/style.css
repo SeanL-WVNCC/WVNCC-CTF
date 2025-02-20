@@ -1,7 +1,6 @@
 /*Used this color palette: https://colorhunt.co/palette/aa3a3aa4b787f4f4f4f8e4b7*/
 
 body {
-    background-color: #FCECE5;
     margin: 0;
 }
 
@@ -58,8 +57,6 @@ h1 {
     }
     img {
         height: 3rem;
-        border-style: inset;
-        border-color: brown;
     }
 }
 
@@ -67,41 +64,10 @@ h1 {
 /* Ad Section */
 
 .ad_section {
-    border-style: groove;
-    border-width: 5px;
-    border-color: rgb(180, 150, 129);
     padding: 1.8em 2em 2em 2em;
     align-content: center;
-    background-image: linear-gradient(to bottom left, #FBEDDB, #F8E4B8);
     h2 {
         margin-block: .25em
-    }
-}
-
-/* Offers */
-
-.offers {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 1em;
-    gap: 1em;
-}
-
-.offers > * {
-    flex-direction: column;
-    padding-inline: 1em;
-    padding-block: 2em;
-    border-style: groove;
-    border-radius: 8px;
-    border-color: rgb(189, 178, 151);
-    background-image: linear-gradient(to bottom right, #EEE9CF, #CCC6B5);
-    flex-basis: 100%;
-    h2 {
-        text-align: center;
-        margin: .25em;
-    }
-    p {
-        margin: 0;
     }
 }
 
@@ -111,11 +77,8 @@ form {
     align-items: start;
     margin-inline: auto;
     width: max-content;
-    background-color: white;
     padding: 1.5em;
     margin-block: 5em;
-    border-radius: 1em;
-    border: 1px solid black;
 }
 
 

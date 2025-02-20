@@ -4,7 +4,6 @@
 .offers {
     display: flex;
     flex-direction: column;
-    padding-bottom: 1em;
     gap: 1em;
 }
 
@@ -12,11 +11,8 @@
     flex-direction: column;
     padding-inline: 1em;
     padding-block: 2em;
-    border-style: groove;
-    border-radius: 8px;
-    border-color: rgb(189, 178, 151);
-    background-image: linear-gradient(to bottom right, #EEE9CF, #CCC6B5);
     flex-basis: 100%;
+    background-color: beige;
     h2 {
         text-align: center;
         margin: .25em;

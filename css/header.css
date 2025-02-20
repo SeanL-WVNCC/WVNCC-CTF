@@ -1,9 +1,7 @@
 header {
     display: flex;
     align-items: center;
-    border-style: inset;
-    border-color: brown;
-    background-image: linear-gradient(to bottom left, #DEAEAB, #B24B4B);
+    background-color: #e1e0e0;
 }
 
 #primary-navigation ul {
@@ -49,8 +47,6 @@ h1 {
     }
     img {
         height: 3rem;
-        border-style: inset;
-        border-color: brown;
     }
 }
 

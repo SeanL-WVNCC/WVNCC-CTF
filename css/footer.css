@@ -1,14 +1,10 @@
 /* Footer */
 
 footer {
-    border-style: groove;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-color: brown;
-    background-image: linear-gradient(to bottom left, #EBCAC7, #B55151);
     text-align: center;
     padding: 1em;
     width: 100%;
+    background-color: #e1e0e0;
     p {
         font-weight: bold;
     }

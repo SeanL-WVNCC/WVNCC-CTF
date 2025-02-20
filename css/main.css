@@ -1,12 +1,12 @@
 /*Used this color palette: https://colorhunt.co/palette/aa3a3aa4b787f4f4f4f8e4b7*/
 
 body {
-    background-color: #FCECE5;
     margin: 0;
 }
 
 main {
-    margin: 1em;
+    padding: 1em;
+    border: 1px solid black;
 }
 
 /* All Text */
@@ -44,7 +44,7 @@ nav a, nav a:visited {
 
 /* Keyboard users, nav */
 nav a:focus {
-    outline: 2px solid white;
+    outline: 2px solid black;
 }
 
 /* Non-keyboard users hovering, nav */
@@ -59,16 +59,8 @@ form {
     align-items: start;
     margin-inline: auto;
     width: max-content;
-    background-color: white;
     padding: 1.5em;
     margin-block: 5em;
-    border-radius: 1em;
-    border: 1px solid black;
-}
-
-/* God I hate content-box */
-* {
-    box-sizing: border-box !important;
 }
 
 section {
