@@ -20,4 +20,11 @@
             ?>
         </ul>
     </nav>
+    <search>
+        <form role="presentation" method="GET" action="search.php">
+            <label for="query-field">Query</label>
+            <input id="query-field" type="text" name="query" required>
+            <button type="submit">Search</button>
+        </form>
+    </search>
 </header>
