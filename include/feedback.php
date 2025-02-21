@@ -7,6 +7,6 @@
         <label for="feedback">Feedback</label><br>
         <input id="feedback" type="text" name="feedback" autofocus required>
         <button type="submit" >Send Feedback</button>
-        <button type="reset">Clear Fields</button>
+        <!-- No need for a clear fields input -->
     </form>
 </main>
