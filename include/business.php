@@ -19,7 +19,8 @@
         </form>
         <?php 
         if (isset($_POST["med-submit"])) {
-            $search = htmlspecialchars($_POST["med-search"]);
+            //this should still be decently easy to break if I'm understanding correctly
+            $search = str_replace([";", "'", "../"], " ", $_POST["med-search"]);
             $result = "Search Result: " . $search;
             echo $result;
         }
