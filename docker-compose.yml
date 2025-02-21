@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+    web:
+        image: php:8.2-apache
+        restart: always
+        volumes:
+            - /var/www/html:/var/www/html
+        ports:
+            - 80:80
+        
+    db:
+        image: mariadb:10.11.11-jammy
+        restart: always
+        environment:
+            MARIADB_ROOT_PASSWORD: hackme
+        ports:
+            - 3306:3306
