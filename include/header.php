@@ -6,7 +6,7 @@
             <?php
             echo "<li><a href=\"index.php?page=include/home.php\">Home</a></li>";
             echo "<li><a href=\"index.php?page=include/about.php\">About Us</a></li>";
-            echo "<li><a href=\"index.php?page=include/feedback.php\">Feedback</a></li>";
+            echo "<li><a href=\"feedback.php\">Feedback</a></li>";
             if(isset($_COOKIE["is-logged-in"])) {
                 echo "<li><a href=\"index.php?page=include/new-account.php\">Open account</a></li>";
                 echo "<li><a href=\"index.php?page=include/transfer.php\">Funds transfer</a></li>";

@@ -123,16 +123,20 @@ form {
         margin: 0.5em auto;
         border-radius: 0.25em;
         color: white;
-        background-color: #5933e1;
+        background-color: #333ee1;
     }
     input {
         margin-bottom: 0.5em;
     }
-    button:focus {
-        outline: 2px solid red;
+    button:focus, button:hover {
+        outline: 2px solid black;
+        filter: brightness(125%);
     }
     input:focus {
         outline: 2px solid blue;
+    }
+    button:hover {
+        cursor: pointer;
     }
 }
 
