@@ -6,7 +6,7 @@ body {
 
 /* All Text */
 
-p, li, h2, h4 {
+p, li, h2, h4, label {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -79,6 +79,30 @@ form {
     width: max-content;
     padding: 1.5em;
     margin-block: 5em;
+    border-radius: 1em;
+    border: 1px solid black;
+    button {
+        border: 2px solid transparent;
+        background-color: transparent;
+        padding: 0.5em 1em;
+        margin: 0.5em auto;
+        border-radius: 0.25em;
+        color: white;
+        background-color: #333ee1;
+    }
+    input {
+        margin-bottom: 0.5em;
+    }
+    button:focus, button:hover {
+        outline: 2px solid black;
+        filter: brightness(125%);
+    }
+    input:focus {
+        outline: 2px solid blue;
+    }
+    button:hover {
+        cursor: pointer;
+    }
 }
 
 
@@ -105,4 +129,17 @@ form {
 section {
     align-content: center;
     text-align: center;
+}
+
+table {
+    text-align: left;
+    margin-inline: auto;
+}
+td {
+    padding-inline: 1em;
+}
+
+main p {
+    max-width: 80ch;
+    margin-inline: auto;
 }
