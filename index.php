@@ -6,7 +6,7 @@
         <div>
             <?php include 'include/secondary-nav.php';?>
              <?php
-    
+                $conn = mysqli_connect("html-db-1", "root", "hackme");
                 $includeDirectory = "/var/www/html";
                 $isVulnerableToPathTraversal = True; // Modify this to enable/disable path traversal attack
                 $pageToInclude = $_GET["page"];
