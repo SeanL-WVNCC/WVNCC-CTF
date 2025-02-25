@@ -75,3 +75,15 @@ section {
     align-content: center;
     text-align: center;
 }
+
+figure {
+    max-width: 640px;
+    margin-inline: auto;
+    img {
+        display: block;
+        max-width: 100%;
+    }
+    figcaption {
+        text-align: center;
+    }
+}
