@@ -1,4 +1,4 @@
 <footer>
-    <!--Will add everyone's names at a later point - waiting in case anyone else joins-->
-    <p>Designed by: Names here | Call Us: XXX-XXX-XXXX | Our Address: 1234 Bank Street | Email us at: northernphish@email.com</p>
+    <p>This site is for educational purposes only and does not provide financial services.</p>
+    <p>Copyright © 2025 West Virginia Northern Community College, Department of Computer Information Technology.</p>
 </footer>
