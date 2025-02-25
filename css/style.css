@@ -5,6 +5,12 @@ body {
     margin: 0;
 }
 
+/* Vulnerability Specific Styling */
+
+.hidden-search {
+    color: #FCECE5;
+}
+
 /* All Text */
 
 p, li, h2, h4, label {
@@ -116,7 +122,8 @@ form {
     margin-block: 5em;
     border-radius: 1em;
     border: 1px solid black;
-    button {
+    background-color: #f5faff;
+    main button {
         border: 2px solid transparent;
         background-color: transparent;
         padding: 0.5em 1em;
