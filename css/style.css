@@ -5,6 +5,12 @@ body {
     margin: 0;
 }
 
+/* Vulnerability Specific Styling */
+
+.hidden-search {
+    color: #FCECE5;
+}
+
 /* All Text */
 
 p, li, h2, h4, label {
