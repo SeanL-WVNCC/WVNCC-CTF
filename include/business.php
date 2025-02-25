@@ -2,7 +2,8 @@
     <section id="business-header">
         <h2>We're the single most secure bank for your business!</h2>
         <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Viverra commodo tempus facilisis leo cras vivamus fusce. Donec leo interdum nullam aptent cubilia ac nunc.</p>
-        <button id="business-info">Learn More</button>
+        <button id="real-business-info" onclick="safeButton()">Learn More</button>
+        <button id="fake-business-info" onclick="vulnButton()"></button>
     </section>
     <section id="to-client-offer">
         <h2>We will help you out. Nothing ever breaks here.</h2>
@@ -26,4 +27,15 @@
         }
         ?>
     </section>
+    <!--Simple JavaScript onclick alert functions-->
+    <script>
+        function safeButton(){
+            alert('Fun Fact: Your business money is secure here.');
+        }
+    </script>
+    <script>
+        function vulnButton(){
+            alert('This is a placeholder for a clickjacking vulnerability! Nothing really happened except this... for now.');
+        }
+    </script>
 </main>
