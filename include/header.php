@@ -20,4 +20,8 @@
             ?>
         </ul>
     </nav>
+    <form role="search" method="GET" action="search.php">
+        <input id="query-field" type="search" name="query" required aria-labelledby="search-button">
+        <button id="search-button" type="submit">Search</button>
+    </form>
 </header>
