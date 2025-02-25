@@ -16,7 +16,7 @@
                     }
                     //Two different ways of hiding the result in the background
 
-                    //og echo without the class just for testing if needed:
+                    //og echo without the class/span just for testing if needed:
                     //echo "<p>No results found for \"".$valueToDisplay."\"</p>";
 
                     /*Colors all the text the same as the body background color
