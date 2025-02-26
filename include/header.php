@@ -14,7 +14,7 @@
                 echo "<li><a href=\"index.php?page=include/mobile-deposit.php\">Mobile deposit</a></li>";
                 echo "<li><a href=\"index.php?page=include/dashboard.php\">Dashboard</a></li>";
             } else {
-                echo "<li><a href=\"index.php?page=include/login.php\">Login</a></li>";
+                echo "<li><a href=\"login.php\">Login</a></li>";
                 echo "<li><a href=\"index.php?page=include/register.php\">Signup</a></li>";
             }
             ?>
