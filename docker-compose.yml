@@ -10,6 +10,7 @@ services:
             - /var/www/html:/var/www/html
         ports:
             - 80:80
+        container_name: www
         
     db:
         image: mariadb:10.11.11-jammy
@@ -18,3 +19,4 @@ services:
             MARIADB_ROOT_PASSWORD: hackme
         ports:
             - 3306:3306
+        container_name: db

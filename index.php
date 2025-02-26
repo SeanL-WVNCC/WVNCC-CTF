@@ -6,7 +6,7 @@
         <div>
             <?php include 'include/secondary-nav.php';?>
              <?php
-                $conn = mysqli_connect("html-db-1", "root", "hackme");
+                $conn = mysqli_connect("db", "root", "hackme");
                 include "include/vulnconfig.php";
                 $includeDirectory = "/var/www/html";
                 $pageToInclude = $_GET["page"];
