@@ -4,6 +4,7 @@
         <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Viverra commodo tempus facilisis leo cras vivamus fusce. Donec leo interdum nullam aptent cubilia ac nunc.</p>
         <button id="real-business-info" onclick="safeButton()">Learn More</button>
         <button id="fake-business-info" onclick="vulnButton()"></button>
+        <iframe src="http://demo.testfire.net" width="320" height="640" style="position: relative; top: -200px; left: -100px; filter: opacity(6%); transform: scale(300%)" scrolling="no"></iframe>
     </section>
     <section id="to-client-offer">
         <h2>We will help you out. Nothing ever breaks here.</h2>
