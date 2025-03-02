@@ -97,5 +97,10 @@ run(f"docker compose -f {WEBROOT}/docker-compose.yml up -d", False)
 run(f"chmod +x {WEBROOT}/install_mysqli.sh")
 run(f"docker exec -t www {WEBROOT}/install_mysqli.sh", capture=False)
 
+# Step 11: Initialize the DB
+run(f"docker exec -it db mariadb --password=hackme -e 'CREATE DATABASE breakTheBank'", capture=True)
+run(f"cat /var/www/html/break_the_bank_database_schema.sql | docker exec -i db mariadb --password=hackme breakTheBank", capture=True)
+run(f"cat /var/www/html/dummy_users/example_users.sql | docker exec -i db mariadb --password=hackme breakTheBank", capture=True)
+
 print("Done.")
 exit(0)
