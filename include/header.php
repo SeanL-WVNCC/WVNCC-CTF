@@ -14,10 +14,14 @@
                 echo "<li><a href=\"index.php?page=include/mobile-deposit.php\">Mobile deposit</a></li>";
                 echo "<li><a href=\"index.php?page=include/dashboard.php\">Dashboard</a></li>";
             } else {
-                echo "<li><a href=\"index.php?page=include/login.php\">Login</a></li>";
+                echo "<li><a href=\"login.php\">Login</a></li>";
                 echo "<li><a href=\"index.php?page=include/register.php\">Signup</a></li>";
             }
             ?>
         </ul>
     </nav>
+    <form role="search" method="GET" action="search.php">
+        <input id="query-field" type="search" name="query" required aria-labelledby="search-button">
+        <button id="search-button" type="submit">Search</button>
+    </form>
 </header>

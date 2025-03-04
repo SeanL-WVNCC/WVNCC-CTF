@@ -4,6 +4,44 @@ body {
     margin: 0;
 }
 
+/* Vulnerability Specific Styling */
+
+.hidden-search {
+    color: #FCECE5;
+}
+
+/* These positions are a rough solution to getting the buttons to overlap and stay overlapped
+feel free to change anything if there's a way to do that that looks better -
+it only looks decent on my laptop while fullscreened -Angela */
+#real-business-info {
+    position: absolute;
+    left: 300px;
+    background-color: rgba(104, 128, 104, 0.746);
+    color: white;
+    text-align: center;
+    font-size: large;
+    padding: 10px 30px;
+    border-radius: 12%;
+}
+
+/* There's still some space left to click the real button */
+#fake-business-info {
+    position: absolute;
+    left: 310px;
+    font-size: large;
+    padding: 10px 30px;
+    opacity: 0;
+}
+
+/* These are just to make overlapping the buttons possible and so they don't overlap with the rest of the page */
+#business-header, #to-client-offer {
+    position: relative;
+}
+
+#to-client-offer {
+    margin-top: 50px;
+}
+
 /* All Text */
 
 p, li, h2, h4, label {
@@ -71,7 +109,31 @@ h1 {
     }
 }
 
-form {
+/* Offers */
+
+.offers {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1em;
+    gap: 1em;
+}
+
+.offers > * {
+    flex-direction: column;
+    padding-inline: 1em;
+    padding-block: 2em;
+    border-radius: 8px;
+    flex-basis: 100%;
+    h2 {
+        text-align: center;
+        margin: .25em;
+    }
+    p {
+        margin: 0;
+    }
+}
+
+main form {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -81,6 +143,7 @@ form {
     margin-block: 5em;
     border-radius: 1em;
     border: 1px solid black;
+    background-color: #f5faff;
     button {
         border: 2px solid transparent;
         background-color: transparent;
