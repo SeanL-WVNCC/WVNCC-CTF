@@ -1,0 +1,38 @@
+#hero-section {
+    position: relative;
+    img {
+        width: 100%;
+        height: max(auto, 25rem);
+        object-fit: cover;
+    }
+}
+#hero-section hgroup {
+    padding: 1rem;
+    h2, p {
+        margin: 0;
+    }
+    p {
+        font-size: 0.85rem;
+        text-align: center;
+        max-width: 100%;
+    }
+}
+
+/* Why is this not in the file called "media-queries"? Because reasons.*/
+@media screen and (min-width: 45rem)  {
+    #hero-section hgroup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding-inline: 6rem;
+        padding-block: 3rem;
+        transform: translate(-50%, -50%);
+        text-wrap: nowrap;
+        width: min(max-content, 100%);
+        background-color: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(8px);
+        h2 {
+            font-size: 2rem;
+        }
+    }
+}

@@ -1,3 +1,34 @@
+<?php
+include "include/functions.php";
+$mainContent = "";
+include "include/vulnconfig.php";
+$mainContent .= "<form aria-labelledby=\"login-heading\" method=\"POST\" action=\"login.php\">";
+$mainContent .= "<h2 id=\"login-heading\">Login</h2>";
+$mainContent .= "<label for=\"username-field\">Username</label>";
+$mainContent .= "<input id=\"username-field\" type=\"text\" name=\"username\" autofocus required>";
+$mainContent .= "<label for=\"password-field\">Password</label>";
+$mainContent .= "<input id=\"password-field\" type=\"password\" name=\"password\" required>";
+$mainContent .= "<button type=\"submit\">Login</button>";
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $conn = mysqli_connect("db", "root", "hackme", "breakTheBank");
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $result = $conn->query("SELECT * FROM users WHERE username=\"$username\"");
+    if($user = $result->fetch_assoc()) {
+        if($password == $user["password"]) {
+            $mainContent .= "Username and password were correct.";
+        } else {
+            $mainContent .= "Password incorrect.";
+        }
+    } else {
+        $mainContent .= "Username \"$username\" not found.";
+    }
+    #setcookie("is-logged-in", "true", path:"/");
+}
+$mainContent .= "</form>";
+echo generatePage($mainContent, false);
+
+/*
 <!DOCTYPE html>
 <html lang="en">
     <?php include "include/head.php" ?>
@@ -41,3 +72,4 @@
         <?php include "include/footer.php" ?>
     </body>
 </html>
+*/
