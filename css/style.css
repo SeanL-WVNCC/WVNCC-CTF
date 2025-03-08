@@ -44,7 +44,7 @@ it only looks decent on my laptop while fullscreened -Angela */
 
 /* All Text */
 
-p, li, h2, h4, label {
+body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -81,40 +81,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Ad Section */
-
-.ad_section {
-    padding: 1.8em 2em 2em 2em;
-    align-content: center;
-    h2 {
-        margin-block: .25em
-    }
-}
-
-/* Offers */
-
-.offers {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 1em;
-    gap: 1em;
-}
-
-.offers > * {
-    flex-direction: column;
-    padding-inline: 1em;
-    padding-block: 2em;
-    border-radius: 8px;
-    flex-basis: 100%;
-    h2 {
-        text-align: center;
-        margin: .25em;
-    }
-    p {
-        margin: 0;
-    }
-}
-
 /* God I hate content-box */
 * {
     box-sizing: border-box !important;
@@ -134,11 +100,6 @@ a:hover {
     height: auto;
 }
 
-section {
-    align-content: center;
-    text-align: center;
-}
-
 table {
     text-align: left;
     margin-inline: auto;
@@ -147,7 +108,6 @@ td {
     padding-inline: 1em;
 }
 
-main p {
-    max-width: 80ch;
-    margin-inline: auto;
+figcaption {
+    padding-block: .25rem;
 }

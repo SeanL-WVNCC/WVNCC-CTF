@@ -18,6 +18,7 @@ function generatePage(string $mainContent, bool $useSideContent): string {
     $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/home.css\">";
     $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/media-queries.css\">";
     $result .= "<link rel=\"icon\" type=\"img/x-icon\" href=\"./img/logo.png\">";
+    $result .= "<script src=\"./js/script.js\"></script>";
     if($useSideContent) {
         $result .= "<style>main {padding: 1rem;}</style>";
     }
@@ -41,7 +42,14 @@ function generatePage(string $mainContent, bool $useSideContent): string {
         $result .= "<li><a href=\"login.php\">Login</a></li>";
         $result .= "<li><a href=\"register.php\">Register</a></li>";
     }
+    //$result .= "<li><a href=\"about.php\">About Us</a></li>";
+    $result .= "<li><button id=\"about-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"about-dropdown\" onclick=\"toggleExpandButton('about-menu-button')\" keydown=\"keypressEventDisclouseButton\">About</button>";
+    $result .= "<ul id=\"about-dropdown\" hidden>";
+    $result .= "<li><a href=\"accounts.php\">Accounts</a></li>";
     $result .= "<li><a href=\"about.php\">About Us</a></li>";
+    $result .= "<li><a href=\"legal.php\">Legal</a></li>";
+    $result .= "</ul>";
+    $result .= "</li>";
     $result .= "</ul>";
     $result .= "</nav>";
     $result .= "<form role=\"search\" method=\"GET\" action=\"search.php\">";
@@ -49,40 +57,7 @@ function generatePage(string $mainContent, bool $useSideContent): string {
     $result .= "<button id=\"search-button\" type=\"submit\" aria-label=\"Search\"><img src=\"img/search-icon.svg\" alt=\"\"></button>";
     $result .= "</form>";
     $result .= "</header>";
-    if($useSideContent) {
-        $result .= "<div>";
-        $result .= "<nav id=\"secondary-navigation\" aria-label=\"Our Accounts\">";
-        $result .= "<ul>";
-        $result .= "<li><a href=\"promotions.php?page=include/checking.php\">Checking</a></li>";
-        $result .= "<li><a href=\"promotions.php?page=include/savings.php\">Savings &amp; CDs</a></li>";
-        $result .= "<li><a href=\"promotions.php?page=include/credit-cards.php\">Credit Cards</a></li>";
-        $result .= "<li><a href=\"promotions.php?page=include/personal.php\">Personal</a></li>";
-        $result .= "<li><a href=\"promotions.php?page=include/business.php\">Business</a></li>";
-        $result .= "<li><a href=\"promotions.php?page=include/financial-education.php\">Financial Education</a></li>";
-        $result .= "</ul>";
-        $result .= "</nav>";
-    }
     $result .= "<main>$mainContent</main>";
-    if($useSideContent) {
-        $result .= "<section class=\"offers\" role=\"complementary\" aria-label=\"Featured Offers\">";
-        $result .= "<div>";
-        $result .= "<h2>Another checking offer</h2>";
-        $result .= "<p>Here is some placeholder text for another account offer.</p>";
-        $result .= "</div>";
-        $result .= "<div>";
-        $result .= "<h2>Student account offer</h2>";
-        $result .= "<p>Check our our special account just for students!</p>";
-        $result .= "</div>";
-        $result .= "<div>";
-        $result .= "<h2>Mobile app</h2>";
-        $result .= "<p>Manage your finanaces on the go with the nonexistent Northern Phish &amp; Loan mobile app!</p>";
-        $result .= "<p><a href=\"https://play.google.com/store/apps/details?id=edu.wvncc.northernphish\" target=\"_blank\">Download from Google Play for Android</a></p>";
-        $result .= "</div>";
-        $result .= "</section>";
-    }
-    if($useSideContent) {
-        $result .= "</div>";
-    }
     $result .= "<footer>";
     $result .= "<p>This site is for educational purposes only and does not provide financial services.</p>";
     $result .= "<p>Copyright © 2025 West Virginia Northern Community College, Department of Computer Information Technology.</p>";

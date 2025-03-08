@@ -2,35 +2,39 @@
     position: relative;
     img {
         width: 100%;
-        height: max(auto, 25rem);
+        height: 25rem;
         object-fit: cover;
     }
 }
 #hero-section hgroup {
     padding: 1rem;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    padding-inline: 1rem;
+    padding-block: 3rem;
+    transform: translate(0, -50%);
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
     h2, p {
         margin: 0;
+        line-height: 1em;
     }
     p {
         font-size: 0.85rem;
         text-align: center;
-        max-width: 100%;
     }
 }
 
 /* Why is this not in the file called "media-queries"? Because reasons.*/
-@media screen and (min-width: 45rem)  {
+@media screen and (min-width: 60rem)  {
     #hero-section hgroup {
-        position: absolute;
-        top: 50%;
         left: 50%;
+        width: auto;
         padding-inline: 6rem;
-        padding-block: 3rem;
         transform: translate(-50%, -50%);
-        text-wrap: nowrap;
-        width: min(max-content, 100%);
-        background-color: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(8px);
         h2 {
             font-size: 2rem;
         }

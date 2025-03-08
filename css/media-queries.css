@@ -1,29 +1,41 @@
 
 /* Responsive styles for desktop */
-@media screen and (min-width: 100ch)  {
+@media screen and (min-width: 60rem)  {
     body > div {
         display: grid;
         grid-template-columns: auto 1fr 30ch;
         min-height: 100vh;
     }
-}
-
-/* Responsive styles for tablets and smaller */
-@media screen and (max-width: 80ch)  {
-    .offers {
-        flex-direction: column;
+    article:has(figure) {
+        columns: 2;
+        max-width: 70rem;
+        column-gap: 3rem;
     }
 }
 
-/* Responsive styles for phones */
-
-@media screen and (max-width: 40ch)  {
-
+/* Responsive styles for tablets and smaller */
+@media screen and (max-width: 60rem)  {
+    .offers {
+        flex-direction: column;
+    }
     header {
         flex-direction: column;
     }
     #secondary-navigation, h1, form[role="search"] {
         /* Naw bruh we don't need it 🗿 */
         display: none;
+    }
+}
+
+/* Responsive styles for phones */
+
+@media screen and (max-width: 25rem)  {
+    /* None for now... */
+}
+
+/* Prevent the header from taking over the world */
+@media screen and (max-height: 30rem)  {
+    header {
+        position: static;
     }
 }
