@@ -25,6 +25,13 @@
         /* Naw bruh we don't need it 🗿 */
         display: none;
     }
+    .cards {
+        display: block;
+        padding: 1rem;
+        > * {
+            margin-block: 1rem;
+        }
+    }
 }
 
 /* Responsive styles for phones */
