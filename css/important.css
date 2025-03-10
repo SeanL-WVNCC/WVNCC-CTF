@@ -1,0 +1,23 @@
+/*
+    important.css
+    These styles should always apply.
+*/
+
+*[hidden] {
+    display: none !important;
+}
+
+/*
+    By the power invested in me by our Lord God:
+    Unholy beast "content-box" begone!
+*/
+* {
+    box-sizing: border-box !important;
+}
+
+/* Remove animation for folks that don't like them */
+@media (prefers-reduced-motion) {
+    * {
+        animation: none !important;
+    }
+}

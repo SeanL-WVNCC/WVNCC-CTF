@@ -1,5 +1,5 @@
 
-// Functions for the "About" dropdown in the nav
+// Functions for the dropdowns in the nav
 
 function expandButton(elementId)  {
     element = document.getElementById(elementId);

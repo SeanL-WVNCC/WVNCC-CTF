@@ -10,66 +10,29 @@ $mainContent .= "<label for=\"password-field\">Password</label>";
 $mainContent .= "<input id=\"password-field\" type=\"password\" name=\"password\" required>";
 $mainContent .= "<button type=\"submit\">Login</button>";
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-    $conn = mysqli_connect("db", "root", "hackme", "breakTheBank");
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $result = $conn->query("SELECT * FROM users WHERE username=\"$username\"");
-    if($user = $result->fetch_assoc()) {
-        if($password == $user["password"]) {
-            $mainContent .= "Username and password were correct.";
+    try {
+        $conn = mysqli_connect("db", "root", "hackme", "breakTheBank");
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $query = "SELECT * FROM users WHERE username=\"$username\"";
+        $result = $conn->query($query);
+        if($user = $result->fetch_assoc()) {
+            if($password == $user["password"]) {
+                setcookie("is-logged-in", "true");
+                header("Location: /");
+                $mainContent .= "Username and password were correct.";
+            } else {
+                $mainContent .= "Password incorrect.";
+            }
         } else {
-            $mainContent .= "Password incorrect.";
+            $mainContent .= "Username \"$username\" not found.";
         }
-    } else {
-        $mainContent .= "Username \"$username\" not found.";
+    } catch (mysqli_sql_exception $error) {
+        $mainContent .= "<div>Invalid SQL: <code>SELECT * FROM users WHERE username=\"<u>$username\"</u></code></div>";
+        if(str_starts_with($username, '"')) {
+            $mainContent .= "<div>Content following quote appears to be invalid.</div>";
+        }
     }
-    #setcookie("is-logged-in", "true", path:"/");
 }
 $mainContent .= "</form>";
 echo generatePage($mainContent, false);
-
-/*
-<!DOCTYPE html>
-<html lang="en">
-    <?php include "include/head.php" ?>
-    <body>
-        <?php include "include/header.php" ?>
-        <div>
-            <?php include 'include/secondary-nav.php';?>
-            <?php
-                include "include/vulnconfig.php";
-                $output = "";
-                $output .= "<main id=\"main\">";
-                $output .= "<form aria-labelledby=\"login-heading\" method=\"POST\" action=\"login.php\">";
-                $output .= "<h2 id=\"login-heading\">Login</h2>";
-                $output .= "<label for=\"username-field\">Username</label>";
-                $output .= "<input id=\"username-field\" type=\"text\" name=\"username\" autofocus required>";
-                $output .= "<label for=\"password-field\">Password</label>";
-                $output .= "<input id=\"password-field\" type=\"password\" name=\"password\" required>";
-                $output .= "<button type=\"submit\">Login</button>";
-                if($_SERVER['REQUEST_METHOD'] == "POST") {
-                    $conn = mysqli_connect("db", "root", "hackme", "breakTheBank");
-                    $username = $_POST["username"];
-                    $password = $_POST["password"];
-                    $result = $conn->query("SELECT * FROM users WHERE username=\"$username\"");
-                    if($user = $result->fetch_assoc()) {
-                        if($password == $user["password"]) {
-                            $output .= "Username and password were correct.";
-                        } else {
-                            $output .= "Password incorrect.";
-                        }
-                    } else {
-                        $output .= "Username \"$username\" not found.";
-                    }
-                    #setcookie("is-logged-in", "true", path:"/");
-                }
-                $output .= "</form>";
-                $output .= "</main>";
-                echo $output;
-            ?>
-            <?php include 'include/featured.php';?>
-        </div>
-        <?php include "include/footer.php" ?>
-    </body>
-</html>
-*/

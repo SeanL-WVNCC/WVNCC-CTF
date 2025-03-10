@@ -1,14 +1,21 @@
+/*
+    footer.css
+    Styles for the <header> element.
+*/
+
 header {
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.80);
-    backdrop-filter: blur(8px);
-    box-shadow: 0px 10px 64px black;
-    color: white;
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 1;
+    background-color: rgba(0, 0, 0, 0.80);
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 10px 64px black;
+    color: white;
+    color-scheme: only light;
+    outline: 2px solid transparent;
 }
 
 header nav ul {
@@ -18,14 +25,11 @@ header nav ul {
     flex-wrap: wrap;
 }
 
-nav ul {
+nav ul, nav li {
     padding: 0;
     margin: 0;
 }
-nav li {
-    margin: 0;
-    padding: 0;
-}
+
 nav li a, nav li button {
     display: block;
     padding: 1em;
@@ -41,15 +45,9 @@ nav li a, nav li button {
     cursor: pointer;
 }
 
-/* Default link styling */
-a:visited, a:visited {
-    color: blue;
-    text-decoration: none;
-}
-
 /* Nav links override default link style */
 nav a, nav a:visited {
-    text-decoration: none;
+    text-decoration-color: transparent;
     color: inherit;
 }
 
@@ -75,37 +73,44 @@ h1 img {
     width: auto;
     height: auto;
     background-color: white;
+    color: blue;
+    color-scheme: only light;
     padding: 1em;
 }
 
 form[role="search"] {
-    margin-left: auto;
-    margin-right: 1rem;
-    margin-block: 0;
+    margin: 0 1rem 0 auto;
     padding: 0;
     background: transparent;
     outline: 2px solid transparent;
     flex-direction: row;
     align-items: stretch;
     background-color: white;
+    color: black;
+    color-scheme: only light;
     border-radius: 0.5em;
 }
 form[role="search"] input {
-    margin-block: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     padding: .5em 1em;
     background-color: transparent;
     border: none;
+    color: inherit;
 }
 form[role="search"] button {
     display: block;
     padding: .5em 1em;
     background-color: transparent;
     border: none;
-    img {
-        display: block;
-        width: 1em;
-        height: 1em;
-    }
+    color: inherit;
+}
+form[role="search"] button svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+    color: inherit;
+    fill: currentColor;
 }
 form[role="search"] input:focus, form[role="search"] input:hover {
     backdrop-filter: brightness(90%);
@@ -114,15 +119,18 @@ form[role="search"] button:focus, form[role="search"] button:hover {
     backdrop-filter: brightness(85%);
 }
 
-li:has(button[aria-expanded]) ul {
+button[aria-expanded] + ul {
     display: block;
     position: absolute;
     background-color: rgba(255,255,255,0.8);
     backdrop-filter: blur(8px);
     color: black;
     box-shadow: 0px 0px 16px;
+    outline: 2px solid transparent;
+    z-index: 1;
 }
 
+/* This is the little cheveron for the dropdown menu */
 button[aria-expanded]::after {
 	content: "";
 	display: inline-block;
@@ -142,8 +150,4 @@ button[aria-expanded=true]::after {
 
 nav button:hover, nav button:focus, nav a:focus, nav a:hover {
     backdrop-filter: brightness(150%);
-}
-
-*[hidden] {
-    display: none !important;
 }

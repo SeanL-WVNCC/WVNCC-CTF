@@ -43,6 +43,6 @@
 /* Prevent the header from taking over the world */
 @media screen and (max-height: 30rem)  {
     header {
-        position: static;
+        position: relative;
     }
 }

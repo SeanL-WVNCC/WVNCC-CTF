@@ -2,6 +2,8 @@
 include "include/functions.php";
 include "include/vulnconfig.php";
 $mainContent = "";
+$mainContent .= "<section class=\"single-column\"aria-labelledby=\"search-results\">";
+$mainContent .= "<h2 id=\"search-results\">Search Results</h2>";
 if(array_key_exists("query", $_GET)) {
     $query = $_GET["query"];
     // See if the user's query looks like a reflected XSS attack
@@ -25,15 +27,17 @@ if(array_key_exists("query", $_GET)) {
         array("login", "log", "account", "sign"),
         array("create", "register", "sign", "account"),
         array("feedback", "comment", "complain", "fourm", "contact", "message", "chat"),
-        array("about", "history", "managment", "ceo", "call", "contact", "number", "address"),
+        array("about", "history", "managment", "call", "contact", "number", "address", "nixon"),
         array("download", "app"),
+        array("contract", "legal", "term", "arbitration", "privacy", "agreement"),
     );
     $resultingPages = array(
         array("login.php", "Log in to your account"),
-        array("index.php?page=include/register.php", "Sign up for an account"),
+        array("register.php", "Sign up for an account"),
         array("feedback.php", "Tell us how we're doing"),
-        array("index.php?page=include/about.php", "About Northern Phish &amp; Loan"),
-        array("https://play.google.com/store/apps/details?id=edu.wvncc.northernphish", "Download our app")
+        array("about.php", "About Northern Phish &amp; Loan"),
+        array("https://play.google.com/store/apps/details?id=edu.wvncc.northernphish", "Download our app"),
+        array("legal.php", "Terms of Service")
     );
     $index = 0;
     $searchHits = 0;
@@ -62,8 +66,9 @@ if(array_key_exists("query", $_GET)) {
         $mainContent .= "<p>No results found for <span style='color:#FCECE5'>\"".$valueToDisplay."\"</span></p>";
         if($looksLikeXss) {
             $mainContent .= "<figure id='the-rock-meme'><img src=img/rock.jpg><figcaption>Hey there buddy. That search query looks a lot like JavaScript.</figcaption></figure>";
-            $mainContent .= "<p>Flag 83029<p>";
+            $mainContent .= "<p>Flag 83029</p>";
         }
     }
 }
+$mainContent .= "</section>";
 echo generatePage($mainContent, False);

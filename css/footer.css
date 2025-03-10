@@ -1,4 +1,7 @@
-/* Footer */
+/*
+    footer.css
+    Styles for the <footer> element.
+*/
 
 footer {
     text-align: center;
@@ -7,7 +10,8 @@ footer {
     background-image: linear-gradient(#3c3c3c, #090909);
     color: white;
     text-shadow: 0px 0px 1em black;
-    p {
-        font-weight: bold;
-    }
+    color-scheme: only dark;
+}
+footer p {
+    font-weight: bold;
 }
