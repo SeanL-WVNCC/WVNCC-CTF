@@ -64,7 +64,7 @@ function createHeaderElement(): string {
     }
     $result .= "<li><button id=\"about-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"about-dropdown\" onclick=\"toggleExpandButton('about-menu-button')\" keydown=\"keypressEventDisclouseButton\">About</button>";
     $result .= "<ul id=\"about-dropdown\" hidden>";
-    $result .= "<li><a href=\"accounts.php\">Accounts</a></li>";
+    //$result .= "<li><a href=\"accounts.php\">Accounts</a></li>";
     $result .= "<li><a href=\"about.php\">About Us</a></li>";
     $result .= "<li><a href=\"legal.php\">Legal</a></li>";
     $result .= "</ul>";
