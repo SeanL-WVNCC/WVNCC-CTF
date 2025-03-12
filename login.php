@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "include/functions.php";
 $mainContent = "";
 include "include/vulnconfig.php";
@@ -19,6 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         if($user = $result->fetch_assoc()) {
             if($password == $user["password"]) {
                 setcookie("is-logged-in", "true");
+                $_SESSION["logged-in-user"] = $username;
                 header("Location: /");
                 $mainContent .= "Username and password were correct.";
             } else {

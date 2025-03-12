@@ -7,4 +7,4 @@ $mainContent .= "<p>Upload checks for deposit here. Only image files can be subm
 $mainContent .= "<input type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\">";
 $mainContent .= "<input type=\"submit\" value=\"Upload Image\" name=\"submit\">";
 $mainContent .= "</form>";
-echo generatePage($mainContent, False);
+echo generatePage($mainContent);
