@@ -31,7 +31,7 @@ function generatePage(string $mainContent, bool $useSideContent): string {
         $result .= "<li><button id=\"online-banking-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"online-banking-dropdown\" onclick=\"toggleExpandButton('online-banking-menu-button')\" keydown=\"keypressEventDisclouseButton\">Online Banking</button>";
         $result .= "<ul id=\"online-banking-dropdown\" hidden>";
         //$result .= "<li><a href=\"dashboard.php\">Dashboard</a></li>";
-        //$result .= "<li><a href=\"mobile-deposit.php\">Mobile deposit</a></li>";
+        $result .= "<li><a href=\"mobile-deposit.php\">Mobile deposit</a></li>";
         //$result .= "<li><a href=\"transfer.php\">Funds transfer</a></li>";
         //$result .= "<li><a href=\"new-account.php\">Open account</a></li>";
         //$result .= "<li><a href=\"profile.php\">Profile</a></li>";
