@@ -71,4 +71,4 @@ if(array_key_exists("query", $_GET)) {
     }
 }
 $mainContent .= "</section>";
-echo generatePage($mainContent, False);
+echo generatePage($mainContent);

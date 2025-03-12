@@ -11,4 +11,4 @@ $mainContent .= "<input id=\"feedback\" type=\"text\" name=\"feedback\" autofocu
 $mainContent .= "<button type=\"submit\">Send Feedback</button>";
 // No need for a clear fields input
 $mainContent .= "</form>";
-echo generatePage($mainContent, false);
+echo generatePage($mainContent);

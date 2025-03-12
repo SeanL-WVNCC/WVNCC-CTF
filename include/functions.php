@@ -1,33 +1,52 @@
 <?php
-function generatePage(string $mainContent, bool $useSideContent): string {
-    // TODO: Break this into smaller functions
-    ini_set('display_errors', '1');
-    ini_set('display_startup_errors', '1');
-    error_reporting(E_ALL);
-    $result = "<!DOCTYPE html><html lang=\"en\">";
+
+/**
+ * Returns HTML that links to the list of stylesheets provided.
+ * @param array $stylesheetLocations URLs or file paths to CSS stylesheets, as an array of strings.
+ * @return string String of HTML &lt;link&gt; elements that load the stylesheets specified.
+ */
+function createStylesheetLinks(array $stylesheetLocations): string {
+
+    $result = "";
+    foreach($stylesheetLocations as $location) {
+        $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$location\">";
+    }
+    return $result;
+}
+
+/**
+ * Returns HTML for the &lt;head&gt; element.
+ * @return string The head element.
+ */
+function createHeadElement(): string {
+
+    $result = "";
     $result .= "<head>";
     $result .= "<meta charset=\"utf-8\">";
     $result .= "<meta name=\"author\" content=\"Everyone's names will go here\">";
     $result .= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
-    $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/style.css\">";
-    $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/header.css\">";
-    $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css\">";
-    $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/footer.css\">";
-    $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/home.css\">";
-    $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/media-queries.css\">";
-    $result .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/important.css\">";
+    $result .= createStylesheetLinks(array("./css/style.css", "./css/header.css", "./css/main.css", "./css/footer.css", "./css/home.css", "./css/media-queries.css", "./css/important.css"));
     $result .= "<link rel=\"icon\" type=\"img/x-icon\" href=\"./img/logo.png\">";
     $result .= "<script src=\"./js/script.js\"></script>";
     $result .= "<title>Northern Phish &amp; Loan</title>";
     $result .= "</head>";
-    $result .= "<body>";
+    return $result;
+}
+
+/**
+ * Returns HTML for the &lt;header&gt; element.
+ * @return string The header element.
+ */
+function createHeaderElement(): string {
+
+    $result = "";
     $result .= "<header>";
     $result .= "<a id=\"skip-link\" href=\"#main\">Skip to content</a>";
     $result .= "<h1><img src=\"./img/logo.png\" alt=\"Northern Phish and Loan\"></h1> <!-- This was a link, removed to reduce unnecessary tab stops -->";
     $result .= "<nav id=\"primary-navigation\" aria-label=\"Site Navigation\">";
     $result .= "<ul>";
     $result .= "<li><a href=\"index.php\">Home</a></li>";
-    if(isset($_COOKIE["is-logged-in"])) {
+    if(isLoggedIn()) {
         $result .= "<li><button id=\"online-banking-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"online-banking-dropdown\" onclick=\"toggleExpandButton('online-banking-menu-button')\" keydown=\"keypressEventDisclouseButton\">Online Banking</button>";
         $result .= "<ul id=\"online-banking-dropdown\" hidden>";
         //$result .= "<li><a href=\"dashboard.php\">Dashboard</a></li>";
@@ -58,6 +77,22 @@ function generatePage(string $mainContent, bool $useSideContent): string {
     $result .= "<button id=\"search-button\" type=\"submit\" aria-label=\"Search\">$searchIcon</button>";
     $result .= "</form>";
     $result .= "</header>";
+    return $result;
+}
+
+/**
+ * Generates headers, footers, and all of that good stuff. Pass it HTML to place in the &lt;main&gt; element, and it returns an entire page to be <code>echo</code>'d
+ * @param string $mainContent HTML markup that will be placed inside of the &lt;main&gt; element.
+ * @return string HTML string for an entire page of the site.
+ */
+function generatePage(string $mainContent): string {
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    error_reporting(E_ALL);
+    $result = "<!DOCTYPE html><html lang=\"en\">";
+    $result .= createHeadElement();
+    $result .= "<body>";
+    $result .= createHeaderElement();
     $result .= "<main id=\"main\">$mainContent</main>";
     $result .= "<footer>";
     $result .= "<p>This site is for educational purposes only and does not provide financial services.</p>";
@@ -69,5 +104,5 @@ function generatePage(string $mainContent, bool $useSideContent): string {
 }
 
 function isLoggedIn() {
-
+    return isset($_COOKIE["is-logged-in"]);
 }

@@ -15,4 +15,4 @@ $mainContent .= "<img src=\"img/ad_2.png\" alt=\"Open an account today (before s
 $mainContent .= "<img src=\"img/ad_3.png\" alt=\"Twenty-four seven support: Our bots are always happy to (ignore) your fraud claims!\">";
 $mainContent .= "<img src=\"img/ad_4.png\" alt=\"Fraud protection: If someone steals your funds, we promise to (look concerned).\">";
 $mainContent .= "</section>";
-echo generatePage($mainContent, false);
+echo generatePage($mainContent);
