@@ -9,4 +9,4 @@ $mainContent .= "<label for=\"password-field\">Password</label>";
 $mainContent .= "<input id=\"password-field\" type=\"password\" name=\"password\" required>";
 $mainContent .= "<button type=\"submit\">Login</button>";
 $mainContent .= "</form>";
-echo generatePage($mainContent, false);
+echo generatePage($mainContent);

@@ -48,4 +48,4 @@ $mainContent .= "<p>By choosing the Dark Vault Card™, users acknowledge that N
 $mainContent .= "<p>Click “Accept” to proceed. Or don’t. It doesn’t matter. We already have your data.</p>";
 $mainContent .= "<button type=\"button\">Accept Terms</button>";
 $mainContent .= "</article>";
-echo generatePage($mainContent, False);
+echo generatePage($mainContent);

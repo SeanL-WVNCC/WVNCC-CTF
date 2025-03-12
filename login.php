@@ -35,4 +35,4 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 $mainContent .= "</form>";
-echo generatePage($mainContent, false);
+echo generatePage($mainContent);
