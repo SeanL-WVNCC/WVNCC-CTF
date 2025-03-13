@@ -1,5 +1,23 @@
 <?php
 
+class AuthenticationResult {
+    public int $userId;
+    public string $username;
+    public string $statusMessage;
+    public bool $isSuccess;
+
+    public function __construct(int $userId, string $username, string $statusMessage, bool $isSuccess) {
+        $this->userId = $userId;
+        $this->username = $username;
+        $this->statusMessage = $statusMessage;
+        $this->isSuccess = $isSuccess;
+    }
+}
+
+function connectToDatabase(): mysqli {
+    return mysqli_connect("db", "root", "hackme", "breakTheBank");
+}
+
 /**
  * Returns HTML that links to the list of stylesheets provided.
  * @param array $stylesheetLocations URLs or file paths to CSS stylesheets, as an array of strings.
@@ -54,6 +72,7 @@ function createHeaderElement(): string {
         //$result .= "<li><a href=\"transfer.php\">Funds transfer</a></li>";
         //$result .= "<li><a href=\"new-account.php\">Open account</a></li>";
         //$result .= "<li><a href=\"profile.php\">Profile</a></li>";
+        $result .= "<li><a href=\"change-password.php\">Change Password</a></li>";
         $result .= "<li><a href=\"logout.php\">Log Out</a></li>";
         $result .= "</ul>";
         $result .= "</li>";
@@ -103,6 +122,38 @@ function generatePage(string $mainContent): string {
     return $result;
 }
 
+/**
+ * Queries the DB for a user matching the given credentials.
+ * @param string $username
+ * @param string $password
+ * @return AuthenticationResult Details about the login attempt.
+ */
+function authenticate(string $username, string $password): AuthenticationResult {
+    $database = connectToDatabase();
+    $query = "SELECT * FROM users WHERE username=\"$username\"";
+    $result = $database->query($query);
+    $userId = 0;
+    
+    if($user = $result->fetch_assoc()) {
+        if($password == $user["password"]) {
+            $userId = $user["userId"];
+            $statusMessage = "Logged in successfully.";
+            $isSuccess = true;
+        } else {
+            $statusMessage = "Password incorrect.";
+            $isSuccess = false;
+        }
+    } else {
+        $statusMessage = "Username \"$username\" not found.";
+        $isSuccess = false;
+    }
+    return new AuthenticationResult($userId, $username, $statusMessage, $isSuccess);
+}
 function isLoggedIn() {
     return isset($_COOKIE["is-logged-in"]);
+}
+
+function login(int $userId) {
+    setcookie("is-logged-in", "true");
+    setcookie("logged-in-user", $userId);
 }
