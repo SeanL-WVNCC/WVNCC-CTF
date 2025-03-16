@@ -1,7 +1,10 @@
 <?php
 // Flags that enable/disable vulnerabilities.
 
-$isVulnerableToPathTraversal = True;  // FIXME: Currently broken, reimplementation required.
-$isVulnerableToReflectedXss  = True;  // Applies to the search and login pages.
-$fileSizeLimit = false;               // Enables file size liming for file uploads
-$fileTypeRestriction = false;         // Restricts types of files that may be uploaded
+$isVulnerableToPathTraversal        = false;  // FIXME: Currently broken, reimplementation required.
+$isVulnerableToReflectedXss         = true;  // Applies to the search and login pages.
+$isVulnerableToUserEnum             = true;
+$isVulnerableToSqlInjection         = true;
+$hideReflectionWithTransparentText  = true;  // Hides reflected user input that has been echo'd onto the DOM
+$fileSizeLimit                      = False; // Enables file size liming for file uploads
+$fileTypeRestriction                = False; // Restricts types of files that may be uploaded

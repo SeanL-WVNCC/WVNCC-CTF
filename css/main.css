@@ -65,13 +65,13 @@ figcaption {
 main form {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: stretch;
     margin-left: auto;
     margin-right: auto;
     margin-top: 9em;
     margin-bottom: 9em;
-    width: 40rem;
-    width: max-content;
+    width: 25rem;
+    max-width: 25rem;
     padding: 1.5em;
     border-radius: 1em;
     border: 1px solid black;

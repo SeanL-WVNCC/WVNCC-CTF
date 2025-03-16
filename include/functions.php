@@ -1,23 +1,77 @@
 <?php
-
+include "include/vulnconfig.php";
 class AuthenticationResult {
     public int $userId;
     public string $username;
     public string $statusMessage;
+    public string $queryExecuted;
     public bool $isSuccess;
 
-    public function __construct(int $userId, string $username, string $statusMessage, bool $isSuccess) {
+    public function __construct(int $userId, string $username, string $statusMessage, string $queryExecuted, bool $isSuccess) {
         $this->userId = $userId;
         $this->username = $username;
         $this->statusMessage = $statusMessage;
+        $this->queryExecuted = $queryExecuted;
         $this->isSuccess = $isSuccess;
     }
 }
 
+class PayloadCharacteristics {
+    public string $payload;
+    public function __construct(string $payload) {
+        $this->payload = $payload;
+    }
+    public function isQuoteInjectionAttempt(): bool {
+        return str_starts_with($this->payload, "'") || str_starts_with($this->payload, "\"");
+    }
+    public function isSqlCommentInjectionAttempt(): bool {
+        return str_contains($this->payload, "--");
+    }
+    public function isSqlDeletionAttempt(): bool {
+        $payload = strtoupper($this->payload);
+        return str_contains($payload, "DELETE") || str_contains($payload, "DROP");
+    }
+    public function isSqlInjectionAttempt(): bool {
+        return $this->isQuoteInjectionAttempt() || $this->isSqlCommentInjectionAttempt() || $this->isSqlDeletionAttempt();
+    }
+    public function isXssAttempt(): bool {
+        return str_contains($this->payload, "<") && str_contains($this->payload, ">");;
+    }
+    public function isSuspect(): bool {
+        return $this->isSqlInjectionAttempt() || $this->isXssAttempt();
+    }
+}
+
+/**
+ * Connects to the 'breakTheBank' database.
+ * @return bool|mysqli The Database connection.
+ */
 function connectToDatabase(): mysqli {
     return mysqli_connect("db", "root", "hackme", "breakTheBank");
 }
 
+function userDoesExist(string $username): bool {
+    global $isVulnerableToSqlInjection;
+    $database = connectToDatabase();
+    try {
+        if($isVulnerableToSqlInjection) {
+            return (bool)$database->query("SELECT * FROM users WHERE username=\"$username\"")->fetch_assoc();
+        } else {
+            $query = $database->prepare("SELECT * FROM users WHERE username=?");
+            $query->bind_param("s", $username);
+            $query->execute();
+            $queryResult = $query->get_result();
+            if(is_bool($queryResult)) {
+                return $queryResult;
+            } else {
+                return (bool)$queryResult->fetch_assoc();
+            }
+        }
+    } catch(mysqli_sql_exception $error) {
+        return false;
+    }
+    
+}
 /**
  * Returns HTML that links to the list of stylesheets provided.
  * @param array $stylesheetLocations URLs or file paths to CSS stylesheets, as an array of strings.
@@ -130,24 +184,72 @@ function generatePage(string $mainContent): string {
  */
 function authenticate(string $username, string $password): AuthenticationResult {
     $database = connectToDatabase();
-    $query = "SELECT * FROM users WHERE username=\"$username\"";
-    $result = $database->query($query);
-    $userId = 0;
-    
-    if($user = $result->fetch_assoc()) {
-        if($password == $user["password"]) {
-            $userId = $user["userId"];
-            $statusMessage = "Logged in successfully.";
-            $isSuccess = true;
-        } else {
-            $statusMessage = "Password incorrect.";
-            $isSuccess = false;
+    $queryExecuted = "";
+    global $isVulnerableToSqlInjection;
+    $sqlExceptionThrown = false;
+    $statusMessage = "";
+    if($isVulnerableToSqlInjection) {
+        try {
+            $usernameAndPasswordQuery = "SELECT * FROM users WHERE username=\"$username\" AND password=\"$password\"";
+            $queryExecuted = $usernameAndPasswordQuery;
+            $result = $database->query($usernameAndPasswordQuery);
+        } catch(mysqli_sql_exception $error) {
+            $statusMessage = "Invalid SQL: <samp>SELECT * FROM users WHERE username=\"<u>$username\" AND password=\"$password\"</u></samp>";
+            if(str_starts_with($username, '"')) {
+                $statusMessage .= "<div>Content following quote appears to be invalid.</div>";
+            }
+            $sqlExceptionThrown = true;
         }
     } else {
-        $statusMessage = "Username \"$username\" not found.";
+        try {
+            $query = $database->prepare("SELECT * FROM users WHERE username=? AND password=?");
+            $query->bind_param("ss", $username, $password);
+            $query->execute();
+            $result = $query->get_result();
+        }catch(mysqli_sql_exception $error) {
+            $statusMessage = "The server seems to be experiencing technical difficulties. If the problem persists, alert Northern Phish.";
+            $sqlExceptionThrown = true;
+        }
+        
+    }
+    
+    $userId = 0;
+    
+    $user = null;
+    if(isset($result)) {
+        if($result) {
+            $user = $result->fetch_assoc();
+        }
+    }
+    if($user) {
+        $userId = $user["userId"];
+        $statusMessage = "Logged in successfully.";
+        $isSuccess = true;
+    } else {
+        // The username and password were incorrect.
+        // Should we disclose which one?
+        global $isVulnerableToUserEnum;
+        if(!$sqlExceptionThrown) {
+            if($isVulnerableToUserEnum) {
+                // Yes (We need to ask the DB tho)
+                if(userDoesExist($username)) {
+                    $statusMessage = "Password Incorrect.";
+                } else {
+                    $statusMessage = "Username \"$username\" not found.";
+                }
+            } else {
+                // No.
+                $statusMessage = "The supplied username and password don't match any of our records.";
+            }
+        }
         $isSuccess = false;
     }
-    return new AuthenticationResult($userId, $username, $statusMessage, $isSuccess);
+    $usernamePayload = new PayloadCharacteristics($username);
+    $passwordPayload = new PayloadCharacteristics($password);
+    if(!$isVulnerableToSqlInjection && ($usernamePayload->isSqlInjectionAttempt() || $passwordPayload->isSqlInjectionAttempt())) {
+        $statusMessage .= "<div>No SQL injection here, sorry 🤷</div>";
+    }
+    return new AuthenticationResult($userId, $username, $statusMessage, $queryExecuted, $isSuccess);
 }
 function isLoggedIn() {
     return isset($_COOKIE["is-logged-in"]);

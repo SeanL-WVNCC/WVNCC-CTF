@@ -63,7 +63,12 @@ if(array_key_exists("query", $_GET)) {
         $mainContent .= "<p class='hidden-search'>No results found for \"".$valueToDisplay."\"</p>";*/
         
         //Only colors the result itself
-        $mainContent .= "<p>No results found for <span style='color:#FCECE5'>\"".$valueToDisplay."\"</span></p>";
+        global $hideReflectionWithTransparentText;
+        if($hideReflectionWithTransparentText) {
+            $mainContent .= "<p>No results found for <span class=\"hidden-reflected-user-input\">\"".$valueToDisplay."\"</span></p>";
+        } else {
+            $mainContent .= "<p>No results found for \"$valueToDisplay\"</span></p>";
+        }
         if($looksLikeXss) {
             $mainContent .= "<figure id='the-rock-meme'><img src=img/rock.jpg><figcaption>Hey there buddy. That search query looks a lot like JavaScript.</figcaption></figure>";
             $mainContent .= "<p>Flag 83029</p>";
