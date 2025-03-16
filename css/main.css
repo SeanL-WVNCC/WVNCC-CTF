@@ -70,8 +70,8 @@ main form {
     margin-right: auto;
     margin-top: 9em;
     margin-bottom: 9em;
-    width: 25rem;
-    max-width: 25rem;
+    width: 18rem;
+    max-width: 18rem;
     padding: 1.5em;
     border-radius: 1em;
     border: 1px solid black;
@@ -88,7 +88,18 @@ main button {
     font-weight: bold;
 }
 main form input {
-    margin-bottom: 0.5em;
+    background-color: white;
+    color: black;
+    color-scheme: only light;
+    padding: .25em 0.5em;
+    border: 1px solid #444;
+    border-radius: 3px;
+}
+main form input:hover, main form input:focus {
+    box-shadow: 0px 0px 2px #444;
+}
+main form h2 {
+    text-align: center;
 }
 main button:focus, main button:hover {
     outline: 2px solid black;

@@ -3,13 +3,17 @@ include "include/vulnconfig.php";
 class AuthenticationResult {
     public int $userId;
     public string $username;
+    public string $usernameErrorMessage;
+    public string $passwordErrorMessage;
     public string $statusMessage;
     public string $queryExecuted;
     public bool $isSuccess;
 
-    public function __construct(int $userId, string $username, string $statusMessage, string $queryExecuted, bool $isSuccess) {
+    public function __construct(int $userId, string $username, string $statusMessage, string $usernameErrorMessage, string $passwordErrorMessage, string $queryExecuted, bool $isSuccess) {
         $this->userId = $userId;
         $this->username = $username;
+        $this->usernameErrorMessage = $usernameErrorMessage;
+        $this->passwordErrorMessage = $passwordErrorMessage;
         $this->statusMessage = $statusMessage;
         $this->queryExecuted = $queryExecuted;
         $this->isSuccess = $isSuccess;
@@ -187,6 +191,8 @@ function authenticate(string $username, string $password): AuthenticationResult 
     $queryExecuted = "";
     global $isVulnerableToSqlInjection;
     $sqlExceptionThrown = false;
+    $usernameErrorMessage = "";
+    $PasswordErrorMessage = "";
     $statusMessage = "";
     if($isVulnerableToSqlInjection) {
         try {
@@ -233,9 +239,16 @@ function authenticate(string $username, string $password): AuthenticationResult 
             if($isVulnerableToUserEnum) {
                 // Yes (We need to ask the DB tho)
                 if(userDoesExist($username)) {
-                    $statusMessage = "Password Incorrect.";
+                    $PasswordErrorMessage = "Password Incorrect.";
+                    $statusMessage = "Login failed.";
                 } else {
-                    $statusMessage = "Username \"$username\" not found.";
+                    global $hideReflectionWithTransparentText;
+                    if($hideReflectionWithTransparentText) {
+                        $usernameErrorMessage = "Username <span class=\"hidden-reflected-user-input\">\"$username\"</span> not found.";
+                    } else {
+                        $usernameErrorMessage = "Username \"$username\" not found.";
+                    }
+                    $statusMessage = "Login failed.";
                 }
             } else {
                 // No.
@@ -249,7 +262,7 @@ function authenticate(string $username, string $password): AuthenticationResult 
     if(!$isVulnerableToSqlInjection && ($usernamePayload->isSqlInjectionAttempt() || $passwordPayload->isSqlInjectionAttempt())) {
         $statusMessage .= "<div>No SQL injection here, sorry 🤷</div>";
     }
-    return new AuthenticationResult($userId, $username, $statusMessage, $queryExecuted, $isSuccess);
+    return new AuthenticationResult($userId, $username, $statusMessage, $usernameErrorMessage, $PasswordErrorMessage, $queryExecuted, $isSuccess);
 }
 function isLoggedIn() {
     return isset($_COOKIE["is-logged-in"]);
