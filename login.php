@@ -3,6 +3,7 @@
 
 session_start();
 include "include/functions.php";
+include "include/formgen.php";
 
 // Init variables.
 $mainContent = "";
@@ -30,40 +31,34 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $usernameError = $authResult->usernameErrorMessage;
     $passwordError = $authResult->passwordErrorMessage;
 }
+
 // Print the form.
-$mainContent .= "<form aria-labelledby=\"login-heading\" method=\"POST\" action=\"login.php\">";
-$mainContent .= "<h2 id=\"login-heading\">Login</h2>";
-$mainContent .= "<div class=\"form-field-wrapper\" role=\"presentation\">";
-$mainContent .= "<label for=\"username-field\">Username</label>";
-$mainContent .= "<input id=\"username-field\" ";
-if($usernameIsSuspect) {
-    $mainContent .= "class=\"sussy\"";
-}
-$mainContent .= " type=\"text\" name=\"username\" ";
-if(1) {
-    $mainContent .= "aria-describedby=\"username-error-message\"";
-}
-$mainContent .= " autofocus required>";
-if(1) {
-    $mainContent .= "<div id=\"username-error-message\" class=\"form-error-message\" aria-live=\"polite\">$usernameError</div>";
-}
-$mainContent .= "</div>";
-$mainContent .= "<div class=\"form-field-wrapper\" role=\"presentation\">";
-$mainContent .= "<label for=\"password-field\">Password</label>";
-$mainContent .= "<input id=\"password-field\" ";
-if($passwordIsSuspect) {
-    $mainContent .= " class=\"sussy\" ";
-}
-$mainContent .= " type=\"password\" name=\"password\" ";
-if(1) {
-    $mainContent .= " aria-describedby=\"password-error-message\" ";
-}
-$mainContent .= " required>";
-if(1) {
-    $mainContent .= "<div id=\"password-error-message\" class=\"form-error-message\" aria-live=\"polite\">$passwordError</div>";
-}
-$mainContent .= "</div>";
-$mainContent .= "<button type=\"submit\">Login</button>";
+$loginForm = new SimpleForm(
+    name: "Login",
+    fields: array(
+        new SimpleFormField(
+            type: "username",
+            name: "text",
+            accessibleName: "Username",
+            errorMessage: $usernameError,
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "password",
+            name: "password",
+            accessibleName: "Password",
+            errorMessage: $passwordError,
+            autofocus: false,
+            isRequired: true)
+        ),
+    instructions: "Here are some instructions on how to use the form. Good luck!",
+    method: "POST",
+    action: "/login.php",
+    submitButtonName: "Login"
+);
+$mainContent .= $loginForm->generateHtml();
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
         $username = $_POST["username"];
