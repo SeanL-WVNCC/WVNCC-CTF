@@ -14,6 +14,7 @@ $passwordPayload = null;
 $authResult = null;
 $usernameError = "";
 $passwordError = "";
+$formInstructions = "";
 
 // If form was submitted...
 if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -30,6 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     $usernameError = $authResult->usernameErrorMessage;
     $passwordError = $authResult->passwordErrorMessage;
+    $formInstructions .= $authResult->statusMessage;
 }
 
 // Print the form.
@@ -37,8 +39,8 @@ $loginForm = new SimpleForm(
     name: "Login",
     fields: array(
         new SimpleFormField(
-            type: "username",
-            name: "text",
+            type: "type",
+            name: "username",
             accessibleName: "Username",
             errorMessage: $usernameError,
             autofocus: false,
@@ -50,9 +52,10 @@ $loginForm = new SimpleForm(
             accessibleName: "Password",
             errorMessage: $passwordError,
             autofocus: false,
-            isRequired: true)
-        ),
-    instructions: "Here are some instructions on how to use the form. Good luck!",
+            isRequired: true
+        )
+    ),
+    instructions: $formInstructions,
     method: "POST",
     action: "/login.php",
     submitButtonName: "Login"
@@ -60,22 +63,13 @@ $loginForm = new SimpleForm(
 $mainContent .= $loginForm->generateHtml();
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-    try {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        $authResult = authenticate($username, $password);
-            if($authResult->isSuccess) {
-                login($authResult->userId);
-                header("Location: /");
-            }
-            $mainContent .= "<p>$authResult->statusMessage</p>";
-    } catch (mysqli_sql_exception $error) {
-        $mainContent .= "<div>Invalid SQL: <samp>SELECT * FROM users WHERE username=\"<u>$username\"</u></samp></div>";
-        if(str_starts_with($username, '"')) {
-            $mainContent .= "<div>Content following quote appears to be invalid.</div>";
-        }
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $authResult = authenticate($username, $password);
+    if($authResult->isSuccess) {
+        login($authResult->userId);
+        header("Location: /");
     }
 }
-//$mainContent .= "<div class=\"sus-meter\" role=\"presentation\"><meter min=\"0\" max=\"5\" value=\"3\"></div>";
 $mainContent .= "</form>";
 echo generatePage($mainContent);

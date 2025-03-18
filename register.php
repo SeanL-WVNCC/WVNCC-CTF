@@ -1,18 +1,57 @@
 <?php
+session_start();
 include "include/functions.php";
+include "include/formgen.php";
+
 $mainContent = "";
-$mainContent .= "<form aria-labelledby=\"register-heading\">";
-$mainContent .= "<h2 id=\"register-heading\">Register</h2>";
-$mainContent .= "<div class=\"form-field-wrapper\" role=\"presentation\">";
-$mainContent .= "<label for=\"username-field\">Username</label>";
-$mainContent .= "<input id=\"username-field\" type=\"text\" name=\"username\" aria-describedby=\"username-error-message\" autofocus required>";
-$mainContent .= "<div id=\"username-error-message\" class=\"form-error-message\" aria-live=\"polite\"></div>";
-$mainContent .= "</div>";
-$mainContent .= "<div class=\"form-field-wrapper\" role=\"presentation\">";
-$mainContent .= "<label for=\"password-field\">Password</label>";
-$mainContent .= "<input id=\"password-field\" type=\"password\" name=\"password\" aria-describedby=\"password-error-message\" required>";
-$mainContent .= "<div id=\"password-error-message\" class=\"form-error-message\" aria-live=\"polite\"></div>";
-$mainContent .= "</div>";
-$mainContent .= "<button type=\"submit\">Login</button>";
-$mainContent .= "</form>";
+// Print the form.
+$registrationForm = new SimpleForm(
+    name: "Register",
+    fields: array(
+        new SimpleFormField(
+            type: "username",
+            name: "text",
+            accessibleName: "Username",
+            errorMessage: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "password",
+            name: "password",
+            accessibleName: "Password",
+            errorMessage: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "retype-password",
+            name: "password",
+            accessibleName: "Retype password",
+            errorMessage: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "email",
+            name: "email",
+            accessibleName: "Email",
+            errorMessage: "",
+            autofocus: false,
+            isRequired: true
+        )
+    ),
+    instructions: "Fill the following form to create your Northern Phish &amp; Loan mobile banking account. Once completed, you will need to go to your local Northern Phish branch to complete setup.",
+    method: "POST",
+    action: "/register.php",
+    submitButtonName: "Register"
+);
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $mainContent .= "<div class=\"single-column\" role=\"presentation\">";
+    $mainContent .= "<h2>Thanks for choosing Northern Phish &amp; Loan!</h2>";
+    $mainContent .= "<p>Stop by your local branch to finish setting up your account.</p>";
+    $mainContent .= "</div>";
+} else {
+    $mainContent .= $registrationForm->generateHtml();
+}
 echo generatePage($mainContent);

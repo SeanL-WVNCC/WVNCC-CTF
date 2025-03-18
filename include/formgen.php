@@ -13,7 +13,7 @@ class SimpleFormField {
 
     public function __construct(string $type, string $name, string $accessibleName, string $errorMessage, bool $autofocus, bool $isRequired) {
         $this->type = $type;
-        $this->name = $type;
+        $this->name = $name;
         $this->accessibleName = $accessibleName;
         $this->errorMessage = $errorMessage;
         $this->autofocus = $autofocus;
@@ -21,7 +21,7 @@ class SimpleFormField {
     }
     public function generateHtml(): string {
 
-        $fieldId = $this->accessibleName."-field";
+        $fieldId = str_replace(" ", "-", strtolower($this->accessibleName))."-field";
         $errorMessageId = $this->accessibleName."-error-message";
         $fieldName = $this->name;
         $inputType = $this->type;
@@ -80,7 +80,12 @@ class SimpleForm {
         $html .= "<h2 id=\"$formNameId\">$formName</h2>";
         $html .= "<p>$formInstuctions</p>";
         $html .= "</header>";
-        $html .= "<form method=\"$method\" action=\"$action\" aria-labelledby=\"$formNameId\" aria-describedby=\"thing\">";
+        if(strtoupper($this->method) == "POST") {
+            $enctype = "multipart/form-data";
+        } else {
+            $enctype = "application/x-www-form-urlencoded";
+        }
+        $html .= "<form method=\"$method\" action=\"$action\" enctype=\"$enctype\" aria-labelledby=\"$formNameId\" aria-describedby=\"thing\">";
         foreach($this->fields as $field) {
             $html .= $field->generateHtml();
         }
