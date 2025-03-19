@@ -81,7 +81,7 @@ class SimpleForm {
         if($markFormHeaderPresentational) {
             $html .= "<header id=\"$instructionsId\" role=\"presentation\">";
         } else {
-            $html .= "<header id=\"$instructionsId\" aria-label=\"$instructionsLabel\">";
+            $html .= "<header id=\"$instructionsId\" aria-label=\"$instructionsLabel\" role=\"region\">";
         }
         $html .= "<h2 id=\"$formNameId\">$formName</h2>";
         $html .= "<p>$formInstuctions</p>";

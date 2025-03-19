@@ -140,7 +140,7 @@ function createHeaderElement(): string {
     $result .= "<header>";
     $result .= "<a id=\"skip-link\" href=\"#main\">Skip to content</a>";
     $result .= "<h1><img src=\"./img/logo.png\" alt=\"Northern Phish and Loan\"></h1> <!-- This was a link, removed to reduce unnecessary tab stops -->";
-    $result .= "<nav id=\"primary-navigation\" aria-label=\"Site Navigation\">";
+    $result .= "<nav id=\"primary-navigation\" aria-label=\"Site\">";
     $result .= "<ul>";
     $result .= "<li><a href=\"index.php\">Home</a></li>";
     if(isLoggedIn()) {

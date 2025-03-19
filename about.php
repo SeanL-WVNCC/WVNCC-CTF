@@ -54,7 +54,7 @@ $mainContent .= "</tr>";
 $mainContent .= "</tbody>";
 $mainContent .= "</table>";
 $mainContent .= "<h2>Contact</h2>";
-$mainContent .= "<p><a href=\"tel:304-555-1234\">Call Us: 304-555-1234</a></p>";
+$mainContent .= "<p><a href=\"tel:304-555-1234\" aria-label=\"Call us. 3 0 4. 5 5 5. 1 2 3 4.\">Call Us: 304-555-1234</a></p>";
 $mainContent .= "<p>Our Address: 1234 Bank Street, Semaphore, WV</p>";
 $mainContent .= "<p><a href=\"mailto:northernphish@email.com\">Email us at: northernphish@email.com</a></p>";
 $mainContent .= "</article>";

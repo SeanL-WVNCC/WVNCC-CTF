@@ -9,8 +9,8 @@ $registrationForm = new SimpleForm(
     name: "Register",
     fields: array(
         new SimpleFormField(
-            type: "username",
-            name: "text",
+            type: "text",
+            name: "username",
             accessibleName: "Username",
             errorMessage: "",
             validationIcon: "",
@@ -27,8 +27,8 @@ $registrationForm = new SimpleForm(
             isRequired: true
         ),
         new SimpleFormField(
-            type: "retype-password",
-            name: "password",
+            type: "password",
+            name: "retype-password",
             accessibleName: "Retype password",
             errorMessage: "",
             validationIcon: "",

@@ -39,7 +39,7 @@ $loginForm = new SimpleForm(
     name: "Login",
     fields: array(
         new SimpleFormField(
-            type: "type",
+            type: "text",
             name: "username",
             accessibleName: "Username",
             errorMessage: $usernameError,
