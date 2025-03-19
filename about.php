@@ -6,7 +6,7 @@ $mainContent .= "<hgroup>";
 $mainContent .= "<h2 id=\"hero-section-title\">A Timeless Institution</h2>";
 $mainContent .= "<p>Seventy Years of Excellence</p>";
 $mainContent .= "</hgroup>";
-$mainContent .= "<img src=\"img/bank.jpg\" alt=\"\">";
+$mainContent .= "<img src=\"img/bank.webp\" alt=\"\">";
 $mainContent .= "</section>";
 $mainContent .= "<article aria-labeledby=\"northern-phish-history\">";
 $mainContent .= "<h2 id=\"northern-phish-history\">Our story</h2>";

@@ -3,6 +3,8 @@ session_start();
 include "include/functions.php";
 include "include/formgen.php";
 $mainContent = "";
+$error = "";
+$status = "";
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -11,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $maxFileSize = 50000000; // File size is bytes. Equals to 50MB
     $fileSizeLimitMB = $fileSizeLimitByte / 1000000;
     $allowedFileTypes = array("jpeg","png","jpg");
-    $allowedFileTypesStr = implode(",", $allowedFileTypes);
+    $allowedFileTypesStr = implode(", ", $allowedFileTypes);
 
     // Directory for Upload Files
     $fileUploadDirectory = "uploads/";
@@ -22,10 +24,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $tmpFilename = $_FILES["file-to-upload"]["tmp_name"];
 
     // Extra vars
-    $target_file = $fileUploadDirectory . basename($filename);
-    $uploadOk = True;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    $error = "";
+    $targetFile = $fileUploadDirectory . basename($filename);
+    $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
 
     // Testing if the file is under the accepted file size, if $fileSizeLimit is enabled, otherwise it skips this code
     $fileIsTooLarge = $fileSize > $fileSizeLimitByte;
@@ -41,18 +41,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     // Testing if the file is one of the accepted file types, if $fileTypeRestriction is enabled, otherwise it skips this code
     $fileIsPermittedType = in_array($imageFileType, $allowedFileTypes);
     if($fileTypeRestriction && !$fileIsPermittedType) {
-        $error = "Sorry, the only accepted file types are ". $allowedFileTypesStr . " ";
+        $error = "That type of file isn't supported. Please attach one of the following file types: $allowedFileTypesStr";
     }
 
     //Uploading Files as long as it fits in the requirements
-    if($error) {
-        $mainContent .= $error;
-        $mainContent .= "<p>File was not uploaded.<p>";
-    } else {
-        if(move_uploaded_file($tmpFilename, $target_file)) {
-            $mainContent .= "The file ". htmlspecialchars(basename($filename))." has been uploaded at ".$fileUploadDirectory;
+    if($error == "") {
+        if(move_uploaded_file($tmpFilename, $targetFile)) {
+            $status = "The file ". htmlspecialchars(basename($filename))." has been uploaded at <code>".$fileUploadDirectory."</code>";
         } else {
-            $mainContent .= "Sorry, there was an error uploading your file.";
+            $status = "Our systems were unable to process your check photo, but we don't know why. Try reloading the page and re-attaching the photo.";
         }
     }
 }
@@ -64,7 +61,8 @@ $mobileDepositForm = new SimpleForm(
             type: "file",
             name: "file-to-upload",
             accessibleName: "Select Photo",
-            errorMessage: "",
+            errorMessage: $error,
+            validationIcon: "",
             autofocus: false,
             isRequired: true
         ),
@@ -75,5 +73,8 @@ $mobileDepositForm = new SimpleForm(
     submitButtonName: "Upload Image"
 );
 
+if($status) {
+    $mobileDepositForm->instructions .= "<p>$status</p>";
+}
 $mainContent .= $mobileDepositForm->generateHtml();
 echo generatePage($mainContent);

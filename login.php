@@ -43,6 +43,7 @@ $loginForm = new SimpleForm(
             name: "username",
             accessibleName: "Username",
             errorMessage: $usernameError,
+            validationIcon: $usernameIsSuspect ? "sussy" : "",
             autofocus: false,
             isRequired: true
         ),
@@ -51,6 +52,7 @@ $loginForm = new SimpleForm(
             name: "password",
             accessibleName: "Password",
             errorMessage: $passwordError,
+            validationIcon: $passwordIsSuspect ? "sussy" : "",
             autofocus: false,
             isRequired: true
         )

@@ -11,11 +11,12 @@ class SimpleFormField {
     public bool $autofocus;
     public bool $isRequired;
 
-    public function __construct(string $type, string $name, string $accessibleName, string $errorMessage, bool $autofocus, bool $isRequired) {
+    public function __construct(string $type, string $name, string $accessibleName, string $errorMessage, string $validationIcon, bool $autofocus, bool $isRequired) {
         $this->type = $type;
         $this->name = $name;
         $this->accessibleName = $accessibleName;
         $this->errorMessage = $errorMessage;
+        $this->validationIcon = $validationIcon;
         $this->autofocus = $autofocus;
         $this->isRequired = $isRequired;
     }
@@ -29,7 +30,12 @@ class SimpleFormField {
         $html .= "<div class=\"form-field-wrapper\" role=\"presentation\">";
         $html .= "<label for=\"$fieldId\">".$this->accessibleName."</label>";
         $html .= "<div class=\"form-input-wrapper\" role=\"presentation\">";
-        $html .= "<input id=\"$fieldId\" type=\"$inputType\" name=\"$fieldName\" aria-describedby=\"$errorMessageId\" ";
+        $html .= "<input id=\"$fieldId\" ";
+        // HACK: please write actually good code later
+        if($this->validationIcon == "sussy") {
+            $html .= " class=\"sussy\" ";
+        }
+        $html .= " type=\"$inputType\" name=\"$fieldName\" aria-describedby=\"$errorMessageId\" ";
         if($this->isRequired) {
             $html .= " required ";
         }

@@ -74,7 +74,28 @@ function userDoesExist(string $username): bool {
     } catch(mysqli_sql_exception $error) {
         return false;
     }
-    
+}
+
+function userFromId(int $userId) {
+    global $isVulnerableToSqlInjection;
+    $database = connectToDatabase();
+    try {
+        if($isVulnerableToSqlInjection) {
+            return $database->query("SELECT * FROM users WHERE userId=$userId")->fetch_assoc();
+        } else {
+            $query = $database->prepare("SELECT * FROM users WHERE userId=?");
+            $query->bind_param("i", $$userId);
+            $query->execute();
+            $queryResult = $query->get_result();
+            if(is_bool($queryResult)) {
+                return null;
+            } else {
+                return $queryResult->fetch_assoc();
+            }
+        }
+    } catch(mysqli_sql_exception $error) {
+        return null;
+    }
 }
 /**
  * Returns HTML that links to the list of stylesheets provided.
@@ -169,6 +190,7 @@ function generatePage(string $mainContent): string {
     $result = "<!DOCTYPE html><html lang=\"en\">";
     $result .= createHeadElement();
     $result .= "<body>";
+    $result .= "<!-- TODO: --><!-- Prevent users from putting JavaScript code in the search form --><!-- Figure out why SQL errors happen when a username contains a quote --><!-- Check file types that are uploaded to the site -->";
     $result .= createHeaderElement();
     $result .= "<main id=\"main\">$mainContent</main>";
     $result .= "<footer>";
