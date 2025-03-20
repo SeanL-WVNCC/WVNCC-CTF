@@ -1,6 +1,8 @@
 <?php
-// formgen.php
-// Code for generating simple forms.
+/*
+    formgen.php
+    Code for generating simple forms.
+*/
 
 class SimpleFormField {
     public string $type;

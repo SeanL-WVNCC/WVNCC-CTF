@@ -1,6 +1,6 @@
 <?php
 include "include/functions.php";
-include "include/vulnconfig.php";
+
 $mainContent = "";
 $mainContent .= "<section class=\"single-column\"aria-labelledby=\"search-results\">";
 $mainContent .= "<h2 id=\"search-results\">Search Results</h2>";

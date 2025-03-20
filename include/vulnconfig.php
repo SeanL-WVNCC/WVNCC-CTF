@@ -1,5 +1,8 @@
 <?php
-// Flags that enable/disable vulnerabilities.
+/*
+    vulnconfig.php
+    Flags that enable/disable vulnerabilities.
+*/
 
 $isVulnerableToPathTraversal        = false;  // FIXME: Currently broken, reimplementation required.
 $isVulnerableToReflectedXss         = true;  // Applies to the search and login pages.

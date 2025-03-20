@@ -1,7 +1,6 @@
 <?php
 session_start();
 include "include/functions.php";
-include "include/formgen.php";
 
 $mainContent = "";
 // Print the form.

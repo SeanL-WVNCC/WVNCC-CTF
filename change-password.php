@@ -1,7 +1,11 @@
 <?php
+/*
+    change-password.php
+    Form for a user to change their passsword.
+*/
 session_start();
 include "include/functions.php";
-include "include/formgen.php";
+
 $mainContent = "";
 $passwordError = "";
 $retypePasswordError = "";

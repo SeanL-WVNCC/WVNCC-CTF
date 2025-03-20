@@ -3,7 +3,6 @@
 
 session_start();
 include "include/functions.php";
-include "include/formgen.php";
 
 // Init variables.
 $mainContent = "";
@@ -70,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $authResult = authenticate($username, $password);
     if($authResult->isSuccess) {
         login($authResult->userId);
-        header("Location: /");
+        header("Location: /dashboard.php");
     }
 }
 $mainContent .= "</form>";

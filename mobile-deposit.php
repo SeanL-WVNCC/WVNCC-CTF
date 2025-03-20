@@ -1,7 +1,11 @@
 <?php
+/*
+    mobile-deposit.php
+    Form for uploading check photographs.
+*/
 session_start();
 include "include/functions.php";
-include "include/formgen.php";
+
 $mainContent = "";
 $error = "";
 $status = "";
