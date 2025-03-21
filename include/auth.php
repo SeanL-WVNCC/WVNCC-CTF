@@ -4,6 +4,7 @@
     Code for authenticating users and managing sessions.
 */
 include "include/vulnconfig.php";
+include "include/user.php";
 
 class AuthenticationResult {
     public int $userId;
@@ -110,6 +111,12 @@ function authenticate(string $username, string $password): AuthenticationResult 
     return new AuthenticationResult($userId, $username, $statusMessage, $usernameErrorMessage, $PasswordErrorMessage, $queryExecuted, $isSuccess);
 }
 
+function getCurrentUser() {
+    if(isset($_COOKIE["logged-in-user"])) {
+        return userFromId($_COOKIE["logged-in-user"]);
+    }
+    return null;
+}
 function isLoggedIn() {
     return isset($_COOKIE["is-logged-in"]);
 }

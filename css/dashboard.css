@@ -1,0 +1,36 @@
+.account-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0px 0px 4px #111;
+    border-radius: 1.5rem;
+    padding: 1.5rem 2rem;
+}
+.account-card * {
+    margin: 0;
+    line-height: 1em;
+}
+.account-card > svg, .account-card > img {
+    width: 4rem;
+}
+.account-card .account-type-section {
+    height: auto;
+    margin-left: 1rem;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.account-card .account-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.account-balance-section {
+    text-align: right;
+}
+.account-card .account-balance {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: right;
+}

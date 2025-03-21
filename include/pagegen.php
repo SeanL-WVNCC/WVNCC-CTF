@@ -31,7 +31,7 @@ function createHeadElement(): string {
     $result .= "<meta charset=\"utf-8\">";
     $result .= "<meta name=\"author\" content=\"Everyone's names will go here\">";
     $result .= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
-    $result .= createStylesheetLinks(array("./css/style.css", "./css/header.css", "./css/main.css", "./css/footer.css", "./css/home.css", "./css/simpleform.css", "./css/media-queries.css", "./css/important.css"));
+    $result .= createStylesheetLinks(array("./css/style.css", "./css/header.css", "./css/main.css", "./css/footer.css", "./css/home.css", "./css/simpleform.css", "./css/dashboard.css", "./css/media-queries.css", "./css/important.css"));
     $result .= "<link rel=\"icon\" type=\"img/x-icon\" href=\"./img/logo.png\">";
     $result .= "<script src=\"./js/script.js\"></script>";
     $result .= "<title>Northern Phish &amp; Loan</title>";
@@ -55,7 +55,7 @@ function createHeaderElement(): string {
     if(isLoggedIn()) {
         $result .= "<li><button id=\"online-banking-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"online-banking-dropdown\" onclick=\"toggleExpandButton('online-banking-menu-button')\" keydown=\"keypressEventDisclouseButton\">Online Banking</button>";
         $result .= "<ul id=\"online-banking-dropdown\" hidden>";
-        //$result .= "<li><a href=\"dashboard.php\">Dashboard</a></li>";
+        $result .= "<li><a href=\"dashboard.php\">Dashboard</a></li>";
         $result .= "<li><a href=\"mobile-deposit.php\">Mobile deposit</a></li>";
         //$result .= "<li><a href=\"transfer.php\">Funds transfer</a></li>";
         //$result .= "<li><a href=\"new-account.php\">Open account</a></li>";
