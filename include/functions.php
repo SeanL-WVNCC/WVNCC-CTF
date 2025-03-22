@@ -6,6 +6,7 @@
 include "include/vulnconfig.php";
 include "include/pagegen.php";
 include "include/formgen.php";
+include "include/accountcard.php";
 
 class PayloadCharacteristics {
     public string $payload;

@@ -21,6 +21,9 @@
     header {
         flex-direction: column;
     }
+    .two-column {
+        flex-direction: column;
+    }
     #secondary-navigation, h1, form[role="search"] {
         /* Naw bruh we don't need it 🗿 */
         display: none;
