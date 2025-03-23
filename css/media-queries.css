@@ -6,11 +6,6 @@
         grid-template-columns: auto 1fr 30ch;
         min-height: 100vh;
     }
-    article:has(figure) {
-        columns: 2;
-        max-width: 70rem;
-        column-gap: 3rem;
-    }
 }
 
 /* Responsive styles for tablets and smaller */
@@ -20,6 +15,10 @@
     }
     header {
         flex-direction: column;
+    }
+    .two-column {
+        flex-direction: column;
+        align-items: stretch;
     }
     #secondary-navigation, h1, form[role="search"] {
         /* Naw bruh we don't need it 🗿 */

@@ -1,0 +1,69 @@
+a.account-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    box-shadow: 0px 0px 4px #111;
+    border-radius: 1.5rem;
+    padding: 1.5rem 2rem;
+    color: black;
+    background-color: white;
+    color-scheme: only light;
+    text-decoration-color: transparent;
+    border: 2px solid transparent;
+    transition: 0.1s all;
+}
+.account-card * {
+    margin: 0;
+    line-height: 1em;
+}
+.account-card svg, .account-card img {
+    width: 4rem;
+}
+.account-card .account-type-section {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.account-card .account-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.account-balance-section {
+    text-align: right;
+    margin-left: auto;
+}
+.account-card .account-balance {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: right;
+}
+.account-card:hover, .account-card:focus {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 7px black;
+}
+.account-card .account-name-and-number-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem
+}
+
+.two-column .simple-form {
+    margin-top: 0;
+}
+
+.account-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;   
+}
+
+.two-column {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}

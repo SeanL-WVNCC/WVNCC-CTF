@@ -8,15 +8,17 @@ class SimpleFormField {
     public string $type;
     public string $name;
     public string $accessibleName;
+    public array $options;
     public string $errorMessage;
     public string $validationIcon;
     public bool $autofocus;
     public bool $isRequired;
 
-    public function __construct(string $type, string $name, string $accessibleName, string $errorMessage, string $validationIcon, bool $autofocus, bool $isRequired) {
+    public function __construct(string $type, string $name, string $accessibleName, array $options, string $errorMessage, string $validationIcon, bool $autofocus, bool $isRequired) {
         $this->type = $type;
         $this->name = $name;
         $this->accessibleName = $accessibleName;
+        $this->options = $options;
         $this->errorMessage = $errorMessage;
         $this->validationIcon = $validationIcon;
         $this->autofocus = $autofocus;
@@ -24,15 +26,28 @@ class SimpleFormField {
     }
     public function generateHtml(): string {
 
+        // NOTE: This function is getting out of hand
+
         $fieldId = str_replace(" ", "-", strtolower($this->accessibleName))."-field";
-        $errorMessageId = $this->accessibleName."-error-message";
+        $errorMessageId = $fieldId."-error-message";
         $fieldName = $this->name;
         $inputType = $this->type;
         $html = "";
         $html .= "<div class=\"form-field-wrapper\" role=\"presentation\">";
         $html .= "<label for=\"$fieldId\">".$this->accessibleName."</label>";
         $html .= "<div class=\"form-input-wrapper\" role=\"presentation\">";
-        $html .= "<input id=\"$fieldId\" ";
+        if($this->options) {
+            $html .= "<datalist id=\"$fieldId-options\">";
+            foreach($this->options as $option) {
+                $html .= "<option>$option</option>";
+            }
+            $html .= "</datalist>";
+        }
+        if($inputType == "select") {
+            $html .= "<select id=\"$fieldId\"";
+        } else {
+            $html .= "<input id=\"$fieldId\" list=\"$fieldId-options\" ";
+        }
         // HACK: please write actually good code later
         if($this->validationIcon == "sussy") {
             $html .= " class=\"sussy\" ";
@@ -42,6 +57,13 @@ class SimpleFormField {
             $html .= " required ";
         }
         $html .= ">";
+        if($inputType == "select") {
+            $html .= "<option>-- Select one --</option>";
+            foreach($this->options as $option) {
+                $html .= "<option>$option</option>";
+            }
+            $html .= "</select>";
+        }
         $html .= "</div>";
         $html .= "<div id=\"$errorMessageId\" class=\"form-error-message\" aria-live=\"polite\">".$this->errorMessage."</div>";
         $html .= "</div>";

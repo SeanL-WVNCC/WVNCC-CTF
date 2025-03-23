@@ -1,34 +1,55 @@
 <?php
 /*
-    user.php
-    Code for representing and managing users in the DB.
+    bankaccount.php
+    Code for representing and managing bank accounts in the DB.
 */
-class User {
-    public int $userId;
-    public string $username;
-    public string $password;
-    public string $firstName;
-    public string $lastName;
-    public string $email;
-    public bool $isAdmin;
-    public function __construct(int $userId, string $username, string $password, string $firstName, string $lastName, string $email, bool $isAdmin) {
-        $this->userId = $userId;
-        $this->username = $username;
-        $this->password = $password;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->isAdmin = $isAdmin;
+
+enum AccountType {
+    case CHECKING;
+    case SAVING;
+    case DARK_VAULT_CREDIT;
+    case MORGAGE;
+
+    static function fromString(string $accountType) {
+        
+        $type = strtolower($accountType);
+        if($type == "saving") {
+            return AccountType::SAVING;
+        } else if(str_contains($type, "dark vault")) {
+            return AccountType::DARK_VAULT_CREDIT;
+        } else if($type == "morgage") {
+            return AccountType::MORGAGE;
+        } else {
+            // idk lol just give them a checking account
+            return AccountType::CHECKING;
+        }
     }
-    public static function fromAsocArray(array $userObj): User {
-        return new User(
-            $userObj["userId"],
-            $userObj["username"],
-            $userObj["password"],
-            $userObj["firstName"],
-            $userObj["lastName"],
-            $userObj["email"],
-            $userObj["isAdmin"],
+    function toString() {
+        switch($this) {
+            case AccountType::CHECKING: return "Checking";
+            case AccountType::SAVING: return "Saving";
+            case AccountType::DARK_VAULT_CREDIT: return "Dark Vault Credit";
+            case AccountType::MORGAGE: return "Morgage";
+        }
+    }
+}
+class BankAccount {
+    public int $accountNumber;
+    public string $userId;
+    public AccountType $accountType;
+    public string $nickname;
+    public function __construct(int $accountNumber, string $userId, AccountType $accountType, string $nickname) {
+        $this->accountNumber = $accountNumber;
+        $this->userId = $userId;
+        $this->accountType = $accountType;
+        $this->nickname = $nickname;
+    }
+    public static function fromAsocArray(array $accountObj): BankAccount {
+        return new BankAccount(
+            $accountObj["accountNumber"],
+            $accountObj["userId"],
+            $accountObj["accountType"],
+            $accountObj["nickname"],
         );
     }
 }

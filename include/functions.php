@@ -3,9 +3,10 @@
     functions.php
     Include this file to get all of the cool stuff.
 */
-include "include/vulnconfig.php";
 include "include/pagegen.php";
 include "include/formgen.php";
+include "include/accountcard.php";
+include "include/layout.php";
 
 class PayloadCharacteristics {
     public string $payload;
@@ -28,6 +29,9 @@ class PayloadCharacteristics {
     public function isXssAttempt(): bool {
         return str_contains($this->payload, "<") && str_contains($this->payload, ">");;
     }
+    public function isXssScriptAttempt(): bool {
+        return str_contains($this->payload, "<script>") && str_contains($this->payload, "</script>");;
+    }
     public function isSuspect(): bool {
         return $this->isSqlInjectionAttempt() || $this->isXssAttempt();
     }
@@ -39,53 +43,4 @@ class PayloadCharacteristics {
  */
 function connectToDatabase(): mysqli {
     return mysqli_connect("db", "root", "hackme", "breakTheBank");
-}
-
-function userDoesExist(string $username): bool {
-    global $isVulnerableToSqlInjection;
-    $database = connectToDatabase();
-    try {
-        if($isVulnerableToSqlInjection) {
-            return (bool)$database->query("SELECT * FROM users WHERE username=\"$username\"")->fetch_assoc();
-        } else {
-            $query = $database->prepare("SELECT * FROM users WHERE username=?");
-            $query->bind_param("s", $username);
-            $query->execute();
-            $queryResult = $query->get_result();
-            if(is_bool($queryResult)) {
-                return $queryResult;
-            } else {
-                return (bool)$queryResult->fetch_assoc();
-            }
-        }
-    } catch(mysqli_sql_exception $error) {
-        return false;
-    }
-}
-
-/**
- * Given a user ID, returns an array object representing the user from the database.
- * @param int $userId The user's numeric ID
- * @return array|bool|null
- */
-function userFromId(int $userId) {
-    global $isVulnerableToSqlInjection;
-    $database = connectToDatabase();
-    try {
-        if($isVulnerableToSqlInjection) {
-            return $database->query("SELECT * FROM users WHERE userId=$userId")->fetch_assoc();
-        } else {
-            $query = $database->prepare("SELECT * FROM users WHERE userId=?");
-            $query->bind_param("i", $$userId);
-            $query->execute();
-            $queryResult = $query->get_result();
-            if(is_bool($queryResult)) {
-                return null;
-            } else {
-                return $queryResult->fetch_assoc();
-            }
-        }
-    } catch(mysqli_sql_exception $error) {
-        return null;
-    }
 }

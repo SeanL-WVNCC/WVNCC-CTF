@@ -73,14 +73,6 @@ main section {
     backdrop-filter: blur(8px);
 }
 
-article {
-    max-width: 42rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin: 3rem auto;
-    line-height: 1.5em;
-}
-
 table, td, tr {
     border: none;
     border-collapse: collapse;

@@ -53,18 +53,6 @@ h2 {
     background-position: right;
 }
 
-.sus-meter {
-    height: 1rem;
-    width: 4.6rem;
-    background-image: url("/img/sussy.png");
-    background-repeat: repeat;
-    background-size: contain;
-    background-position: left;
-}
-.sus-meter meter {
-    opacity: 0.001;
-}
-
 /* Hides reflected user input as a fun obfuscation strategy */
 .hidden-reflected-user-input {
     opacity: 0.07;
@@ -73,4 +61,18 @@ h2 {
 label {
     font-size: 1rem;
     line-height: 1em;
+}
+
+.two-column {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: start;
+    padding: 1rem;
+}
+.two-column > * {
+    flex-basis: 100%;
 }

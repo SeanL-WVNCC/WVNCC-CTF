@@ -65,6 +65,7 @@ $mobileDepositForm = new SimpleForm(
             type: "file",
             name: "file-to-upload",
             accessibleName: "Select Photo",
+            options: array(),
             errorMessage: $error,
             validationIcon: "",
             autofocus: false,

@@ -8,7 +8,7 @@
     margin-right: auto;
     margin-top: 9em;
     margin-bottom: 9em;
-    max-width: 18rem;
+    max-width: 20rem;
     border: 1px solid black;
     background-color: aliceblue;
     padding-bottom: 2rem;
@@ -33,7 +33,7 @@
     margin-bottom: 0.75rem;
     gap: .1em;
 }
-.simple-form input {
+.simple-form input, .simple-form select {
     background-color: white;
     color: black;
     color-scheme: only light;
