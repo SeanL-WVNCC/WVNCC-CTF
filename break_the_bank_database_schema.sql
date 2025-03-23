@@ -36,7 +36,7 @@ CREATE TABLE users (
     * nickname       - User-selected account nickname.
 */
 CREATE TABLE accounts (
-    accountNumber INT NOT NULL,
+    accountNumber INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userId INT NOT NULL,
     accountType VARCHAR(32) NOT NULL,
     nickname VARCHAR(25) DEFAULT NULL,

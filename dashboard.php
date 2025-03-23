@@ -9,18 +9,20 @@ include "include/functions.php";
 $mainContent = "";
 if(isLoggedIn()) {
     $user = userFromId($_COOKIE["logged-in-user"]);
-    $mainContent .= "<div class=\"two-column\" role=\"presentation\">";
-    $mainContent .= "<div class=\"account-card-container\">";
-    $mainContent .= "<h2>Hello, ".$user->firstName."!</h2>";
-    $mainContent .= generateAccountCard("Joe's", "3456", 7, "/account.php?account-number=1234567890");
-    $mainContent .= "</div>";
+    $leftColumn = "";
+    $rightColumn = "";
+    $leftColumn .= "<div class=\"account-card-container\">";
+    $leftColumn .= "<h2>Hello, ".$user->firstName."!</h2>";
+    $leftColumn .= generateAccountCard("Joe's", "3456", 7, "/account.php?account-number=1234567890");
+    $leftColumn .= "</div>";
     $loginForm = new SimpleForm(
         name: "Open Another Account",
         fields: array(
             new SimpleFormField(
-                type: "text",
+                type: "select",
                 name: "account-type",
                 accessibleName: "Account Type",
+                options: array("Checking", "Saving", "Dark Vault Credit", "Morgage"),
                 errorMessage: "",
                 validationIcon: "",
                 autofocus: false,
@@ -30,6 +32,7 @@ if(isLoggedIn()) {
                 type: "text",
                 name: "account-nickname",
                 accessibleName: "Account Nickname",
+                options: array(),
                 errorMessage: "",
                 validationIcon: "",
                 autofocus: false,
@@ -38,10 +41,10 @@ if(isLoggedIn()) {
         ),
         instructions: "Ready to open another bank account? Submit the following form to begin.",
         method: "POST",
-        action: "/login.php",
+        action: "/open-account.php",
         submitButtonName: "Open Account"
     );
-    $mainContent .= $loginForm->generateHtml();
-    $mainContent .= "</div>";
+    $rightColumn .= $loginForm->generateHtml();
+    $mainContent .= twoColumnLayout($leftColumn, $rightColumn);
     echo generatePage($mainContent);
 }
