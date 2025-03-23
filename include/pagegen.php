@@ -56,18 +56,19 @@ function createHeaderElement(): string {
         $result .= "<ul id=\"online-banking-dropdown\" hidden>";
         $result .= "<li><a href=\"dashboard.php\">Dashboard</a></li>";
         $result .= "<li><a href=\"mobile-deposit.php\">Mobile deposit</a></li>";
-        //$result .= "<li><a href=\"transfer.php\">Funds transfer</a></li>";
+        $result .= "<li><a href=\"transfer.php\">Funds transfer</a></li>";
         //$result .= "<li><a href=\"new-account.php\">Open account</a></li>";
         //$result .= "<li><a href=\"profile.php\">Profile</a></li>";
         $result .= "<li><a href=\"change-password.php\">Change Password</a></li>";
         $result .= "<li><a href=\"logout.php\">Log Out</a></li>";
         $result .= "</ul>";
         $result .= "</li>";
-        $result .= "<li><a href=\"feedback.php\">Feedback</a></li>";
     } else {
         $result .= "<li><a href=\"login.php\">Login</a></li>";
         $result .= "<li><a href=\"register.php\">Register</a></li>";
     }
+    //moved Feedback so you don't have to be logged in - later will change based on not admin/admin
+    $result .= "<li><a href=\"feedback.php\">Feedback</a></li>";
     $result .= "<li><button id=\"about-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"about-dropdown\" onclick=\"toggleExpandButton('about-menu-button')\" keydown=\"keypressEventDisclouseButton\">About</button>";
     $result .= "<ul id=\"about-dropdown\" hidden>";
     //$result .= "<li><a href=\"accounts.php\">Accounts</a></li>";
