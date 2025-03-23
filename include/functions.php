@@ -3,7 +3,6 @@
     functions.php
     Include this file to get all of the cool stuff.
 */
-include "include/vulnconfig.php";
 include "include/pagegen.php";
 include "include/formgen.php";
 include "include/accountcard.php";
@@ -29,6 +28,9 @@ class PayloadCharacteristics {
     }
     public function isXssAttempt(): bool {
         return str_contains($this->payload, "<") && str_contains($this->payload, ">");;
+    }
+    public function isXssScriptAttempt(): bool {
+        return str_contains($this->payload, "<script>") && str_contains($this->payload, "</script>");;
     }
     public function isSuspect(): bool {
         return $this->isSqlInjectionAttempt() || $this->isXssAttempt();

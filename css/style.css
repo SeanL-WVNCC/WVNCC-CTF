@@ -71,6 +71,7 @@ label {
     margin-left: auto;
     margin-right: auto;
     align-items: start;
+    padding: 1rem;
 }
 .two-column > * {
     flex-basis: 100%;

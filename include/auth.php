@@ -3,7 +3,7 @@
     auth.php
     Code for authenticating users and managing sessions.
 */
-include "include/vulnconfig.php";
+include "include/search.php";
 include "include/user.php";
 
 class AuthenticationResult {

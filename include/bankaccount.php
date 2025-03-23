@@ -26,10 +26,10 @@ enum AccountType {
     }
     function toString() {
         switch($this) {
-            case AccountType::CHECKING: return "checking";
-            case AccountType::SAVING: return "saving";
-            case AccountType::DARK_VAULT_CREDIT: return "dark vault credit";
-            case AccountType::MORGAGE: return "morgage";
+            case AccountType::CHECKING: return "Checking";
+            case AccountType::SAVING: return "Saving";
+            case AccountType::DARK_VAULT_CREDIT: return "Dark Vault Credit";
+            case AccountType::MORGAGE: return "Morgage";
         }
     }
 }
