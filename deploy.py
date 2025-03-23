@@ -1,3 +1,4 @@
+"""Deploys the 'Break The Bank' application via Docker Compose."""
 import os
 import pathlib
 import subprocess

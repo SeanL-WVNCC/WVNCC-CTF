@@ -1,4 +1,10 @@
 <?php
-setcookie('is-logged-in', '', -1, '/');
-setcookie('logged-out-user', '', -1, '/');
+/*
+    logout.php
+    Visiting this page will instantly log you out.
+*/
+session_start();
+include "include/functions.php";
+
+logout();
 header("Location: /");

@@ -1,12 +1,60 @@
 <?php
+session_start();
 include "include/functions.php";
+
 $mainContent = "";
-$mainContent .= "<form aria-labelledby=\"register-heading\">";
-$mainContent .= "<h2 id=\"register-heading\">Register</h2>";
-$mainContent .= "<label for=\"username-field\">Username</label>";
-$mainContent .= "<input id=\"username-field\" type=\"text\" name=\"username\" autofocus required>";
-$mainContent .= "<label for=\"password-field\">Password</label>";
-$mainContent .= "<input id=\"password-field\" type=\"password\" name=\"password\" required>";
-$mainContent .= "<button type=\"submit\">Login</button>";
-$mainContent .= "</form>";
+// Print the form.
+$registrationForm = new SimpleForm(
+    name: "Register",
+    fields: array(
+        new SimpleFormField(
+            type: "text",
+            name: "username",
+            accessibleName: "Username",
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "password",
+            name: "password",
+            accessibleName: "Password",
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "password",
+            name: "retype-password",
+            accessibleName: "Retype password",
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "email",
+            name: "email",
+            accessibleName: "Email",
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        )
+    ),
+    instructions: "Fill the following form to create your Northern Phish &amp; Loan mobile banking account. Once completed, you will need to go to your local Northern Phish branch to complete setup.",
+    method: "POST",
+    action: "/register.php",
+    submitButtonName: "Register"
+);
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $mainContent .= "<div class=\"single-column\" role=\"presentation\">";
+    $mainContent .= "<h2>Thanks for choosing Northern Phish &amp; Loan!</h2>";
+    $mainContent .= "<p>Stop by your local branch to finish setting up your account.</p>";
+    $mainContent .= "</div>";
+} else {
+    $mainContent .= $registrationForm->generateHtml();
+}
 echo generatePage($mainContent);

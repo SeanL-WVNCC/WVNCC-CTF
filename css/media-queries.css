@@ -42,7 +42,7 @@
 
 /* Prevent the header from taking over the world */
 @media screen and (max-height: 30rem)  {
-    header {
+    body > header {
         position: relative;
     }
 }
