@@ -6,10 +6,9 @@
 session_start();
 include "include/functions.php";
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-    $mainContent = "";
-    $mainContent .= singleColumnLayout("Hi");
-    echo generatePage($mainContent);
+    insertAccountIntoDb(new BankAccount(0, getCurrentUser()->userId, AccountType::fromString($_POST["account-type"]), $_POST["account-nickname"]));
 
 } else {
     header("Location: /dashboard.php");
 }
+header("Location: /dashboard.php");

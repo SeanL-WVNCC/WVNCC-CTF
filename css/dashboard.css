@@ -57,7 +57,7 @@ a.account-card {
     margin-top: 0;
 }
 
-.account-card-wrapper {
+.account-card-container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;   

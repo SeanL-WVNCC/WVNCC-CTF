@@ -13,7 +13,13 @@ if(isLoggedIn()) {
     $rightColumn = "";
     $leftColumn .= "<div class=\"account-card-container\">";
     $leftColumn .= "<h2>Hello, ".$user->firstName."!</h2>";
-    $leftColumn .= generateAccountCard("Joe's", "3456", 7, "/account.php?account-number=1234567890");
+    $accounts = bankAccountsFromUser(getCurrentUser()->userId);
+    if($accounts) {
+        $leftColumn .= generateAccountCards($accounts);
+    } else {
+        $leftColumn .= "<p class=\"single-column\">It seems that you don't have a bank account at Northern Phish yet. When you open one, it'll show up here.</p>";
+    }
+    //$leftColumn .= generateAccountCard("Joe's", "3456", 7, "/account.php?account-number=1234567890");
     $leftColumn .= "</div>";
     $loginForm = new SimpleForm(
         name: "Open Another Account",
