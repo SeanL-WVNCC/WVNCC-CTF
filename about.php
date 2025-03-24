@@ -61,17 +61,56 @@ $meetOurTeam .= "<p><a href=\"tel:304-555-1234\" aria-label=\"Call us. 3 0 4. 5 
 $meetOurTeam .= "<p>Our Address: 1234 Bank Street, Semaphore, WV</p>";
 $meetOurTeam .= "<p><a href=\"mailto:northernphish@email.com\">Email us at: northernphish@email.com</a></p>";
 //commenting this out as I meant to make another branch before this in case it breaks anything -- this is what I get for doing this while exhausted. sorry! -Angela
-//$mainContent .= "<p>Or send us a message right here!</p>";
-//$mainContent .= "<form method=\"POST\">";
-//$mainContent .= "<label for=\"first-name\">First Name</label><br>";
-//$mainContent .= "<input id=\"first-name\" type=\"text\" name=\"first-name\" required><br>";
-//$mainContent .= "<label for=\"last-name\">Last Name</label><br>";
-//$mainContent .= "<input id=\"last-name\" type=\"text\" name=\"last-name\" required><br>";
-//$mainContent .= "<label for=\"email\">Email</label><br>";
-//$mainContent .= "<input id=\"email\" type=\"text\" name=\"email\" required><br>";
-//$mainContent .= "<label for=\"message\">Message</label><br>";
-//$mainContent .= "<input id=\"message\" type=\"text\" name=\"message\" required><br>";
-//$mainContent .= "<button type=\"submit\">Send</button>";
-//$mainContent .= "</form>";
+// Nope it didn't break anything, back in it goes! -Sean
+$loginForm = new SimpleForm(
+    name: "Contact",
+    fields: array(
+        new SimpleFormField(
+            type: "text",
+            name: "first-name",
+            accessibleName: "First name",
+            options: array(),
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "text",
+            name: "last-name",
+            accessibleName: "Last name",
+            options: array(),
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "email",
+            name: "email",
+            accessibleName: "Email",
+            options: array(),
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "text",
+            name: "message",
+            accessibleName: "Message",
+            options: array(),
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        )
+    ),
+    instructions: "Or send us a message right here!",
+    method: "POST",
+    action: "/",
+    submitButtonName: "Send"
+);
+$meetOurTeam .= $loginForm->generateHtml();
 $mainContent .= singleColumnLayout($meetOurTeam);
 echo generatePage($mainContent);
