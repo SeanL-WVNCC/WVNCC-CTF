@@ -12,7 +12,7 @@ function generateAccountCard(BankAccount $account, $currentBalance) {
     if(strlen("".$cents) < 2) {
         $cents = "0".$cents;
     }
-    $accountName = $account->nickname;
+    $accountName = perhapsSanitizeAgainstXss($account->nickname, XssType::STORED);
     $accountNumber = $account->accountNumber;
     $accountType = $account->accountType->toString();
     $label = "$accountName account, $accountType number ".implode("", str_split($accountNumber)).". $dollars dollars and $cents cents, current balance.";

@@ -16,13 +16,17 @@ if(isLoggedIn()) {
     $accounts = bankAccountsFromUser(getCurrentUser()->userId);
     if($accounts) {
         $leftColumn .= generateAccountCards($accounts);
+        $formTitle = "Open Another Account";
+        $formInstructions = "Ready to open another bank account? Submit the following form to begin.";
     } else {
         $leftColumn .= "<p class=\"single-column\">It seems that you don't have a bank account at Northern Phish yet. When you open one, it'll show up here.</p>";
+        $formTitle = "Open Bank Account";
+        $formInstructions = "Submit the following form to create your first bank account with Northern Phish.";
     }
-    //$leftColumn .= generateAccountCard("Joe's", "3456", 7, "/account.php?account-number=1234567890");
+    
     $leftColumn .= "</div>";
     $loginForm = new SimpleForm(
-        name: "Open Another Account",
+        name: $formTitle,
         fields: array(
             new SimpleFormField(
                 type: "select",
@@ -45,7 +49,7 @@ if(isLoggedIn()) {
                 isRequired: false
             ),
         ),
-        instructions: "Ready to open another bank account? Submit the following form to begin.",
+        instructions: $formInstructions,
         method: "POST",
         action: "/open-account.php",
         submitButtonName: "Open Account"

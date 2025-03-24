@@ -59,7 +59,7 @@ function bankAccountFromAccountNumber(int $accountNumber) {
     $database = connectToDatabase();
     try {
         if($isVulnerableToSqlInjection) {
-            return User::fromAsocArray($database->query("SELECT * FROM accounts WHERE accountNumber=$accountNumber")->fetch_assoc());
+            return BankAccount::fromAsocArray($database->query("SELECT * FROM accounts WHERE accountNumber=$accountNumber")->fetch_assoc());
         } else {
             $query = $database->prepare("SELECT * FROM accounts WHERE accountnumber=?");
             $query->bind_param("i", $accountNumber);

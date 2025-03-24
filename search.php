@@ -7,13 +7,7 @@ $mainContent .= "<h2 id=\"search-results\">Search Results</h2>";
 if(array_key_exists("query", $_GET)) {
     $query = $_GET["query"];
     $payload = new PayloadCharacteristics($query);
-    // See if the user's query looks like a reflected XSS attack
-    if($isVulnerableToReflectedXss) {
-        $reflectedValue = $_GET["query"];
-        
-    } else {
-        $reflectedValue = htmlspecialchars($_GET["query"]);
-    }
+    $reflectedValue = perhapsSanitizeAgainstXss($_GET["query"], XssType::REFLECTED);
     $links = getAllLinksMatchingKeyword($query);
     foreach($links as $link) {
         $mainContent .= "<p>$link</p>";
