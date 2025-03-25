@@ -46,9 +46,9 @@ function authenticate(string $username, string $password): AuthenticationResult 
             $queryExecuted = $usernameAndPasswordQuery;
             $result = $database->query($usernameAndPasswordQuery);
         } catch(mysqli_sql_exception $error) {
-            $statusMessage = "Invalid SQL: <samp>SELECT * FROM users WHERE username=\"<u>$username\" AND password=\"$password\"</u></samp>";
+            $statusMessage = "<div class=\"error-block\"><p>Invalid SQL: <samp>SELECT * FROM users WHERE username=\"<u>$username\" AND password=\"$password\"</u></samp></p>";
             if(str_starts_with($username, '"')) {
-                $statusMessage .= "<div>Content following quote appears to be invalid.</div>";
+                $statusMessage .= "<p>Content following quote appears to be invalid.</p></div>";
             }
             $sqlExceptionThrown = true;
         }

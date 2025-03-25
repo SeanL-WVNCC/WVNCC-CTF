@@ -30,9 +30,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     $usernameError = $authResult->usernameErrorMessage;
     $passwordError = $authResult->passwordErrorMessage;
-    $formInstructions .= $authResult->statusMessage;
+    $statusMessage = $authResult->statusMessage;
+    $formInstructions .= $statusMessage;
 }
 
+global $susIcon;
 // Print the form.
 $loginForm = new SimpleForm(
     name: "Login",
@@ -43,7 +45,7 @@ $loginForm = new SimpleForm(
             accessibleName: "Username",
             options: array(),
             errorMessage: $usernameError,
-            validationIcon: $usernameIsSuspect ? "sussy" : "",
+            validationIcon: $usernameIsSuspect ? $susIcon : null,
             autofocus: false,
             isRequired: true
         ),
@@ -53,7 +55,7 @@ $loginForm = new SimpleForm(
             accessibleName: "Password",
             options: array(),
             errorMessage: $passwordError,
-            validationIcon: $passwordIsSuspect ? "sussy" : "",
+            validationIcon: $passwordIsSuspect ? $susIcon : null,
             autofocus: false,
             isRequired: true
         )

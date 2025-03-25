@@ -4,17 +4,28 @@
     Code for generating simple forms.
 */
 
+class ValidationIcon {
+    public string $src;
+    public string $alt;
+    public function __construct(string $src, string $alt) {
+        $this->src = $src;
+        $this->alt = $alt;
+    }
+}
+
+$susIcon = new ValidationIcon("/img/sussy.png", "Sus!");
+
 class SimpleFormField {
     public string $type;
     public string $name;
     public string $accessibleName;
     public array $options;
     public string $errorMessage;
-    public string $validationIcon;
+    public ValidationIcon | null $validationIcon;
     public bool $autofocus;
     public bool $isRequired;
 
-    public function __construct(string $type, string $name, string $accessibleName, array $options, string $errorMessage, string $validationIcon, bool $autofocus, bool $isRequired) {
+    public function __construct(string $type, string $name, string $accessibleName, array $options, string $errorMessage, ValidationIcon | null $validationIcon, bool $autofocus, bool $isRequired) {
         $this->type = $type;
         $this->name = $name;
         $this->accessibleName = $accessibleName;
@@ -46,11 +57,10 @@ class SimpleFormField {
         if($inputType == "select") {
             $html .= "<select id=\"$fieldId\"";
         } else {
-            $html .= "<input id=\"$fieldId\" list=\"$fieldId-options\" ";
+            $html .= "<input id=\"$fieldId\" ";
         }
-        // HACK: please write actually good code later
-        if($this->validationIcon == "sussy") {
-            $html .= " class=\"sussy\" ";
+        if($this->options) {
+            $html .= " list=\"$fieldId-options\" ";
         }
         $html .= " type=\"$inputType\" name=\"$fieldName\" aria-describedby=\"$errorMessageId\" ";
         if($this->isRequired) {
@@ -63,6 +73,11 @@ class SimpleFormField {
                 $html .= "<option>$option</option>";
             }
             $html .= "</select>";
+        }
+        if($this->validationIcon) {
+            $iconSrc = $this->validationIcon->src;
+            $iconAlt = $this->validationIcon->alt;
+            $html .= "<label for=\"$fieldId\"><img src=\"$iconSrc\" alt=\"$iconAlt\"></img></label>";
         }
         $html .= "</div>";
         $html .= "<div id=\"$errorMessageId\" class=\"form-error-message\" aria-live=\"polite\">".$this->errorMessage."</div>";

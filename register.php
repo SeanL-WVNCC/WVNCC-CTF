@@ -13,7 +13,7 @@ $registrationForm = new SimpleForm(
             accessibleName: "Username",
             options: array(),
             errorMessage: "",
-            validationIcon: "",
+            validationIcon: null,
             autofocus: false,
             isRequired: true
         ),
@@ -23,7 +23,7 @@ $registrationForm = new SimpleForm(
             accessibleName: "Password",
             options: array(),
             errorMessage: "",
-            validationIcon: "",
+            validationIcon: null,
             autofocus: false,
             isRequired: true
         ),
@@ -33,7 +33,7 @@ $registrationForm = new SimpleForm(
             accessibleName: "Retype password",
             options: array(),
             errorMessage: "",
-            validationIcon: "",
+            validationIcon: null,
             autofocus: false,
             isRequired: true
         ),
@@ -43,7 +43,7 @@ $registrationForm = new SimpleForm(
             accessibleName: "Email",
             options: array(),
             errorMessage: "",
-            validationIcon: "",
+            validationIcon: null,
             autofocus: false,
             isRequired: true
         )

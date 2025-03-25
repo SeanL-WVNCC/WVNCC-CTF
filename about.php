@@ -71,7 +71,7 @@ $loginForm = new SimpleForm(
             accessibleName: "First name",
             options: array(),
             errorMessage: "",
-            validationIcon: "",
+            validationIcon: null,
             autofocus: false,
             isRequired: true
         ),
@@ -81,7 +81,7 @@ $loginForm = new SimpleForm(
             accessibleName: "Last name",
             options: array(),
             errorMessage: "",
-            validationIcon: "",
+            validationIcon: null,
             autofocus: false,
             isRequired: true
         ),
@@ -91,7 +91,7 @@ $loginForm = new SimpleForm(
             accessibleName: "Email",
             options: array(),
             errorMessage: "",
-            validationIcon: "",
+            validationIcon: null,
             autofocus: false,
             isRequired: true
         ),
@@ -101,7 +101,7 @@ $loginForm = new SimpleForm(
             accessibleName: "Message",
             options: array(),
             errorMessage: "",
-            validationIcon: "",
+            validationIcon: null,
             autofocus: false,
             isRequired: true
         )

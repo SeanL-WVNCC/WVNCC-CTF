@@ -23,7 +23,7 @@ if(isLoggedIn()) {
         $formTitle = "Open Bank Account";
         $formInstructions = "Submit the following form to create your first bank account with Northern Phish.";
     }
-    
+    global $susIcon;
     $leftColumn .= "</div>";
     $loginForm = new SimpleForm(
         name: $formTitle,
@@ -34,7 +34,7 @@ if(isLoggedIn()) {
                 accessibleName: "Account Type",
                 options: array("Checking", "Saving", "Dark Vault Credit", "Morgage"),
                 errorMessage: "",
-                validationIcon: "",
+                validationIcon: null,
                 autofocus: false,
                 isRequired: true
             ),
@@ -44,7 +44,7 @@ if(isLoggedIn()) {
                 accessibleName: "Account Nickname",
                 options: array(),
                 errorMessage: "",
-                validationIcon: "",
+                validationIcon: null,
                 autofocus: false,
                 isRequired: false
             ),

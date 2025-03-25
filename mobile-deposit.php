@@ -68,7 +68,7 @@ $mobileDepositForm = new SimpleForm(
             accessibleName: "Select Photo",
             options: array(),
             errorMessage: $error,
-            validationIcon: "",
+            validationIcon: null,
             autofocus: false,
             isRequired: true
         ),

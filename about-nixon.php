@@ -67,4 +67,4 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $mainContent .= "<p>You aren't supposed to be here yet.</p>";
 }
 
-echo generatePage($mainContent);
+echo generatePage(singleColumnLayout($mainContent));
