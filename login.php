@@ -66,6 +66,14 @@ $loginForm = new SimpleForm(
 $mainContent .= $loginForm->generateHtml();
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
+    if(!isset($_POST["username"]) || !isset($_POST["password"])) {
+        $errorMessage = "<h2>Could Not Log in</h2>";
+        $errorMessage .= "<p class=\"error-block\">We were unable to log you in because of a technical problem on our end. We apologize for the inconvience and will work to fix the problem shortly.</p>";
+        $errorMessage .= "<p>[400 Error: required POST parameters not set]</p>";
+        http_response_code(400);
+        echo generatePage(singleColumnLayout($errorMessage));
+        exit();
+    }
     $username = $_POST["username"];
     $password = $_POST["password"];
     $authResult = authenticate($username, $password);

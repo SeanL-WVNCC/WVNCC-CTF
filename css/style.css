@@ -81,3 +81,13 @@ label {
 .two-column > * {
     flex-basis: 100%;
 }
+
+.error-block {
+    background-color: #ffcbcb;
+    color: black;
+    color-scheme: only light;
+    padding: 1rem;
+    border: 1px solid red;
+    font-style: italic;
+    font-weight: bold;
+}

@@ -53,6 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         if(move_uploaded_file($tmpFilename, $targetFile)) {
             $status = "The file ". htmlspecialchars(basename($filename))." has been uploaded at <code>".$fileUploadDirectory."</code>";
         } else {
+            http_response_code(500);
             $status = "Our systems were unable to process your check photo, but we don't know why. Try reloading the page and re-attaching the photo.";
         }
     }
