@@ -3,7 +3,7 @@
     functions.php
     Include this file to get all of the cool stuff.
 */
-include "include/pagegen.php";
+include "include/auth.php";
 include "include/formgen.php";
 include "include/accountcard.php";
 include "include/layout.php";

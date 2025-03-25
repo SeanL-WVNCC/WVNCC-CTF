@@ -3,7 +3,7 @@
     auth.php
     Code for authenticating users and managing sessions.
 */
-include "include/search.php";
+include "include/pagegen.php";
 include "include/user.php";
 
 class AuthenticationResult {

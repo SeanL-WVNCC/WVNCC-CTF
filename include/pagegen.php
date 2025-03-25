@@ -3,7 +3,8 @@
     pagegen.php
     Code for generating the markup that appears on all pages.
 */
-include "include/auth.php";
+
+include "include/search.php";
 
 /**
  * Returns HTML that links to the list of stylesheets provided.
@@ -84,6 +85,7 @@ function createHeaderElement(): string {
         $result .= "<option>$term</option>";
     }
     $result .= "</datalist>";
+    $result .= "<!--TODO: Ensure that the user isn't typing any HTML code here-->";
     $result .= "<input id=\"query-field\" type=\"search\" name=\"query\"  list=\"search-terms-datalist\" required aria-labelledby=\"search-button\" title=\"Search site by keyword\" placeholder=\"Search keywords\">";
     $result .= "<button id=\"search-button\" type=\"submit\" aria-label=\"Search\">$searchIcon</button>";
     $result .= "</form>";

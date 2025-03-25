@@ -131,6 +131,10 @@ class SimpleForm {
             $enctype = "application/x-www-form-urlencoded";
         }
         $html .= "<form method=\"$method\" action=\"$action\" enctype=\"$enctype\" aria-labelledby=\"$formNameId\" aria-describedby=\"thing\">";
+        global $isVulnerableToSqlInjection;
+        if($isVulnerableToSqlInjection) {
+            $html .= "<!--TODO: Ensure that the user isn't typing any SQL code here-->";
+        }
         foreach($this->fields as $field) {
             $html .= $field->generateHtml();
         }
