@@ -1,21 +1,49 @@
 <?php 
 include "include/functions.php";
 session_start();
+
+$transferForm = new SimpleForm(
+    name: "Transfer Funds",
+    fields: array(
+        new SimpleFormField(
+            type: "select",
+            name: "from-account",
+            accessibleName: "Sending account",
+            options: array("Checking", "Saving"),
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "select",
+            name: "to-account",
+            accessibleName: "Recieving Account",
+            options: array(
+                "checking" => "Checking", 
+                "saving" => "Saving"
+            ),
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "number",
+            name: "amount",
+            accessibleName: "Amount",
+            options: array(),
+            errorMessage: "",
+            validationIcon: "",
+            autofocus: false,
+            isRequired: true
+        ),
+    ),
+    instructions: "",
+    method: "POST",
+    action: "/open-account.php",
+    submitButtonName: "Transfer Funds"
+);
 $mainContent = "";
-$mainContent .= "<h2 id=\"send-feedback-heading\">Transfer Funds</h2>";
-$mainContent .= "<form action=\"transfer.php\" method=\"POST\"";
-$mainContent .= "<label for=\"from\">Select Account To Transfer From:</label><br>";
-$mainContent .= "<select name=\"from-ac\" id=\"from\">";
-$mainContent .= "<option value=\"from-savings\">Savings</option>";
-$mainContent .= "<option value=\"from-checking\">Checking</option>";
-$mainContent .= "</select><br><br>";
-$mainContent .= "<label for=\"to\">Select Account To Send Funds:</label><br>";
-$mainContent .= "<select name=\"to-ac\" id=\"to\">";
-$mainContent .= "<option value=\"to-savings\">Savings</option>";
-$mainContent .= "<option value=\"to-checking\">Checking</option>";
-$mainContent .= "</select><br><br>";
-$mainContent .= "<label for\"amount\">Amount:</label><br>";
-$mainContent .= "<input id=\"amount\" type=\"text\" name=\"amount\" required><br><br>";
-$mainContent .= "<button type=\"submit\"/>Transfer</button>";
-$mainContent .= "</form>";
+$mainContent .= $transferForm->generateHtml();
 echo generatePage($mainContent);
