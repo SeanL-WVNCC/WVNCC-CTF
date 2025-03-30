@@ -37,9 +37,12 @@ table {
 td {
     padding-inline: 1em;
 }
-
+th {
+    text-align: center;
+}
 figcaption {
-    padding-block: .25rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
 }
 
 h2 {

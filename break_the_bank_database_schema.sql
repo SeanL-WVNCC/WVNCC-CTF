@@ -76,6 +76,12 @@ CREATE TABLE fileUploads (
     FOREIGN KEY (transactionId) REFERENCES transactions(transactionId)
 );
 
-
+/* Sample data */
+INSERT INTO users (username, password, firstName, lastName, email, isAdmin) VALUES ("Admin", "1234", "Admin", "Admin", "admin@northernphish.com", True);
 INSERT INTO users (username, password, firstName, lastName, email, isAdmin) VALUES ("SeanLauritzen", "hackme", "Sean", "Lauritzen", "splauritzen@mail.wvncc.edu", True);
+
+INSERT INTO accounts (userId, accountType, nickname) VALUES (1, "Checking", "NORTHERN PHISH CORPORATE");
+INSERT INTO accounts (userId, accountType, nickname) VALUES (2, "Checking", "Sean's money");
+
+INSERT INTO transactions (debitAccountId, creditAccountId, amount, transactionTime, postedTime, description) VALUES (1, 2, 1000.0, "2025-01-01", "2025-01-01", "Cash deposit");
 ;

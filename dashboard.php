@@ -15,7 +15,7 @@ if(isLoggedIn()) {
     $leftColumn .= "<h2>Hello, ".$user->firstName."!</h2>";
     $accounts = bankAccountsFromUser(getCurrentUser()->userId);
     if($accounts) {
-        $leftColumn .= generateAccountCards($accounts);
+        $leftColumn .= generateAccountCards($accounts, True);
         $formTitle = "Open Another Account";
         $formInstructions = "Ready to open another bank account? Submit the following form to begin.";
     } else {
@@ -46,7 +46,7 @@ if(isLoggedIn()) {
                 errorMessage: "",
                 validationIcon: null,
                 autofocus: false,
-                isRequired: false
+                isRequired: true
             ),
         ),
         instructions: $formInstructions,

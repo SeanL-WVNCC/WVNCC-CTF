@@ -1,0 +1,21 @@
+.banner {
+    background-color: #215f9a;
+    color: white;
+}
+
+.banner .account-card {
+    font-size: 1.5rem;
+    max-width: 96rem;
+    min-height: 11rem;
+    margin: 0 auto;
+    background-color: transparent;
+    color: inherit !important;
+    border-radius: 0;
+    box-shadow: none;
+    height: 100%;
+}
+
+.banner .account-card:hover, .banner .account-card:focus {
+    transform: none;
+    box-shadow: inherit;
+}

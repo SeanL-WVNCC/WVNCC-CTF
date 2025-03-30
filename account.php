@@ -11,12 +11,30 @@ if(isLoggedIn()) {
     $leftColumn = "";
     $rightColumn = "";
     $account = bankAccountFromAccountNumber($_GET["account-number"]);
-    $accountNumber = $account->accountNumber;
-    $leftColumn .= "<div class=\"account-card-container\">";
-    $leftColumn .= "<h2>Account details</h2>";
-    $leftColumn .= "<p>This account hasn't had any transactions yet.</p>";
-    $leftColumn .= "<p>$accountNumber</p>";
-    $leftColumn .= "</div>";
-    $mainContent .= twoColumnLayout($leftColumn, $rightColumn);
+    $mainContent = "";
+    $mainContent = "<div class=\"banner\">";
+    $mainContent .= generateAccountCard($account, 0, False);
+    $mainContent .= "</div>";
+    $mainContent .= "<button aria-expanded=\"false\">Account options</button>";
+    $mainContent .= "<p>Recent transactions</p>";
+    $mainContent .= "<table>";
+    $mainContent .= "<thead>";
+    $mainContent .= "<tr><th>Date</th><th>Description</th><th>Amount</th><th>Balance</th></tr>";
+    $mainContent .= "</thread>";
+    $mainContent .= "<tbody>";
+    $transactions = transactionsInvolvingAccount(1);
+    foreach($transactions as $transaction) {
+        $amount = $transaction->amount;
+        $description = $transaction->description;
+        $dateString = $transaction->postedTime->format('d M Y');
+        if($transaction->debitAccountId == $account->accountNumber) {
+            $amountString = "($$amount)";
+        } else {
+            $amountString = "$$amount";
+        }
+        $mainContent .= "<tr><td>$dateString</td><td>$description</td><td>$amountString</td><td>$0.00</td></tr>";
+    }
+    $mainContent .= "</tbody>";
+    $mainContent .= "</table>";
     echo generatePage($mainContent);
 }

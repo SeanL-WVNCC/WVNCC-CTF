@@ -77,8 +77,8 @@ table, td, tr {
     border: none;
     border-collapse: collapse;
 }
-td {
-    padding: 0.25rem 1rem
+td, th {
+    padding: 0.4rem 1.2rem
 }
 tr:nth-of-type(odd) {
     background-color: #f1f1f1;

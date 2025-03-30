@@ -7,6 +7,7 @@ include "include/auth.php";
 include "include/formgen.php";
 include "include/accountcard.php";
 include "include/layout.php";
+include "include/transaction.php";
 
 class PayloadCharacteristics {
     public string $payload;
