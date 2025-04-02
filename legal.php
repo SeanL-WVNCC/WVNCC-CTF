@@ -1,10 +1,16 @@
 <?php
+/*
+    legal.php
+    Static page with the terms of service from Grant.
+*/
+session_start();
 include "include/functions.php";
+
 $mainContent = "";
 $mainContent .= "<article aria-labeledby=\"dark-vault-terms\">";
-$mainContent .= "<h2 id=\"dark-vault-terms\">Northern Phish & Loan – Dark Vault Card Terms of Service</h2>";
+$mainContent .= "<h2 id=\"dark-vault-terms\">Northern Phish & Loan &ndash; Dark Vault Card Terms of Service</h2>";
 $mainContent .= "<p>Effective Date: Whenever we say so.<p>";
-$mainContent .= "<p>Last Updated: Don’t worry about it.</p>";
+$mainContent .= "<p>Last Updated: Don&apos;t worry about it.</p>";
 $mainContent .= "<h3>1. Introduction & Mandatory Compliance</h3>";
 $mainContent .= "<p>By acknowledging, considering, or accidentally glancing at the existence of the Dark Vault Card™, you knowingly or unknowingly accept all explicit, implied, hidden, and completely arbitrary terms outlined below. This agreement is eternal, self-replicating, and resistant to logic, complaints, or legal challenge.</p>";
 $mainContent .= "<p>By continuing, you waive all rights, protections, and moral objections. You may attempt to opt out by shouting into an empty room, but results may vary.</p>";

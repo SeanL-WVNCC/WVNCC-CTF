@@ -1,4 +1,11 @@
 <?php
+/*
+    about-nixon.php
+    Intentionally "broken" page with vulnerability hints.
+    It also takes POST requests, for some reason:
+        `changed-value` - field name in the users table (i.e. username).
+        `new-value`     - value to which the field referenced by `changed-value` will be set.
+*/
 include "include/functions.php";
 session_start();
 //this is just so hackers only have my worse error messages

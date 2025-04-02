@@ -2,6 +2,8 @@
 /*
     mobile-deposit.php
     Form for uploading check photographs.
+    FIXME: I cannot upload files larger than 1 MB or so, the page crashes
+    and does not congratulate me as it should. -Sean
 */
 session_start();
 include "include/functions.php";

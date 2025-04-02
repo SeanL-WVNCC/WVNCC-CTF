@@ -1,9 +1,12 @@
 <?php
+/*
+    register.php
+    Dummy page for registering for the site.
+*/
 session_start();
 include "include/functions.php";
 
 $mainContent = "";
-// Print the form.
 $registrationForm = new SimpleForm(
     name: "Register",
     fields: array(
@@ -54,11 +57,13 @@ $registrationForm = new SimpleForm(
     submitButtonName: "Register"
 );
 if($_SERVER['REQUEST_METHOD'] == "POST") {
+    // If POST, send message...
     $mainContent .= "<div class=\"single-column\" role=\"presentation\">";
     $mainContent .= "<h2>Thanks for choosing Northern Phish &amp; Loan!</h2>";
     $mainContent .= "<p>Stop by your local branch to finish setting up your account.</p>";
     $mainContent .= "</div>";
 } else {
+    // Otherwise, show form
     $mainContent .= $registrationForm->generateHtml();
 }
 echo generatePage($mainContent);

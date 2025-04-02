@@ -22,7 +22,11 @@ $resultingPages = array(
     array("legal.php", "Terms of Service")
 );
 
-function getAllKeywords() {
+/**
+ * Gets all of the keywords to which the search feature responds.
+ * @return array An array (list) of keyword strings.
+ */
+function getAllKeywords(): array {
     global $keyTerms;
     $result = array();
     foreach($keyTerms as $catagory) {
@@ -31,7 +35,12 @@ function getAllKeywords() {
     return $result;
 }
 
-function getAllLinksMatchingKeyword(string $keyword) {
+/**
+ * Returns HTML anchor tags relating to a supplied term.
+ * @param string $keyword Keyword to search for.
+ * @return array An array (list) of HTML anchor tags that link to resources relating to the search term. May be empty.
+ */
+function getAllLinksMatchingKeyword(string $keyword): array {
     global $keyTerms;
     global $resultingPages;
     $index = 0;

@@ -1,11 +1,18 @@
 <?php
 /*
     accountcard.php
-    Generates the account preview card in the dashboard.
+    Generates the account preview card in the dashboard and account page.
 */
 include "include/bankaccount.php";
 
-function generateAccountCard(BankAccount $account, $currentBalance, bool $isLink) {
+/**
+ * Generates an HTML element that shows information about a bank account.
+ * @param BankAccount $account The account to show.
+ * @param mixed $currentBalance The current balance on the account, in dollars.
+ * @param bool $isLink Whether or not to make the element a link to the account.
+ * @return string
+ */
+function generateAccountCard(BankAccount $account, $currentBalance, bool $isLink): string {
     $html = "";
     $dollars = floor($currentBalance);
     $cents = floor($currentBalance * 100) % 100;
@@ -30,6 +37,12 @@ function generateAccountCard(BankAccount $account, $currentBalance, bool $isLink
     return $html;
 }
 
+/**
+ * Iterates though the accounts, calls `generateAccountCard`, and concats the results. This function is used on the dashboard.
+ * @param array $accounts
+ * @param bool $createHyperlinks Whether or not the elements link to thier respective account pages.
+ * @return string
+ */
 function generateAccountCards(array $accounts, bool $createHyperlinks) {
     $html = "";
     foreach($accounts as $account) {

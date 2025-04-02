@@ -6,6 +6,10 @@
 include "include/pagegen.php";
 include "include/user.php";
 
+/**
+ * This gets sent back whenever you try to log in.
+ * It contains some status messages for how the login attempt went.
+ */
 class AuthenticationResult {
     public int $userId;
     public string $username;
@@ -33,6 +37,9 @@ class AuthenticationResult {
  * @return AuthenticationResult Details about the login attempt.
  */
 function authenticate(string $username, string $password): AuthenticationResult {
+
+    // NOTE: This function is way too long.
+
     $database = connectToDatabase();
     $queryExecuted = "";
     global $isVulnerableToSqlInjection;
@@ -111,6 +118,10 @@ function authenticate(string $username, string $password): AuthenticationResult 
     return new AuthenticationResult($userId, $username, $statusMessage, $usernameErrorMessage, $PasswordErrorMessage, $queryExecuted, $isSuccess);
 }
 
+/**
+ * Gets the user that's logged in, `null` if the user isn't logged in.
+ * @return User|null
+ */
 function getCurrentUser() {
     if(isset($_COOKIE["logged-in-user"])) {
         return userFromId($_COOKIE["logged-in-user"]);
@@ -118,7 +129,7 @@ function getCurrentUser() {
     return null;
 }
 function isLoggedIn() {
-    return isset($_COOKIE["is-logged-in"]);
+    return isset($_COOKIE["logged-in-user"]);
 }
 
 /**
@@ -127,7 +138,6 @@ function isLoggedIn() {
  * @return void
  */
 function login(int $userId) {
-    setcookie("is-logged-in", "true");
     setcookie("logged-in-user", $userId);
 }
 
@@ -136,6 +146,5 @@ function login(int $userId) {
  * @return void
  */
 function logout() {
-    setcookie('is-logged-in', '', -1, '/');
-    setcookie('logged-out-user', '', -1, '/');
+    setcookie('logged-in-user', '', -1, '/');
 }

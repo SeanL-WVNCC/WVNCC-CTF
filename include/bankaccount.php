@@ -76,6 +76,11 @@ function bankAccountFromAccountNumber(int $accountNumber) {
     }
 }
 
+/**
+ * Returns all of the bank accounts held by aparticular user.
+ * @param int $userId User ID of accountholder.
+ * @return array Array of BankAccout objects held by the user.
+ */
 function bankAccountsFromUser(int $userId) {
     global $isVulnerableToSqlInjection;
     $database = connectToDatabase();

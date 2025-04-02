@@ -35,7 +35,11 @@ class Transaction {
     }
 }
 
-function transactionFromId(int $transactionId) {
+/**
+ * Queries the DB for a particular transaction. `null` if it does not exist.
+ * @return Transaction|null
+ */
+function transactionFromId(int $transactionId): Transaction|null {
     global $isVulnerableToSqlInjection;
     $database = connectToDatabase();
     try {
@@ -57,6 +61,11 @@ function transactionFromId(int $transactionId) {
     }
 }
 
+/**
+ * Quaeries the DB for all transactions matching an account number.
+ * @param int $accountNumber The account number to search.
+ * @return array A list of Transaction objects.
+ */
 function transactionsInvolvingAccount(int $accountNumber) {
     global $isVulnerableToSqlInjection;
     $database = connectToDatabase();

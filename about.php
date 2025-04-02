@@ -1,5 +1,11 @@
 <?php
+/*
+    about.php
+    Static page with information about the company.
+*/
+session_start();
 include "include/functions.php";
+
 $mainContent = "";
 $leftColumn = "";
 $rightColumn = "";

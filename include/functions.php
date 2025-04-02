@@ -9,6 +9,9 @@ include "include/accountcard.php";
 include "include/layout.php";
 include "include/transaction.php";
 
+/**
+ * An analysis of user input. Has methods for checking for XSS, SQL injection, etc.
+ */
 class PayloadCharacteristics {
     public string $payload;
     public function __construct(string $payload) {

@@ -24,6 +24,8 @@ if(isLoggedIn()) {
         $formInstructions = "Submit the following form to create your first bank account with Northern Phish.";
     }
     global $susIcon;
+    // TODO: rethink the way this form is processed.
+    // As it currently stands, getting error messages here would be tricky.
     $leftColumn .= "</div>";
     $loginForm = new SimpleForm(
         name: $formTitle,
@@ -57,4 +59,6 @@ if(isLoggedIn()) {
     $rightColumn .= $loginForm->generateHtml();
     $mainContent .= twoColumnLayout($leftColumn, $rightColumn);
     echo generatePage($mainContent);
+} else {
+    header("Location: /login.php");
 }

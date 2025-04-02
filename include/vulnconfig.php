@@ -23,6 +23,12 @@ enum XssType {
     case STORED;
 }
 
+/**
+ * Sanitizes user input to prevent XSS... Sometimes.
+ * @param string $payload The user input to sanitize.
+ * @param XssType $xssType The type of XSS to (sometimes) protect against.
+ * @return string "Sanitized" version of the payload.
+ */
 function perhapsSanitizeAgainstXss(string $payload, XssType $xssType): string {
     global $isVulnerableStoredXss;
     global $isVulnerableToReflectedXss;

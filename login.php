@@ -1,41 +1,52 @@
 <?php
-// Login Form.
-
+/*
+    login.php
+    A simple login form.
+*/
 session_start();
 include "include/functions.php";
 
 // Init variables.
-$mainContent = "";
-$usernameIsSuspect = false;
-$passwordIsSuspect = false;
-$usernamePayload = null;
-$passwordPayload = null;
+$username = "";
+$password = "";
 $authResult = null;
 $usernameError = "";
 $passwordError = "";
 $formInstructions = "";
 
-// If form was submitted...
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-    $usernamePayload = new PayloadCharacteristics($_POST["username"]);
-    $passwordPayload = new PayloadCharacteristics($_POST["password"]);
-    $usernameIsSuspect = $usernamePayload->isSuspect();
-    $passwordIsSuspect = $passwordPayload->isSuspect();
+    // If form was submitted...
+    if(!isset($_POST["username"]) || !isset($_POST["password"])) {
+        // 1. Make sure all of the fields are present.
+        // (This code *should* never run)
+        $errorMessage = "<h2>Could Not Log in</h2>";
+        $errorMessage .= "<p class=\"error-block\">We were unable to log you in because of a technical problem on our end. We apologize for the inconvience and will work to fix the problem shortly.</p>";
+        $errorMessage .= "<p>[400 Error: required POST parameters not set]</p>";
+        http_response_code(400);
+        echo generatePage(singleColumnLayout($errorMessage));
+        exit();
+    }
+
+    // 2. Read the submitted values.
     $username = $_POST["username"];
     $password = $_POST["password"];
+
+    // 3. Check username + password against DB.
     $authResult = authenticate($username, $password);
     if($authResult->isSuccess) {
+        // 3.1. If correct, login. Otherwise continue.
         login($authResult->userId);
-        header("Location: /");
+        header("Location: /dashboard.php");
     }
+    // 3.2. Login failed, collect error messages.
     $usernameError = $authResult->usernameErrorMessage;
     $passwordError = $authResult->passwordErrorMessage;
-    $statusMessage = $authResult->statusMessage;
-    $formInstructions .= $statusMessage;
+    $formInstructions = $authResult->statusMessage;
 }
 
+$usernamePayload = new PayloadCharacteristics($username);
+$passwordPayload = new PayloadCharacteristics($password);
 global $susIcon;
-// Print the form.
 $loginForm = new SimpleForm(
     name: "Login",
     fields: array(
@@ -45,7 +56,7 @@ $loginForm = new SimpleForm(
             accessibleName: "Username",
             options: array(),
             errorMessage: $usernameError,
-            validationIcon: $usernameIsSuspect ? $susIcon : null,
+            validationIcon: $usernamePayload->isSuspect() ? $susIcon : null,
             autofocus: false,
             isRequired: true
         ),
@@ -55,7 +66,7 @@ $loginForm = new SimpleForm(
             accessibleName: "Password",
             options: array(),
             errorMessage: $passwordError,
-            validationIcon: $passwordIsSuspect ? $susIcon : null,
+            validationIcon: $passwordPayload->isSuspect() ? $susIcon : null,
             autofocus: false,
             isRequired: true
         )
@@ -65,24 +76,5 @@ $loginForm = new SimpleForm(
     action: "/login.php",
     submitButtonName: "Login"
 );
-$mainContent .= $loginForm->generateHtml();
 
-if($_SERVER['REQUEST_METHOD'] == "POST") {
-    if(!isset($_POST["username"]) || !isset($_POST["password"])) {
-        $errorMessage = "<h2>Could Not Log in</h2>";
-        $errorMessage .= "<p class=\"error-block\">We were unable to log you in because of a technical problem on our end. We apologize for the inconvience and will work to fix the problem shortly.</p>";
-        $errorMessage .= "<p>[400 Error: required POST parameters not set]</p>";
-        http_response_code(400);
-        echo generatePage(singleColumnLayout($errorMessage));
-        exit();
-    }
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $authResult = authenticate($username, $password);
-    if($authResult->isSuccess) {
-        login($authResult->userId);
-        header("Location: /dashboard.php");
-    }
-}
-$mainContent .= "</form>";
-echo generatePage($mainContent);
+echo generatePage($loginForm->generateHtml());

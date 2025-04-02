@@ -1,5 +1,11 @@
 <?php
+/*
+    index.php
+    Static page with some promotional content.
+*/
+session_start();
 include "include/functions.php";
+
 $mainContent = "";
 $mainContent .= "<section id=\"hero-section\" aria-labelledby=\"hero-section-title\">";
 $mainContent .= "<hgroup>";

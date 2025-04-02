@@ -1,4 +1,9 @@
 <?php
+/*
+    search.php
+    Endpoint for the site-wide keyword search.
+*/
+session_start();
 include "include/functions.php";
 
 $mainContent = "";
@@ -7,20 +12,22 @@ $mainContent .= "<h2 id=\"search-results\">Search Results</h2>";
 if(array_key_exists("query", $_GET)) {
     $query = $_GET["query"];
     $payload = new PayloadCharacteristics($query);
-    $reflectedValue = perhapsSanitizeAgainstXss($_GET["query"], XssType::REFLECTED);
+    $reflectedValue = perhapsSanitizeAgainstXss($query, XssType::REFLECTED);
     $links = getAllLinksMatchingKeyword($query);
     foreach($links as $link) {
         $mainContent .= "<p>$link</p>";
     }
     
     if(count($links) == 0) {
-        
+        // No results for the user's search query. Reflected XSS time!
         $mainContent .= "<p>No results found for ".perhapsHideReflected("\"$reflectedValue\"")."</p>";
         if($payload->isXssScriptAttempt()) {
             $mainContent .= "<figure id='the-rock-meme'><img src=img/rock.jpg><figcaption>Hey there buddy. That search query looks a lot like JavaScript.</figcaption></figure>";
-            $mainContent .= "<p>Flag 83029</p>";
+            $mainContent .= "<p>Flag: <a href=\"https://owasp.org/www-community/attacks/xss/\" target=\"_blank\">Reflected XSS</a></p>";
         }
     }
+} else {
+    $mainContent .= "<p>Please enter your search query in the top right.</p>";
 }
 $mainContent .= "</section>";
 echo generatePage($mainContent);
