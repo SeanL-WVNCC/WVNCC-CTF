@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $retypePasswordPayload = new PayloadCharacteristics($retypePassword);
         $userId = $_COOKIE["logged-in-user"];
         $user = userFromId((int)$userId);
-        $passwordIsCorrect = $currentPassword == $user["password"];
+        $passwordIsCorrect = $currentPassword == $user->password;
         $passwordsMatch = $newPassword == $retypePassword;
         if(!$passwordIsCorrect) {
             $passwordError = "Password Incorrect.";
@@ -41,7 +41,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     } else {
         header("Location: /login.php");
     }
-}
+}   
+    global $susIcon;
     $passwordChangeFormForm = new SimpleForm(
         name: "Change Password",
         fields: array(
@@ -51,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 accessibleName: "Current password",
                 options: array(),
                 errorMessage: $passwordError,
-                validationIcon: $currentPasswordPayload->isSuspect() ? "sussy" : "",
+                validationIcon: $currentPasswordPayload->isSuspect() ? $susIcon : null,
                 autofocus: false,
                 isRequired: true
             ),
@@ -61,7 +62,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 accessibleName: "New password",
                 options: array(),
                 errorMessage: "",
-                validationIcon: $newPasswordPayload->isSuspect() ? "sussy" : "",
+                validationIcon: $newPasswordPayload->isSuspect() ? $susIcon : null,
                 autofocus: false,
                 isRequired: true
             ),
@@ -71,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 accessibleName: "Retype password",
                 options: array(),
                 errorMessage: $retypePasswordError,
-                validationIcon: $retypePasswordPayload->isSuspect() ? "sussy" : "",
+                validationIcon: $retypePasswordPayload->isSuspect() ? $susIcon : null,
                 autofocus: false,
                 isRequired: true
             ),
