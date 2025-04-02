@@ -69,8 +69,8 @@ class SimpleFormField {
         $html .= ">";
         if($inputType == "select") {
             $html .= "<option>-- Select one --</option>";
-            foreach($this->options as $option) {
-                $html .= "<option>$option</option>";
+            foreach($this->options as $value => $label) {
+                $html .= "<option value=\"$value\">$label</option>";
             }
             $html .= "</select>";
         }

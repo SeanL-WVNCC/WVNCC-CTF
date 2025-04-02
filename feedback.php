@@ -8,14 +8,64 @@ session_start();
 include "include/functions.php";
 
 $mainContent = "";
-$mainContent .= "<form aria-labelledby=\"send-feedback-heading\" method=\"GET\", action=\"feedback.php\">";
-$mainContent .= "<h2 id=\"send-feedback-heading\">Send Feedback</h2>";
-// Source code hint
-$mainContent .= "<!-- Hidden fields, please do not tamper -->";
-$mainContent .= "<input id=\"username-field\" type=\"hidden\" name=\"username\" required>";
-$mainContent .= "<input id=\"date-field\" type=\"hidden\" name=\"date\" required>";
-$mainContent .= "<label for=\"feedback\">Feedback</label><br>";
-$mainContent .= "<input id=\"feedback\" type=\"text\" name=\"feedback\" autofocus required>";
-$mainContent .= "<button type=\"submit\">Send Feedback</button>";
-$mainContent .= "</form>";
+$feedbackForm = new SimpleForm(
+    name: "Feedback",
+    fields: array(
+        new SimpleFormField(
+            type: "text",
+            name: "first-name",
+            accessibleName: "First Name",
+            options: array(),
+            errorMessage: "",
+            validationIcon: null,
+            autofocus: true,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "text",
+            name: "last-name",
+            accessibleName: "Last Name",
+            options: array(),
+            errorMessage: "",
+            validationIcon: null,
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "text",
+            name: "email",
+            accessibleName: "Email",
+            options: array(),
+            errorMessage: "",
+            validationIcon: null,
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "text",
+            name: "subject",
+            accessibleName: "Subject",
+            options: array(),
+            errorMessage: "",
+            validationIcon: null,
+            autofocus: false,
+            isRequired: true
+        ),
+        new SimpleFormField(
+            type: "text",
+            name: "feedback",
+            accessibleName: "Feedback",
+            options: array(),
+            errorMessage: "",
+            validationIcon: null,
+            autofocus: false,
+            isRequired: true
+        )
+    ),
+    instructions: "Here you can send any feedback you have for us!",
+    method: "POST",
+    action: "/feedback.php",
+    submitButtonName: "Send"
+);
+$mainContent .= $feedbackForm->generateHtml();
 echo generatePage($mainContent);
