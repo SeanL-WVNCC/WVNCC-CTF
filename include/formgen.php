@@ -19,16 +19,18 @@ class SimpleFormField {
     public string $type;
     public string $name;
     public string $accessibleName;
+    public string $defaultValue;
     public array $options;
     public string $errorMessage;
     public ValidationIcon | null $validationIcon;
     public bool $autofocus;
     public bool $isRequired;
 
-    public function __construct(string $type, string $name, string $accessibleName, array $options, string $errorMessage, ValidationIcon | null $validationIcon, bool $autofocus, bool $isRequired) {
+    public function __construct(string $type, string $name, string $accessibleName, string $defaultValue, array $options, string $errorMessage, ValidationIcon | null $validationIcon, bool $autofocus, bool $isRequired) {
         $this->type = $type;
         $this->name = $name;
         $this->accessibleName = $accessibleName;
+        $this->defaultValue = $defaultValue;
         $this->options = $options;
         $this->errorMessage = $errorMessage;
         $this->validationIcon = $validationIcon;
@@ -39,14 +41,16 @@ class SimpleFormField {
 
         // NOTE: This function is getting out of hand
 
-        $fieldId = str_replace(" ", "-", strtolower($this->accessibleName))."-field";
+        $fieldId = str_replace(" ", "-", strtolower($this->name))."-field";
         $errorMessageId = $fieldId."-error-message";
         $fieldName = $this->name;
         $inputType = $this->type;
         $html = "";
-        $html .= "<div class=\"form-field-wrapper\" role=\"presentation\">";
-        $html .= "<label for=\"$fieldId\">".$this->accessibleName."</label>";
-        $html .= "<div class=\"form-input-wrapper\" role=\"presentation\">";
+        if($this->type != "hidden") {
+            $html .= "<div class=\"form-field-wrapper\" role=\"presentation\">";
+            $html .= "<label for=\"$fieldId\">".$this->accessibleName."</label>";
+            $html .= "<div class=\"form-input-wrapper\" role=\"presentation\">";
+        }
         if($this->options) {
             $html .= "<datalist id=\"$fieldId-options\">";
             foreach($this->options as $option) {
@@ -54,15 +58,24 @@ class SimpleFormField {
             }
             $html .= "</datalist>";
         }
+
         if($inputType == "select") {
-            $html .= "<select id=\"$fieldId\"";
+            $html .= "<select id=\"$fieldId\" ";
+        } elseif($inputType == "textarea") {
+            $html .= "<textarea id=\"$fieldId\" rows=\"6\" ";
         } else {
             $html .= "<input id=\"$fieldId\" ";
+        }
+        if($this->defaultValue) {
+            $html .= " value=\"".$this->defaultValue."\" ";
         }
         if($this->options) {
             $html .= " list=\"$fieldId-options\" ";
         }
-        $html .= " type=\"$inputType\" name=\"$fieldName\" aria-describedby=\"$errorMessageId\" ";
+        $html .= " type=\"$inputType\" name=\"$fieldName\" ";
+        if($this->type != "hidden") {
+            $html .= " aria-describedby=\"$errorMessageId\" ";
+        }
         if($this->isRequired) {
             $html .= " required ";
         }
@@ -74,14 +87,19 @@ class SimpleFormField {
             }
             $html .= "</select>";
         }
+        if($inputType == "textarea") {
+            $html .= "</textarea>";
+        }
         if($this->validationIcon) {
             $iconSrc = $this->validationIcon->src;
             $iconAlt = $this->validationIcon->alt;
             $html .= "<label for=\"$fieldId\"><img src=\"$iconSrc\" alt=\"$iconAlt\"></img></label>";
         }
-        $html .= "</div>";
-        $html .= "<div id=\"$errorMessageId\" class=\"form-error-message\" aria-live=\"polite\">".$this->errorMessage."</div>";
-        $html .= "</div>";
+        if($this->type != "hidden") {
+            $html .= "</div>";
+            $html .= "<div id=\"$errorMessageId\" class=\"form-error-message\" aria-live=\"polite\">".$this->errorMessage."</div>";
+            $html .= "</div>";
+        }        
 
         return $html;
     }

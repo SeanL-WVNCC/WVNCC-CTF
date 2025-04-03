@@ -93,13 +93,3 @@ main p {
     max-width: 40rem;
     padding: 1rem;
 }
-
-#feedbackField {
-    text-align: center;
-    textarea{
-        width:60%;
-        height: 20%;
-    }
-}
-
-

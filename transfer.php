@@ -9,6 +9,7 @@ $transferForm = new SimpleForm(
             type: "select",
             name: "from-account",
             accessibleName: "Sending account",
+            defaultValue: "",
             options: array("Checking", "Saving"),
             errorMessage: "",
             validationIcon: null,
@@ -19,6 +20,7 @@ $transferForm = new SimpleForm(
             type: "select",
             name: "to-account",
             accessibleName: "Recieving Account",
+            defaultValue: "",
             options: array(
                 "checking" => "Checking", 
                 "saving" => "Saving"
@@ -32,6 +34,7 @@ $transferForm = new SimpleForm(
             type: "number",
             name: "amount",
             accessibleName: "Amount",
+            defaultValue: "",
             options: array(),
             errorMessage: "",
             validationIcon: null,
