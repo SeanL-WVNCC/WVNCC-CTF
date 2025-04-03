@@ -1,14 +1,44 @@
 <?php
 include "include/functions.php";
-$mainContent = "";
-$mainContent .= "<form aria-labelledby=\"send-feedback-heading\" method=\"GET\", action=\"feedback.php\">";
-$mainContent .= "<h2 id=\"send-feedback-heading\">Send Feedback</h2>";
+$mainContent = "<section id=\"hero-section\">";
+$mainContent .= "<hgroup>";
+$mainContent .= "<h2 id=\"hero-section-title\">Customer Feedback</h2>";
+$mainContent .= "<p>We value your opinion!</p>";
+$mainContent .= "</hgroup>";
+$mainContent .= "<img src=\"img/review.jpg\" alt=\"\">";
+$mainContent .= "</section>";
+$mainContent .= "<section id=\"feedbackField\">";
+$mainContent .= "<form aria-labelledby=\"send-feedback-heading\" method=\"POST\", action='feedback.php' id='reviewSubmit'>";
+$mainContent .= "<h2 id=\"send-feedback-heading\">We love to hear from our customers! Feel free to leave us some feedback!</h2>";
 $mainContent .= "<!-- Hidden fields, please do not tamper -->";
 $mainContent .= "<input id=\"username-field\" type=\"hidden\" name=\"username\" required>";
 $mainContent .= "<input id=\"date-field\" type=\"hidden\" name=\"date\" required>";
-$mainContent .= "<label for=\"feedback\">Feedback</label><br>";
-$mainContent .= "<input id=\"feedback\" type=\"text\" name=\"feedback\" autofocus required>";
+$mainContent .= "<textarea id=\"feedback\" name=\"feedback\" rows=\"5\" form=\"reviewSubmit\" autofocus required>";
+$mainContent .= "</textarea><br>";
 $mainContent .= "<button type=\"submit\">Send Feedback</button>";
-// No need for a clear fields input
 $mainContent .= "</form>";
+$mainContent .= "</section>";
+
+#Enables vulnerabilities
+$filterText = true;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $userId = $_COOKIE["logged-in-user"];
+    $user = userFromId((int)$userId);
+    $date = date('F jS Y');
+    if ($filterText == True) {
+        $feedback = htmlspecialchars($_POST['feedback']);} 
+    else {
+        $feedback = $_POST['feedback'];}
+    $reviewData = "<li id='reviewSubmissions'><b><u>" . $user['username'] . "</u></b><br>" . $feedback . "<br>"  . $date;
+    file_put_contents("reviews/Reviews.txt", $reviewData, FILE_APPEND);}
+if (is_file("reviews/Reviews.txt")){
+    $reviews = file_get_contents("reviews/Reviews.txt");}
+else{
+    $reviews = " ";
+}
+
+
+// No need for a clear fields input
+$mainContent .= "</form>" . $reviews;
 echo generatePage($mainContent);
+

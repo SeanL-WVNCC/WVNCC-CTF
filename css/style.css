@@ -74,3 +74,11 @@ label {
     font-size: 1rem;
     line-height: 1em;
 }
+
+#reviewSubmissions {
+    list-style-type: none;
+    border: 2px solid black ;
+    border-radius: 5px;
+    padding: 6px;
+    margin-bottom: 5px;
+}
