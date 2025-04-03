@@ -95,3 +95,11 @@ label {
     border: 1px solid red;
     font-weight: bold;
 }
+
+#reviewSubmissions {
+    list-style-type: none;
+    border: 2px solid black ;
+    border-radius: 5px;
+    padding: 6px;
+    margin-bottom: 5px;
+}
