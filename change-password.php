@@ -13,7 +13,7 @@ $currentPasswordPayload = new PayloadCharacteristics("");
 $newPasswordPayload = new PayloadCharacteristics("");
 $retypePasswordPayload = new PayloadCharacteristics("");
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    if(isset($_COOKIE["is-logged-in"])){
+    if(isLoggedIn()){
         $conn = connectToDatabase();
         $currentPassword = $_POST["password"];
         $newPassword = $_POST["new-password"];
