@@ -8,6 +8,8 @@ services:
             # Your copy of Break the Bank needs to in the /var/www/html folder
             # of your local machine.
             - /var/www/html:/var/www/html
+            #- /var/www/html/config/apache2:/etc/apache2
+            - /var/www/html/config/php:/usr/local/etc/php
         ports:
             - 80:80
         container_name: www

@@ -39,8 +39,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     if($useFileSizeLimit && $fileIsTooLarge) {
         $error = "Sorry, the max file size is ". $fileSizeLimitMB ."MB";
     } else if(!$useFileSizeLimit && $fileIsTooLarge) {
+        sleep(10);
         $error = "Congrats! You have pulled off a DOS attack! Your file was way too big, pal!";
     } elseif(!$useFileSizeLimit && $fileIsWayTooLarge) {
+        sleep(20);
         $error = "Congrats! You pulled off a DOS attack, but it was way too big for our page! So you get some extra credit!";
     }
     

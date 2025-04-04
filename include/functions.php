@@ -3,6 +3,9 @@
     functions.php
     Include this file to get all of the cool stuff.
 */
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include "include/auth.php";
 include "include/formgen.php";
 include "include/accountcard.php";
