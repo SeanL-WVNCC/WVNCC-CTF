@@ -66,8 +66,6 @@ $meetOurTeam .= "<h2>Contact</h2>";
 $meetOurTeam .= "<p><a href=\"tel:304-555-1234\" aria-label=\"Call us. 3 0 4. 5 5 5. 1 2 3 4.\">Call Us: 304-555-1234</a></p>";
 $meetOurTeam .= "<p>Our Address: 1234 Bank Street, Semaphore, WV</p>";
 $meetOurTeam .= "<p><a href=\"mailto:northernphish@email.com\">Email us at: northernphish@email.com</a></p>";
-//commenting this out as I meant to make another branch before this in case it breaks anything -- this is what I get for doing this while exhausted. sorry! -Angela
-// Nope it didn't break anything, back in it goes! -Sean
 $loginForm = new SimpleForm(
     name: "Contact",
     fields: array(
