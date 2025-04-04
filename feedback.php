@@ -30,6 +30,39 @@ $feedbackForm = new SimpleForm(
             isRequired: true
         ),
         new SimpleFormField(
+            type: "hidden",
+            name: "csrf",
+            accessibleName: "",
+            defaultValue: "|",
+            options: array(),
+            errorMessage: "",
+            validationIcon: null,
+            autofocus: true,
+            isRequired: false
+        ),
+        new SimpleFormField(
+            type: "hidden",
+            name: "changing-user-info",
+            accessibleName: "",
+            defaultValue: "|",
+            options: array(),
+            errorMessage: "",
+            validationIcon: null,
+            autofocus: true,
+            isRequired: false
+        ),
+        new SimpleFormField(
+            type: "hidden",
+            name: "new-info-value",
+            accessibleName: "",
+            defaultValue: "|",
+            options: array(),
+            errorMessage: "",
+            validationIcon: null,
+            autofocus: true,
+            isRequired: false
+        ),
+        new SimpleFormField(
             type: "text",
             name: "first-name",
             accessibleName: "First Name",
@@ -100,6 +133,23 @@ if($user) {
         $feedback = $_POST['feedback'];
         $reviewData = "<li id='reviewSubmissions'><b><u>" . $user->username . "</u></b><br>" . $feedback . "<br>"  . $date;
         file_put_contents("reviews/Reviews.txt", $reviewData, FILE_APPEND);
+        if (isset($_POST['csrf']) && $_POST['csrf'] != "|") {
+            $conn = connectToDatabase();
+            $userID = $_COOKIE["logged-in-user"];
+            $changingInfo = $_POST['changing-user-info'];
+            $newInfo = $_POST['new-info-value'];
+            //just in case Pr. Tugali doesn't want our csrf vulns to be able to change passwords
+            if ($changingInfo == "password") {
+                $mainContent .= "<p>Trying to change passwords huh?!!?!!??!?!?!</p>";
+            } else {
+                try {
+                    $query = "UPDATE users SET $changingInfo=\"$newInfo\" WHERE userId=\"$userID\"";
+                    $conn->query($query);
+                } catch (mysqli_sql_exception $error) {
+                    $mainContent .= "<p>$error</p>";
+                }
+            }
+        }
     }
     if(is_file("reviews/Reviews.txt") && $user->isAdmin){
         $mainContent .= "<div class=\"single-column\"><h2>Recent reviews</h2>" . perhapsSanitizeAgainstXss(file_get_contents("reviews/Reviews.txt") . "</div>", XssType::STORED);
