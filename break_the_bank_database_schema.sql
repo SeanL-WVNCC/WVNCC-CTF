@@ -79,6 +79,7 @@ CREATE TABLE fileUploads (
 /* Sample data */
 INSERT INTO users (username, password, firstName, lastName, email, isAdmin) VALUES ("Admin", "1234", "Admin", "Admin", "admin@northernphish.com", True);
 INSERT INTO users (username, password, firstName, lastName, email, isAdmin) VALUES ("SeanLauritzen", "hackme", "Sean", "Lauritzen", "splauritzen@mail.wvncc.edu", True);
+INSERT INTO users (username, password, firstName, lastName, email, isAdmin) VALUES ("AngelaAckermann", "hackable", "Angela", "Ackermann", "fakemail@mail.com", True);
 
 INSERT INTO accounts (userId, accountType, nickname) VALUES (1, "Checking", "NORTHERN PHISH CORPORATE");
 INSERT INTO accounts (userId, accountType, nickname) VALUES (2, "Checking", "Sean's money");
