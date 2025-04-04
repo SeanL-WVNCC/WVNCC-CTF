@@ -53,6 +53,8 @@ function createHeaderElement(): string {
     $result .= "<ul>";
     $result .= "<li><a href=\"index.php\">Home</a></li>";
     if(isLoggedIn()) {
+        $user = getCurrentUser();
+        $adminCheck = $user->isAdmin;
         $result .= "<li><button id=\"online-banking-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"online-banking-dropdown\" onclick=\"toggleExpandButton('online-banking-menu-button')\" keydown=\"keypressEventDisclouseButton\">Online Banking</button>";
         $result .= "<ul id=\"online-banking-dropdown\" hidden>";
         $result .= "<li><a href=\"dashboard.php\">Dashboard</a></li>";
@@ -64,6 +66,9 @@ function createHeaderElement(): string {
         $result .= "<li><a href=\"logout.php\">Log Out</a></li>";
         $result .= "</ul>";
         $result .= "</li>";
+        if ($adminCheck == true) {
+            $result .= "<li><a href=\"admin.php\">Admin</a></li>";
+        }
     } else {
         $result .= "<li><a href=\"login.php\">Login</a></li>";
         $result .= "<li><a href=\"register.php\">Register</a></li>";
