@@ -32,7 +32,7 @@ a:hover {
 
 table {
     text-align: left;
-    margin-inline: auto;
+    margin: 1rem auto;
 }
 td {
     padding-inline: 1em;

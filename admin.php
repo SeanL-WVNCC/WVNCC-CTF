@@ -13,35 +13,31 @@ if ($user) {
     $adminCheck = $user->isAdmin;
     if ($adminCheck == true) {
         $conn = connectToDatabase();
-        $mainContent .= "<form action=\"admin.php\" method=\"POST\">";
+        $mainContent .= "<form id=\"admin-menu\" action=\"admin.php\" method=\"POST\">";
         $mainContent .= "<button name=\"display-users\">Users</button>";
-        //hacky solution to quickly push these buttons apart just so it's easier on the eyes
-        $mainContent .= "     ";
         $mainContent .= "<button name=\"change-pass\">Edit User Password</button>";
-        $mainContent .= "     ";
         $mainContent .= "<button name=\"add-admins\">Add Administrators</button>";
-        $mainContent .= "     ";
         $mainContent .= "<button name=\"admin-funct\">Placeholder</button>";
         $mainContent .= "</form>";
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST["display-users"])) {
                 $query = "SELECT * FROM users";
                 $users = $conn->query($query);
-                $table .= "<table>";
-                $table .= "<tbody>";
                 while($row = $users->fetch_assoc()) {
+                    $table = "<table>";
+                    $table .= "<tbody>";
                     //$table .= "<tr><th>User ID</th></tr><tr><td>" . $row["username"] . "</td></tr>";
                     $table .= "<tr><th>Username</th></tr><tr><td>" . $row["username"] . "</td></tr>";
                     $table .= "<tr><th>Password</th></tr><tr><td>" . $row["password"] . "</td></tr>";
                     $table .= "<tr><th>First Name</th></tr><tr><td>" . $row["firstName"] . "</td></tr>";
                     $table .= "<tr><th>Last Name</th></tr><tr><td>" . $row["lastName"] . "</td></tr>";
-                    $table .= "<tr><th>Email</th></tr><tr><td>" . $row["email"] . "</td></tr>";
+                    // <wbr> element to prevent side scrolling on mobile, I knew I'd use it one day
+                    $table .= "<tr><th>Email</th></tr><tr><td><a href=\"mailto:".$row["email"]."\">" . str_replace("@",  "@<wbr>", $row["email"]) . "</a></td></tr>";
                     $table .= "<tr><th>Admin Status</th></tr><tr><td>" . $row["isAdmin"] . "</td></tr>";
-                    $table .= "<tr><th></th></tr><tr><td><button>Contact</button></td></tr>";
+                    $table .= "</tbody>";
+                    $table .= "</table>";
+                    $mainContent .= $table;
                 }
-                $table .= "</tbody>";
-                $table .= "</table>";
-                $mainContent .= $table;
             } elseif (isset($_POST["change-pass"])) {
                 $passwordChangeFormForm = new SimpleForm(
                     name: "Change Password",

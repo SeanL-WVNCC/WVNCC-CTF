@@ -93,3 +93,17 @@ main p {
     max-width: 40rem;
     padding: 1rem;
 }
+
+#admin-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+#admin-menu {
+    > button {
+        margin: 0;
+    }
+}
