@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     // Extra vars
     $targetFile = $fileUploadDirectory . basename($filename);
-    $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
+    $strFileName = htmlspecialchars(basename($filename));
 
     // Testing if the file is under the accepted file size, if $fileSizeLimit is enabled, otherwise it skips this code
     $fileIsTooLarge = $fileSize > $fileSizeLimitByte;
@@ -47,11 +47,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     
     // Testing if the file is one of the accepted file types, if $fileTypeRestriction is enabled, otherwise it skips this code
-    $fileIsPermittedType = in_array($imageFileType, $allowedFileTypes);
-    if($fileTypeRestriction && !$fileIsPermittedType) {
-        $error = "That type of file isn't supported. Please attach one of the following file types: $allowedFileTypesStr";
+    if($strFileName != ''){
+        if(str_contains($strFileName,'png')){
+            $error = '';
+        }
+        elseif(str_contains($strFileName,'jpg')){
+            $error = '';
+        }
+        elseif(str_contains($strFileName,'jpeg')){
+            $error = '';
+        }
+        else{
+            $error = 'File must contain jpg, png, or jpeg "' . $strFileName . '" does not.';
+        }
     }
-
     //Uploading Files as long as it fits in the requirements
     if($error == "") {
         if(move_uploaded_file($tmpFilename, $targetFile)) {
