@@ -53,6 +53,7 @@ function createHeaderElement(): string {
     $result .= "<ul>";
     $result .= "<li><a href=\"index.php\">Home</a></li>";
     if(isLoggedIn()) {
+        //gets the logged in user, their account info, and sets the "isAdmin" field's true/false to the admin check variable
         $user = getCurrentUser();
         $adminCheck = $user->isAdmin;
         $result .= "<li><button id=\"online-banking-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"online-banking-dropdown\" onclick=\"toggleExpandButton('online-banking-menu-button')\" keydown=\"keypressEventDisclouseButton\">Online Banking</button>";
@@ -66,6 +67,7 @@ function createHeaderElement(): string {
         $result .= "<li><a href=\"logout.php\">Log Out</a></li>";
         $result .= "</ul>";
         $result .= "</li>";
+        //link to the admin page only appears if the logged in user's "isAdmin" field = true
         if ($adminCheck == true) {
             $result .= "<li><a href=\"admin.php\">Admin</a></li>";
         }
@@ -73,7 +75,6 @@ function createHeaderElement(): string {
         $result .= "<li><a href=\"login.php\">Login</a></li>";
         $result .= "<li><a href=\"register.php\">Register</a></li>";
     }
-    //moved Feedback so you don't have to be logged in - later will change based on not admin/admin
     $result .= "<li><a href=\"feedback.php\">Feedback</a></li>";
     $result .= "<li><button id=\"about-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"about-dropdown\" onclick=\"toggleExpandButton('about-menu-button')\" keydown=\"keypressEventDisclouseButton\">About</button>";
     $result .= "<ul id=\"about-dropdown\" hidden>";
