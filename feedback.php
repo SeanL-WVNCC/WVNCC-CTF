@@ -29,6 +29,7 @@ $feedbackForm = new SimpleForm(
             autofocus: true,
             isRequired: true
         ),
+        //hidden fields to enact a csrf attack - the hacker must find these
         new SimpleFormField(
             type: "hidden",
             name: "csrf",
@@ -133,16 +134,20 @@ if($user) {
         $feedback = $_POST['feedback'];
         $reviewData = "<li id='reviewSubmissions'><b><u>" . $user->username . "</u></b><br>" . $feedback . "<br>"  . $date;
         file_put_contents("reviews/Reviews.txt", $reviewData, FILE_APPEND);
+        //the hacker has to find and change the hidden csrf value
         if (isset($_POST['csrf']) && $_POST['csrf'] != "|") {
+            //database connection and getting the csrf attack values through post
             $conn = connectToDatabase();
+            //grabbing the logged in user
             $userID = $_COOKIE["logged-in-user"];
             $changingInfo = $_POST['changing-user-info'];
             $newInfo = $_POST['new-info-value'];
-            //just in case Pr. Tugali doesn't want our csrf vulns to be able to change passwords
+            //optional block to prevent changing passwords
             if ($changingInfo == "password") {
                 $mainContent .= "<p>Trying to change passwords huh?!!?!!??!?!?!</p>";
             } else {
                 try {
+                    //same sql as the about nixon page attack
                     $query = "UPDATE users SET $changingInfo=\"$newInfo\" WHERE userId=\"$userID\"";
                     $conn->query($query);
                 } catch (mysqli_sql_exception $error) {
