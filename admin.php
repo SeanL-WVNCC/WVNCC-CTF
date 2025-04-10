@@ -37,7 +37,8 @@ if ($user) {
                 while($row = $users->fetch_assoc()) {
                     $table = "<table>";
                     $table .= "<tbody>";
-                    //$table .= "<tr><th>User ID</th></tr><tr><td>" . $row["username"] . "</td></tr>";
+                    //optional id number inclusion
+                    //$table .= "<tr><th>User ID</th></tr><tr><td>" . $row["userId"] . "</td></tr>";
                     $table .= "<tr><th>Username</th></tr><tr><td>" . $row["username"] . "</td></tr>";
                     $table .= "<tr><th>Password</th></tr><tr><td>" . $row["password"] . "</td></tr>";
                     $table .= "<tr><th>First Name</th></tr><tr><td>" . $row["firstName"] . "</td></tr>";
