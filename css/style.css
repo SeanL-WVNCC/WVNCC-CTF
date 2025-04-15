@@ -103,3 +103,8 @@ label {
     padding: 6px;
     margin-bottom: 5px;
 }
+
+*:disabled, *[disabled] {
+    cursor: not-allowed !important;
+    filter: grayscale() !important;
+}

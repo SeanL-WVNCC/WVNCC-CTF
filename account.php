@@ -15,7 +15,7 @@ if(isLoggedIn()) {
     $mainContent = "<div class=\"banner\">";
     $mainContent .= generateAccountCard($account, 0, False);
     $mainContent .= "</div>";
-    $mainContent .= "<button aria-expanded=\"false\">Account options</button>";
+    $mainContent .= "<button aria-expanded=\"false\" disabled>Account options</button>";
     $mainContent .= "<p>Recent transactions</p>";
     $mainContent .= "<table>";
     $mainContent .= "<thead>";

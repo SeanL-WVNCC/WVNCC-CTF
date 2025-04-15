@@ -56,7 +56,7 @@ function createHeaderElement(): string {
         //gets the logged in user, their account info, and sets the "isAdmin" field's true/false to the admin check variable
         $user = getCurrentUser();
         $adminCheck = $user->isAdmin;
-        $result .= "<li><button id=\"online-banking-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"online-banking-dropdown\" onclick=\"toggleExpandButton('online-banking-menu-button')\" keydown=\"keypressEventDisclouseButton\">Online Banking</button>";
+        $result .= "<li><button id=\"online-banking-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"online-banking-dropdown\">Online Banking</button>";
         $result .= "<ul id=\"online-banking-dropdown\" hidden>";
         $result .= "<li><a href=\"dashboard.php\">Dashboard</a></li>";
         $result .= "<li><a href=\"mobile-deposit.php\">Mobile deposit</a></li>";
@@ -77,7 +77,7 @@ function createHeaderElement(): string {
         $result .= "<li><a href=\"register.php\">Register</a></li>";
     }
     $result .= "<li><a href=\"feedback.php\">Feedback</a></li>";
-    $result .= "<li><button id=\"about-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"about-dropdown\" onclick=\"toggleExpandButton('about-menu-button')\" keydown=\"keypressEventDisclouseButton\">About</button>";
+    $result .= "<li><button id=\"about-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"about-dropdown\">About</button>";
     $result .= "<ul id=\"about-dropdown\" hidden>";
     //$result .= "<li><a href=\"accounts.php\">Accounts</a></li>";
     $result .= "<li><a href=\"about.php\">About Us</a></li>";
