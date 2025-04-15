@@ -30,34 +30,27 @@ nav ul, nav li {
     margin: 0;
 }
 
-nav li a, nav li button {
+nav a, nav button {
     display: block;
     padding: 1em;
     width: 100%;
     height: 100%;
     /* Curse you default button styles! */
-    font-size: inherit;
     font-family: inherit;
     font-weight: inherit;
     background-color: inherit;
+    text-decoration-color: transparent;
     color: inherit;
     border: inherit;
     cursor: pointer;
 }
 
-/* Nav links override default link style */
-nav a, nav a:visited {
-    text-decoration-color: transparent;
-    color: inherit;
-}
-
 h1 {
     margin: 0;
-    height: 3rem;
 }
-h1 img {
+header > img {
     display: block;
-    height: 100%;
+    height: 3.25rem;
 }
 
 #skip-link {
@@ -116,8 +109,14 @@ form[role="search"] button svg {
     fill: currentColor;
 }
 form[role="search"] input:focus, form[role="search"] input:hover {
-    backdrop-filter: brightness(90%);
+    backdrop-filter: brightness(92%);
 }
+
+/* Better contrast ratio for placeholder when focused */
+form[role="search"] input:focus::placeholder, form[role="search"] input:hover::placeholder {
+    color: black;
+}
+
 form[role="search"] button:focus, form[role="search"] button:hover {
     backdrop-filter: brightness(85%);
 }

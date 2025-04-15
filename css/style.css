@@ -1,6 +1,6 @@
 /*
     style.css
-    Basic styles.
+    Basic styles, should not contain class or ID references.
 */
 
 body {
@@ -10,24 +10,6 @@ body {
 
 body * {
     font-size: inherit;
-}
-
-/* Default link styling */
-a:visited, a:visited {
-    color: blue;
-    text-decoration: none;
-}
-
-/* Keyboard users */
-a:focus {
-    outline: 2px solid blue;
-    text-decoration: underline;
-}
-
-/* Non-keyboard users hovering */
-a:hover {
-    outline: none;
-    text-decoration: underline;
 }
 
 table {
@@ -45,7 +27,7 @@ figcaption {
     padding-bottom: .25rem;
 }
 
-h2 {
+h1, h2 {
     font-size: 1.5rem;
 }
 
@@ -104,7 +86,84 @@ label {
     margin-bottom: 5px;
 }
 
-*:disabled, *[disabled] {
-    cursor: not-allowed !important;
-    filter: grayscale() !important;
+main {
+    border: 1px solid black;
+    min-height: 100vh;
+}
+
+main a:visited {
+    color: linkColor;
+}
+
+section {
+    align-content: center;
+}
+
+figure {
+    max-width: 640px;
+    margin-inline: auto;
+}
+figure img {
+    display: block;
+    max-width: 100%;
+}
+figcaption {
+    text-align: center;
+}
+main button {
+    border: 2px solid transparent;
+    background-color: transparent;
+    padding: 0.5em 1em;
+    margin: 0.5em auto;
+    border-radius: 0.25em;
+    color: white;
+    background-color: #c82e3d;
+    font-weight: bold;
+}
+main button:focus, main button:hover {
+    outline: 2px solid black;
+    filter: brightness(125%);
+}
+main button:hover {
+    cursor: pointer;
+}
+
+main section {
+    background-color: rgba(255,255,255,0);
+    backdrop-filter: blur(8px);
+}
+
+table, td, tr {
+    border: none;
+    border-collapse: collapse;
+}
+td, th {
+    padding: 0.4rem 1.2rem
+}
+tr:nth-of-type(odd) {
+    background-color: #f1f1f1;
+}
+
+main p {
+    line-height: 1.5em;
+}
+
+.single-column {
+    margin: 3rem auto;
+    max-width: 40rem;
+    padding: 1rem;
+}
+
+#admin-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+#admin-menu {
+    > button {
+        margin: 0;
+    }
 }

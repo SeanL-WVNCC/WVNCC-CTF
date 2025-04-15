@@ -1,13 +1,7 @@
 <?php
 include "include/functions.php";
-$banner = "<section id=\"hero-section\">";
-$banner .= "<hgroup>";
-$banner .= "<h2 id=\"hero-section-title\">Customer Feedback</h2>";
-$banner .= "<p>We value your opinion!</p>";
-$banner .= "</hgroup>";
-$banner .= "<img src=\"img/review.jpg\" alt=\"\">";
-$banner .= "</section>";
 $mainContent = "";
+$mainContent .= createBanner("Customer Feedback", "We value your opinion!", "/img/review.jpg");
 $mainContent .= "<section id=\"feedbackField\" class=\"single-column\">";
 $user = getCurrentUser();
 if($user) {
@@ -164,4 +158,4 @@ if($user) {
 }
 
 
-echo generatePage($banner . $mainContent);
+echo generatePage($mainContent);

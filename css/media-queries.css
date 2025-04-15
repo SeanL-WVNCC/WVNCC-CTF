@@ -20,7 +20,7 @@
         flex-direction: column;
         align-items: stretch;
     }
-    #secondary-navigation, h1, form[role="search"] {
+    #secondary-navigation, header img, form[role="search"] {
         /* Naw bruh we don't need it 🗿 */
         display: none;
     }

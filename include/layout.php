@@ -20,3 +20,21 @@ function singleColumnLayout(string $content) {
 function twoColumnLayout(string $left, string $right) {
     return "<div class=\"two-column\" role=\"presentation\">$left$right</div>";
 }
+
+/**
+ * Returns HTML markup for a banner with a title and subtitle.
+ */
+function createBanner(string $title, string $subtitle, string $backgroundImageUrl): string {
+    
+    $html = "<div id=\"banner\" role=\"presentation\">";
+    $html .= "<hgroup>";
+    $html .= "<h1>$title</h1>";
+    if($subtitle) {
+        $html .= "<p>$subtitle</p>";
+    }
+    $html .= "</hgroup>";
+    $html .= "<img src=\"$backgroundImageUrl\" role=\"presentation\" alt=\"\">";
+    $html .= "</div>";
+
+    return $html;
+}

@@ -21,3 +21,8 @@
         animation: none !important;
     }
 }
+
+*:disabled, *[disabled] {
+    cursor: not-allowed !important;
+    filter: grayscale() !important;
+}

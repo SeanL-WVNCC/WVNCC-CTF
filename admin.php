@@ -1,14 +1,9 @@
 <?php
 include "include/functions.php";
 //setting up the top of the page, the banner
-$banner = "<section id=\"hero-section\">";
-$banner .= "<hgroup>";
-$banner .= "<h2 id=\"hero-section-title\">Administration</h2>";
-$banner .= "</hgroup>";
-$banner .= "<img src=\"img/admin.jpg\" alt=\"Image of a person working at a desk with a laptop and various papers and items.\">";
-$banner .= "</section>";
 //init variables
 $mainContent = "";
+$mainContent .= createBanner("Administration", "", "/img/admin.jpg");
 $table = "";
 //grabs the currently logged in user and their information from the database
 $user = getCurrentUser();
@@ -143,4 +138,4 @@ if ($user) {
     header("Location: /index.php");
 }
 
-echo generatePage($banner . $mainContent);
+echo generatePage($mainContent);

@@ -7,13 +7,7 @@ session_start();
 include "include/functions.php";
 
 $mainContent = "";
-$mainContent .= "<section id=\"hero-section\" aria-labelledby=\"hero-section-title\">";
-$mainContent .= "<hgroup>";
-$mainContent .= "<h2 id=\"hero-section-title\">Northern Phish &amp; Loan</h2>";
-$mainContent .= "<p>The Ohio Valley's Leading Financial Institution</p>";
-$mainContent .= "</hgroup>";
-$mainContent .= "<img src=\"img/bank.webp\" alt=\"\">";
-$mainContent .= "</section>";
+$mainContent .= createBanner("Northern Phish &amp; Loan", "The Ohio Valley's Leading Financial Institution", "/img/bank.webp");
 $mainContent .= "<section class=\"cards\" aria-labelledby=\"cyber-promo-heading\">";
 $mainContent .= "<h2 id=\"cyber-promo-heading\">Airtight Security.</h2>";
 $mainContent .= "<img src=\"img/ad_1.webp\" alt=\"The DarkVault card: your funds, your security (completely in our hands).\">";

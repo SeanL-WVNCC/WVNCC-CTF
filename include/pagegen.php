@@ -31,7 +31,7 @@ function createHeadElement(): string {
     $result .= "<meta charset=\"utf-8\">";
     $result .= "<meta name=\"author\" content=\"Everyone's names will go here\">";
     $result .= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
-    $result .= createStylesheetLinks(array("./css/style.css", "./css/header.css", "./css/main.css", "./css/footer.css", "./css/home.css", "./css/simpleform.css", "./css/dashboard.css", "./css/account.css", "./css/media-queries.css", "./css/important.css"));
+    $result .= createStylesheetLinks(array("./css/style.css", "./css/header.css", "./css/footer.css", "./css/home.css", "./css/banner.css", "./css/simpleform.css", "./css/dashboard.css", "./css/account.css", "./css/media-queries.css", "./css/important.css"));
     $result .= "<link rel=\"icon\" type=\"img/x-icon\" href=\"./img/logo.png\">";
     $result .= "<script src=\"./js/script.js\"></script>";
     $result .= "<title>Northern Phish &amp; Loan</title>";
@@ -48,7 +48,7 @@ function createHeaderElement(): string {
     $result = "";
     $result .= "<header>";
     $result .= "<a id=\"skip-link\" href=\"#main\">Skip to content</a>";
-    $result .= "<h1><img src=\"./img/logo.png\" alt=\"Northern Phish and Loan\"></h1> <!-- This was a link, removed to reduce unnecessary tab stops -->";
+    $result .= "<img src=\"./img/logo.png\" alt=\"Northern Phish and Loan\"> <!-- This was a link, removed to reduce unnecessary tab stops -->";
     $result .= "<nav id=\"primary-navigation\" aria-label=\"Site\">";
     $result .= "<ul>";
     $result .= "<li><a href=\"index.php\">Home</a></li>";
