@@ -61,6 +61,7 @@ function createHeaderElement(): string {
         $result .= "<li><a href=\"dashboard.php\">Dashboard</a></li>";
         $result .= "<li><a href=\"mobile-deposit.php\">Mobile deposit</a></li>";
         $result .= "<li><a href=\"transfer.php\">Funds transfer</a></li>";
+        $result .= "<li><a href=\"loanApplication.php\">Apply For Loan</a></li>";
         //$result .= "<li><a href=\"new-account.php\">Open account</a></li>";
         //$result .= "<li><a href=\"profile.php\">Profile</a></li>";
         $result .= "<li><a href=\"change-password.php\">Change Password</a></li>";
