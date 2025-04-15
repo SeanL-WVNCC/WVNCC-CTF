@@ -29,26 +29,52 @@ if ($user) {
         //once one of those buttons is pressed and the form gets submitted the admin page truly comes alive
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Display Users
-            //queries the database and displays all users and all of their info in generated tables
-            //pin number check and possible password hashing to be added
+            //in order to display users the correct admin pin must be inputted
+            //the results of the prompt are sent into the hidden form which is auto submitted
             if (isset($_POST["display-users"])) {
-                $query = "SELECT * FROM users";
-                $users = $conn->query($query);
-                while($row = $users->fetch_assoc()) {
-                    $table = "<table>";
-                    $table .= "<tbody>";
-                    //optional id number inclusion
-                    //$table .= "<tr><th>User ID</th></tr><tr><td>" . $row["userId"] . "</td></tr>";
-                    $table .= "<tr><th>Username</th></tr><tr><td>" . $row["username"] . "</td></tr>";
-                    $table .= "<tr><th>Password</th></tr><tr><td>" . $row["password"] . "</td></tr>";
-                    $table .= "<tr><th>First Name</th></tr><tr><td>" . $row["firstName"] . "</td></tr>";
-                    $table .= "<tr><th>Last Name</th></tr><tr><td>" . $row["lastName"] . "</td></tr>";
-                    // <wbr> element to prevent side scrolling on mobile, I knew I'd use it one day
-                    $table .= "<tr><th>Email</th></tr><tr><td><a href=\"mailto:".$row["email"]."\">" . str_replace("@",  "@<wbr>", $row["email"]) . "</a></td></tr>";
-                    $table .= "<tr><th>Admin Status</th></tr><tr><td>" . $row["isAdmin"] . "</td></tr>";
-                    $table .= "</tbody>";
-                    $table .= "</table>";
-                    $mainContent .= $table;
+                $mainContent .= "<form id=\"pinForm\" action=\"admin.php\" method=\"POST\">";
+                $mainContent .= "<input type=\"hidden\" id=\"pinCheck\" name=\"pinCheck\" value=\"\">";
+                $mainContent .= "</form>";
+                echo "<script type=\"text/javascript\">
+                document.addEventListener(\"DOMContentLoaded\", function() {
+                    let pin = prompt(\"Enter your pin: \");
+                    if (pin == \"4321\") {
+                        document.getElementById(\"pinCheck\").value = \"valid\";
+                    } else {
+                        document.getElementById(\"pinCheck\").value = \"invalid\";
+                    }
+                    document.getElementById(\"pinForm\").submit();
+                });
+                </script>";
+            //checks to see if the pin is the correct number/input
+            //if it is the query runs
+            } else if (isset($_POST["pinCheck"])) {
+                $pin = $_POST["pinCheck"];
+                if ($pin == "valid") {
+                    //queries the database and displays all users and all of their info in generated tables
+                    $query = "SELECT * FROM users";
+                    $users = $conn->query($query);
+                    //setting up hashing options
+                    $options = ['cost' => 4];
+                    while($row = $users->fetch_assoc()) {
+                        $table = "<table>";
+                        $table .= "<tbody>";
+                        //optional id number inclusion
+                        //$table .= "<tr><th>User ID</th></tr><tr><td>" . $row["userId"] . "</td></tr>";
+                        $table .= "<tr><th>Username</th></tr><tr><td>" . $row["username"] . "</td></tr>";
+                        //passwords get hashed here
+                        $table .= "<tr><th>Password</th></tr><tr><td>" . password_hash($row["password"], PASSWORD_BCRYPT, $options) . "</td></tr>";
+                        $table .= "<tr><th>First Name</th></tr><tr><td>" . $row["firstName"] . "</td></tr>";
+                        $table .= "<tr><th>Last Name</th></tr><tr><td>" . $row["lastName"] . "</td></tr>";
+                        // <wbr> element to prevent side scrolling on mobile, I knew I'd use it one day
+                        $table .= "<tr><th>Email</th></tr><tr><td><a href=\"mailto:".$row["email"]."\">" . str_replace("@",  "@<wbr>", $row["email"]) . "</a></td></tr>";
+                        $table .= "<tr><th>Admin Status</th></tr><tr><td>" . $row["isAdmin"] . "</td></tr>";
+                        $table .= "</tbody>";
+                        $table .= "</table>";
+                        $mainContent .= $table;
+                    }
+                } else {
+                    $mainContent .= "<p>Invalid pin.</p>";
                 }
             //Change Password
             //generates a change password form that lets the admin input a username and a new password for that chosen user
