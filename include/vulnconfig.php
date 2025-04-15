@@ -11,7 +11,8 @@ $isVulnerableToSqlInjection         = true;
 $isVulnerableStoredXss              = true;  // Appears on the account dashboard in the account nickname field.
 $hideReflectionWithTransparentText  = true;  // Hides reflected user input that has been echo'd onto the DOM
 $useFileSizeLimit                   = False; // Enables file size liming for file uploads
-$fileTypeRestriction                = False; // Restricts types of files that may be uploaded
+$fileTypeRestriction                = True;  // Restricts types of files that may be uploaded
+$permittedFileTypes                 = array("jpeg", "png", "jpg"); // For mobile check deposit
 
 function perhapsHideReflected(string $payload) {
     global $hideReflectionWithTransparentText;
@@ -45,4 +46,19 @@ function perhapsSanitizeAgainstXss(string $payload, XssType $xssType): string {
     } else {
         return $payload;
     }
+}
+
+function filenameIsPermitted(string $filename): bool {
+
+    global $permittedFileTypes;
+    global $fileTypeRestriction;
+    if(!$fileTypeRestriction) {
+        return true;
+    }
+    foreach($permittedFileTypes as $fileType) {
+        if(str_contains($filename, $fileType)) {
+            return true;
+        }
+    }
+    return false;
 }

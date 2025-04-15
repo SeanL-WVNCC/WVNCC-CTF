@@ -7,8 +7,7 @@ session_start();
 include "include/functions.php";
 
 $mainContent = "";
-$mainContent .= "<section class=\"single-column\"aria-labelledby=\"search-results\">";
-$mainContent .= "<h2 id=\"search-results\">Search Results</h2>";
+$banner = createBanner("Search Results", "", "/img/search-banner.jpg");
 if(array_key_exists("query", $_GET)) {
     $query = $_GET["query"];
     $payload = new PayloadCharacteristics($query);
@@ -29,5 +28,4 @@ if(array_key_exists("query", $_GET)) {
 } else {
     $mainContent .= "<p>Please enter your search query in the top right.</p>";
 }
-$mainContent .= "</section>";
-echo generatePage($mainContent);
+echo generatePage($banner . singleColumnLayout($mainContent));

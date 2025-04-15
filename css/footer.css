@@ -15,3 +15,7 @@ footer {
 footer p {
     font-weight: bold;
 }
+
+footer a {
+    color: inherit;
+}

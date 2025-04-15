@@ -18,8 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $fileSizeLimitByte = 15000000; // File size is bytes. Equals to 15MB
     $maxFileSize = 50000000; // File size is bytes. Equals to 50MB
     $fileSizeLimitMB = $fileSizeLimitByte / 1000000;
-    $allowedFileTypes = array("jpeg","png","jpg");
-    $allowedFileTypesStr = implode(", ", $allowedFileTypes);
+    $allowedFileTypesStr = implode(", ", $permittedFileTypes);
 
     // Directory for Upload Files
     $fileUploadDirectory = "uploads/";
@@ -45,22 +44,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         sleep(20);
         $error = "Congrats! You pulled off a DOS attack, but it was way too big for our page! So you get some extra credit!";
     }
-    
-    // Testing if the file is one of the accepted file types, if $fileTypeRestriction is enabled, otherwise it skips this code
-    if($strFileName != ''){
-        if(str_contains($strFileName,'png')){
-            $error = '';
+        if(!filenameIsPermitted($strFileName)) {
+            $error = "File must contain $allowedFileTypesStr - \"$strFileName\" does not.";
         }
-        elseif(str_contains($strFileName,'jpg')){
-            $error = '';
-        }
-        elseif(str_contains($strFileName,'jpeg')){
-            $error = '';
-        }
-        else{
-            $error = 'File must contain jpg, png, or jpeg "' . $strFileName . '" does not.';
-        }
-    }
     //Uploading Files as long as it fits in the requirements
     if($error == "") {
         if(move_uploaded_file($tmpFilename, $targetFile)) {
