@@ -50,33 +50,24 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 type: "password",
                 name: "password",
                 accessibleName: "Current password",
-                defaultValue: "",
-                options: array(),
                 errorMessage: $passwordError,
                 validationIcon: $currentPasswordPayload->isSuspect() ? $susIcon : null,
-                autofocus: false,
                 isRequired: true
             ),
             new SimpleFormField(
                 type: "password",
                 name: "new-password",
                 accessibleName: "New password",
-                defaultValue: "",
-                options: array(),
                 errorMessage: "",
                 validationIcon: $newPasswordPayload->isSuspect() ? $susIcon : null,
-                autofocus: false,
                 isRequired: true
             ),
             new SimpleFormField(
                 type: "password",
                 name: "retype-password",
                 accessibleName: "Retype password",
-                defaultValue: "",
-                options: array(),
                 errorMessage: $retypePasswordError,
                 validationIcon: $retypePasswordPayload->isSuspect() ? $susIcon : null,
-                autofocus: false,
                 isRequired: true
             ),
         ),

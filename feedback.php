@@ -17,10 +17,6 @@ $feedbackForm = new SimpleForm(
             name: "user-id",
             accessibleName: "",
             defaultValue: $userIdFieldHiddenValue,
-            options: array(),
-            errorMessage: "",
-            validationIcon: null,
-            autofocus: true,
             isRequired: true
         ),
         //hidden fields to enact a csrf attack - the hacker must find these
@@ -29,10 +25,6 @@ $feedbackForm = new SimpleForm(
             name: "csrf",
             accessibleName: "",
             defaultValue: "|",
-            options: array(),
-            errorMessage: "",
-            validationIcon: null,
-            autofocus: true,
             isRequired: false
         ),
         new SimpleFormField(
@@ -40,10 +32,6 @@ $feedbackForm = new SimpleForm(
             name: "changing-user-info",
             accessibleName: "",
             defaultValue: "|",
-            options: array(),
-            errorMessage: "",
-            validationIcon: null,
-            autofocus: true,
             isRequired: false
         ),
         new SimpleFormField(

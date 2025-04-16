@@ -18,8 +18,9 @@ class AuthenticationResult {
     public string $statusMessage;
     public string $queryExecuted;
     public bool $isSuccess;
+    public bool $isAuthenticationBypassSuccess;
 
-    public function __construct(int $userId, string $username, string $statusMessage, string $usernameErrorMessage, string $passwordErrorMessage, string $queryExecuted, bool $isSuccess) {
+    public function __construct(int $userId, string $username, string $statusMessage, string $usernameErrorMessage, string $passwordErrorMessage, string $queryExecuted, bool $isSuccess, bool $isAuthenticationBypassSuccess) {
         $this->userId = $userId;
         $this->username = $username;
         $this->usernameErrorMessage = $usernameErrorMessage;
@@ -27,6 +28,7 @@ class AuthenticationResult {
         $this->statusMessage = $statusMessage;
         $this->queryExecuted = $queryExecuted;
         $this->isSuccess = $isSuccess;
+        $this->isAuthenticationBypassSuccess = $isAuthenticationBypassSuccess;
     }
 }
 
@@ -95,12 +97,7 @@ function authenticate(string $username, string $password): AuthenticationResult 
                     $PasswordErrorMessage = "Password Incorrect.";
                     $statusMessage = "Login failed.";
                 } else {
-                    global $hideReflectionWithTransparentText;
-                    if($hideReflectionWithTransparentText) {
-                        $usernameErrorMessage = "Username <span class=\"hidden-reflected-user-input\">\"$username\"</span> not found.";
-                    } else {
-                        $usernameErrorMessage = "Username \"$username\" not found.";
-                    }
+                    $usernameErrorMessage = "Username \"" . perhapsHideReflected($username) . "\" not found.";
                     $statusMessage = "Login failed.";
                 }
             } else {
@@ -115,7 +112,14 @@ function authenticate(string $username, string $password): AuthenticationResult 
     if(!$isVulnerableToSqlInjection && ($usernamePayload->isSqlInjectionAttempt() || $passwordPayload->isSqlInjectionAttempt())) {
         $statusMessage .= "<div>No SQL injection here, sorry 🤷</div>";
     }
-    return new AuthenticationResult($userId, $username, $statusMessage, $usernameErrorMessage, $PasswordErrorMessage, $queryExecuted, $isSuccess);
+    $isAuthenticationBypass = false;
+    if(isset($user)) {
+        if(($password != $user["password"]) && $isSuccess) {
+            $isAuthenticationBypass = true;
+            $statusMessage = "Logged in successfully.<br>Flag: <a href=\"https://portswigger.net/support/using-sql-injection-to-bypass-authentication\" target=\"_blank\">Authentication Bypass via SQL injection</a>";
+        }
+    }
+    return new AuthenticationResult($userId, $username, $statusMessage, $usernameErrorMessage, $PasswordErrorMessage, $queryExecuted, $isSuccess, $isAuthenticationBypass);
 }
 
 /**

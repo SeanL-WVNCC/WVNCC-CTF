@@ -34,22 +34,13 @@ if(isLoggedIn()) {
                 type: "select",
                 name: "account-type",
                 accessibleName: "Account Type",
-                defaultValue: "",
                 options: array("Checking", "Saving", "Dark Vault Credit", "Morgage"),
-                errorMessage: "",
-                validationIcon: null,
-                autofocus: false,
                 isRequired: true
             ),
             new SimpleFormField(
                 type: "text",
                 name: "account-nickname",
                 accessibleName: "Account Nickname",
-                defaultValue: "",
-                options: array(),
-                errorMessage: "",
-                validationIcon: null,
-                autofocus: false,
                 isRequired: true
             ),
         ),

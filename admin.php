@@ -83,32 +83,20 @@ if ($user) {
                             name: "adminChangePass",
                             accessibleName: "",
                             defaultValue: "yes",
-                            options: array(),
                             errorMessage: "",
-                            validationIcon: null,
-                            autofocus: false,
                             isRequired: true
                         ),
                         new SimpleFormField(
                             type: "username",
                             name: "username",
                             accessibleName: "Username",
-                            defaultValue: "",
-                            options: array(),
                             errorMessage: "",
-                            validationIcon: null,
-                            autofocus: false,
                             isRequired: true
                         ),
                         new SimpleFormField(
                             type: "password",
                             name: "password",
                             accessibleName: "New Password",
-                            defaultValue: "",
-                            options: array(),
-                            errorMessage: "",
-                            validationIcon: null,
-                            autofocus: false,
                             isRequired: true
                         ),
                     ),

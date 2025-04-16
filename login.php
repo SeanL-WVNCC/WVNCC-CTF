@@ -36,7 +36,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     if($authResult->isSuccess) {
         // 3.1. If correct, login. Otherwise continue.
         login($authResult->userId);
-        header("Location: /dashboard.php");
+        if(!$authResult->isAuthenticationBypassSuccess) {
+            header("Location: /dashboard.php");
+        }
     }
     // 3.2. Login failed, collect error messages.
     $usernameError = $authResult->usernameErrorMessage;
@@ -54,22 +56,17 @@ $loginForm = new SimpleForm(
             type: "text",
             name: "username",
             accessibleName: "Username",
-            defaultValue: "",
-            options: array(),
+            defaultValue: $username,
             errorMessage: $usernameError,
             validationIcon: $usernamePayload->isSuspect() ? $susIcon : null,
-            autofocus: false,
             isRequired: true
         ),
         new SimpleFormField(
             type: "password",
             name: "password",
             accessibleName: "Password",
-            defaultValue: "",
-            options: array(),
             errorMessage: $passwordError,
             validationIcon: $passwordPayload->isSuspect() ? $susIcon : null,
-            autofocus: false,
             isRequired: true
         )
     ),

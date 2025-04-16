@@ -15,21 +15,12 @@ $loanApplicationForm = new SimpleForm(
             name: "user-id",
             accessibleName: "",
             defaultValue: $userIdFieldHiddenValue,
-            options: array(),
-            errorMessage: "",
-            validationIcon: null,
-            autofocus: true,
             isRequired: true
         ),
         new SimpleFormField(
             type: "text",
             name: "fullName",
             accessibleName: "Full Name",
-            defaultValue: "",
-            options: array(""),
-            errorMessage: "",
-            validationIcon: null,
-            autofocus: false,
             isRequired: true
         ),
         new SimpleFormField(
@@ -37,43 +28,24 @@ $loanApplicationForm = new SimpleForm(
             name: "ssNumber",
             accessibleName: "Social Security Number",
             defaultValue: "000-000-0000",
-            options: array(),
-            errorMessage: "",
-            validationIcon: null,
-            autofocus: false,
             isRequired: true
         ),
         new SimpleFormField(
             type: "text",
             name: "accountNumber",
             accessibleName: "Account Number",
-            defaultValue: "",
-            options: array(''),
-            errorMessage: "",
-            validationIcon: null,
-            autofocus: false,
             isRequired: true
         ),
         new SimpleFormField(
             type: "number",
             name: "annualIncome",
             accessibleName: "Annual Income",
-            defaultValue: "",
-            options: array(),
-            errorMessage: "",
-            validationIcon: null,
-            autofocus: false,
             isRequired: true
         ),
     new SimpleFormField(
         type: "number",
         name: "monthlyHousing",
         accessibleName: "Monthly Housing Expense",
-        defaultValue: "",
-        options: array(),
-        errorMessage: "",
-        validationIcon: null,
-        autofocus: false,
         isRequired: true
     ),
     ),

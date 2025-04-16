@@ -26,7 +26,7 @@ class SimpleFormField {
     public bool $autofocus;
     public bool $isRequired;
 
-    public function __construct(string $type, string $name, string $accessibleName, string $defaultValue, array $options, string $errorMessage, ValidationIcon | null $validationIcon, bool $autofocus, bool $isRequired) {
+    public function __construct(string $type, string $name, string $accessibleName, string $defaultValue="", array $options=array(), string $errorMessage="", ValidationIcon | null $validationIcon=null, bool $autofocus=false, bool $isRequired=false) {
         $this->type = $type;
         $this->name = $name;
         $this->accessibleName = $accessibleName;
