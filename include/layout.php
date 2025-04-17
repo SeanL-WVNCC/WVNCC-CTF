@@ -22,6 +22,13 @@ function twoColumnLayout(string $left, string $right) {
 }
 
 /**
+ * Wraps the supplied HTML with a div having class `three-column`.
+ */
+function threeColumnLayout(string $left, string $center, string $right) {
+    return "<div class=\"three-column\" role=\"presentation\">$left$center$right</div>";
+}
+
+/**
  * Returns HTML markup for a banner with a title and subtitle.
  */
 function createBanner(string $title, string $subtitle, string $backgroundImageUrl): string {

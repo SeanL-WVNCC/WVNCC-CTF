@@ -125,4 +125,5 @@ function onPageLoad() {
     });
 }
 
-window.onload = onPageLoad;
+addEventListener("DOMContentLoaded", (event) => {onPageLoad()});
+

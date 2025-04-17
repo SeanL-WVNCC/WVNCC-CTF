@@ -1,7 +1,7 @@
 <?php
 include "include/functions.php";
 $mainContent = "";
-$mainContent .= createBanner("Customer Feedback", "We value your opinion!", "/img/review.jpg");
+$mainContent .= createBanner("Customer Feedback", "We value your opinion!", "/img/review-compressed.webp");
 $mainContent .= "<section id=\"feedbackField\" class=\"single-column\">";
 $user = getCurrentUser();
 if($user) {

@@ -1,6 +1,6 @@
 /*
     style.css
-    Basic styles, should not contain class or ID references.
+    Basic styles and dumping ground of assorted CSS refuse.
 */
 
 body {
@@ -53,7 +53,7 @@ label {
     line-height: 1em;
 }
 
-.two-column {
+.two-column, .three-column {
     display: flex;
     flex-direction: row;
     gap: 2rem;
@@ -63,7 +63,7 @@ label {
     align-items: start;
     padding: 1rem;
 }
-.two-column > * {
+.two-column > *, .three-column > * {
     flex-basis: 100%;
 }
 
@@ -128,11 +128,6 @@ main button:hover {
     cursor: pointer;
 }
 
-main section {
-    background-color: rgba(255,255,255,0);
-    backdrop-filter: blur(8px);
-}
-
 table, td, tr {
     border: none;
     border-collapse: collapse;
@@ -171,4 +166,21 @@ main p {
 small {
     /* lol */
     font-size: .75rem;
+}
+
+.three-column > *:nth-child(1) {
+    text-align: left;
+}
+
+
+.three-column > *:nth-child(2) {
+    text-align: center;
+}
+
+.three-column > *:nth-child(3) {
+    text-align: right;
+}
+
+main ul {
+    line-height: 2em;
 }

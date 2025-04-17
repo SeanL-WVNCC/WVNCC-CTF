@@ -30,7 +30,7 @@ nav ul, nav li {
     margin: 0;
 }
 
-nav a, nav button {
+header nav a, header nav button {
     display: block;
     padding: 1em;
     width: 100%;
@@ -46,14 +46,14 @@ nav a, nav button {
     align-content: center;
 }
 
-nav a:has(img) {
+header nav a:has(img) {
     padding: 0;
 }
 
 h1 {
     margin: 0;
 }
-nav img {
+header nav img {
     display: block;
     height: 3.25rem;
 }
@@ -155,6 +155,6 @@ button[aria-expanded=true]::after {
 	transform: rotate(225deg);
 }
 
-nav button:hover, nav button:focus, nav a:focus, nav a:hover {
+header nav button:hover, header nav button:focus, header nav a:focus, header nav a:hover {
     backdrop-filter: brightness(150%);
 }
