@@ -7,12 +7,20 @@
 disclosureButtons = [];
 currentDisclosureButton = null;
 menuIsOpen = false;
+/*
+    HACK: Use the system time to prevent an opened menu from being immediately closed.
+    If a menu is open, mousing over a closed menu closes the open menu and opens the hovered menu instead.
+    Problem is — this does not play nice with touch devices which may trigger a brief hover event immediatly before a tap.
+    We could check for touch input directly, but some devices (laptops) have both touch and mouse input.
+*/
+lastMenuOpenTime = Date.now();
 
 /**
  * Expands the drop-down menu of a button that implements 
  * @param {Node} button HTML button element that opens the drop down.
  */
 function expandButton(button)  {
+
     closeAllMenus();
     menuIsOpen = true;
     menu = document.getElementById(button.getAttribute("aria-controls"));
@@ -29,6 +37,10 @@ function expandButton(button)  {
  * @param {Node} button HTML button element that opens the drop down.
  */
 function unexpandButton(button)  {
+
+    if(Date.now() - lastMenuOpenTime < 250) {
+        return;
+    }
     menuIsOpen = false;
     menu = document.getElementById(button.getAttribute("aria-controls"));
     if(menu) {
@@ -65,6 +77,7 @@ function keypressEventDisclouseButton(event) {
     } else if(event.code == "ArrowDown") {
         event.preventDefault();
         expandButton(currentDisclosureButton);
+        lastMenuOpenTime = Date.now();
     
     // Up arrow collapses the currently focused menu
     } else if(event.code == "ArrowUp") {
@@ -86,13 +99,20 @@ function onPageLoad() {
     disclosureButtons = document.querySelectorAll("*[aria-expanded]");
     disclosureButtons.forEach(button => {
         button.onkeydown = keypressEventDisclouseButton;
-        button.onclick = function(){toggleExpandButton(button)};
+        button.onclick = function(){
+            if(!menuIsOpen) {
+                lastMenuOpenTime = Date.now();
+            }
+            toggleExpandButton(button)
+        };
         button.onmouseover = function() {
             if(menuIsOpen) {
                 closeAllMenus();
                 expandButton(button);
-                menuIsOpen = true}
-            };
+                menuIsOpen = true;
+                lastMenuOpenTime = Date.now();
+            }
+        };
         button.onfocus = function() {
             currentDisclosureButton = button
         }

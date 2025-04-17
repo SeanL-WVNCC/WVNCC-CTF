@@ -20,7 +20,7 @@
         flex-direction: column;
         align-items: stretch;
     }
-    #secondary-navigation, header img, form[role="search"] {
+    form[role="search"] {
         /* Naw bruh we don't need it 🗿 */
         display: none;
     }
@@ -36,7 +36,10 @@
 /* Responsive styles for phones */
 
 @media screen and (max-width: 25rem)  {
-    /* None for now... */
+    .simple-form {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
 }
 
 /* Prevent the header from taking over the world */

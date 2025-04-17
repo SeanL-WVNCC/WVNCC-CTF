@@ -48,10 +48,9 @@ function createHeaderElement(): string {
     $result = "";
     $result .= "<header>";
     $result .= "<a id=\"skip-link\" href=\"#main\">Skip to content</a>";
-    $result .= "<img src=\"./img/logo.png\" alt=\"Northern Phish and Loan\"> <!-- This was a link, removed to reduce unnecessary tab stops -->";
     $result .= "<nav id=\"primary-navigation\" aria-label=\"Site\">";
     $result .= "<ul>";
-    $result .= "<li><a href=\"index.php\">Home</a></li>";
+    $result .= "<li><a href=\"index.php\"><img src=\"./img/logo.png\" alt=\"Home\"></a></li>";
     if(isLoggedIn()) {
         //gets the logged in user, their account info, and sets the "isAdmin" field's true/false to the admin check variable
         $user = getCurrentUser();
