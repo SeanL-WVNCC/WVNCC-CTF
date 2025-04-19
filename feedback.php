@@ -2,7 +2,6 @@
 include "include/functions.php";
 $mainContent = "";
 $mainContent .= createBanner("Customer Feedback", "We value your opinion!", "/img/review-compressed.webp");
-$mainContent .= "<section id=\"feedbackField\" class=\"single-column\">";
 $user = getCurrentUser();
 if($user) {
     $userIdFieldHiddenValue = $user->userId;
@@ -106,7 +105,9 @@ $feedbackForm = new SimpleForm(
     action: "/feedback.php",
     submitButtonName: "Send"
 );
-$mainContent .= $feedbackForm->generateHtml();
+$mainContent .= twoColumnLayout($feedbackForm->generateHtml(), "<div class=\"review-blurbs\"><p><div class=\"review-blurb\"><q>I like this website.</q></p><p>— Johnny Longbio</p></div><div class=\"review-blurb\"><q>I don't know what I'd do without Northern Phish!</q></p><p>— Prince of Nigeria</p></div><div class=\"review-blurb\"><q>負けるとわかってて戦うか!
+ポケモントレーナーの性だな。
+いいだろう!かかってこい!</q></p><p>— Brok from Pokémon</p></div></div>");
 $mainContent .= "</section>";
 
 if($user) {

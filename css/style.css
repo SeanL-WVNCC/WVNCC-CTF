@@ -66,6 +66,9 @@ label {
     align-items: start;
     padding: 1rem;
 }
+.two-column {
+    justify-content: center;
+}
 .two-column > *, .three-column > * {
     flex-basis: 100%;
 }
@@ -208,4 +211,21 @@ article.h-entry {
     padding: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.review-blurbs {
+    max-width: 40rem;
+}
+
+.review-blurbs q {
+    font-size: 1.8rem;
+    font-style: italic;
+}
+
+.review-blurbs p {
+    margin: 0;
+}
+
+.review-blurb {
+    margin-block: 2rem;
 }
