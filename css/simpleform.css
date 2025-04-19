@@ -56,7 +56,7 @@
     text-align: center;
     margin: 0;
     margin-bottom: 3rem;
-    background-color: #c82e3d;
+    background-color: var(--brand-color);
     color: white;
     color-scheme: only dark;
     padding: 1.5rem;

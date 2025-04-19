@@ -26,7 +26,6 @@ footer .two-column {
 }
 
 footer h2 {
-    text-align: center;
     font-size: 1.1rem;
 }
 
@@ -34,4 +33,16 @@ footer ul {
     list-style: none;
     line-height: 2em;
     padding: 0;
+}
+
+footer .three-column > *:nth-child(1) {
+    text-align: left;
+}
+
+footer .three-column > *:nth-child(2) {
+    text-align: center;
+}
+
+footer .three-column > *:nth-child(3) {
+    text-align: right;
 }

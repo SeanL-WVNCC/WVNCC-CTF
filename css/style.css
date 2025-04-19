@@ -2,6 +2,9 @@
     style.css
     Basic styles and dumping ground of assorted CSS refuse.
 */
+:root {
+    --brand-color: #c41230;
+}
 
 body {
     margin: 0;
@@ -67,6 +70,22 @@ label {
     flex-basis: 100%;
 }
 
+.three-column h2 {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.two-column {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+main .three-column {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    text-align: justify;
+}
+
 .error-block {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
@@ -117,7 +136,7 @@ main button {
     margin: 0.5em auto;
     border-radius: 0.25em;
     color: white;
-    background-color: #c82e3d;
+    background-color: var(--brand-color);
     font-weight: bold;
 }
 main button:focus, main button:hover {
@@ -168,19 +187,25 @@ small {
     font-size: .75rem;
 }
 
-.three-column > *:nth-child(1) {
-    text-align: left;
-}
-
-
-.three-column > *:nth-child(2) {
-    text-align: center;
-}
-
-.three-column > *:nth-child(3) {
-    text-align: right;
-}
-
 main ul {
     line-height: 2em;
+}
+
+*[role="presentation"]:has(.three-column) {
+    background-color: #f0f0f0;
+}
+
+main hgroup * {
+    margin-block: 0;
+}
+
+hgroup h3 {
+    font-size: 1.2rem;
+}
+
+article.h-entry {
+    border: 2px dashed var(--brand-color);
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }

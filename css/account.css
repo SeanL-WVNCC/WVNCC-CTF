@@ -1,5 +1,5 @@
 .banner {
-    background-color: #215f9a;
+    background-color: var(--brand-color);
     color: white;
 }
 
