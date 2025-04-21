@@ -14,6 +14,8 @@ $mainContent .= "<li>Loan application banner graphic from <a href=\"https://www.
 $mainContent .= "<li>\"That looks a lot like JavaScript\" image from <a href=\"https://www.instagram.com/therock/\" target=\"_blank\">Dwayne \"The Rock\" Johnson</a>.</li>";
 $mainContent .= "<li>User account names from <a href=\"https://1000randomnames.com/\">1000randomnames.com</a>.</li>";
 $mainContent .= "<li>Form submission graphic taken from <a href=\"https://www.innersloth.com/games/among-us/\">Innersloth games</a> under fair use.</li>";
+$mainContent .= "<li>'This is Fine' comic made by <a href=\"https://www.kcgreendotcom.com/index.html\">KC Green.</a></li>";
+$mainContent .= "<li>The monkey puppet image is from the Japanese children's show 'Ōkiku Naru Ko'</li>";
 $mainContent .= "</ul>";
 $mainContent .= "<article aria-labeledby=\"dark-vault-terms\">";
 $mainContent .= "<h2 id=\"dark-vault-terms\">Northern Phish & Loan &ndash; Dark Vault Card Terms of Service</h2>";
