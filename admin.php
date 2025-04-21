@@ -5,6 +5,8 @@ include "include/functions.php";
 $mainContent = "";
 $mainContent .= createBanner("Administration", "", "/img/admin.jpg");
 $table = "";
+$leftColumn = "";
+$rightColumn = "";
 //grabs the currently logged in user and their information from the database
 $user = getCurrentUser();
 if ($user) {
@@ -69,7 +71,13 @@ if ($user) {
                         $mainContent .= $table;
                     }
                 } else {
-                    $mainContent .= "<p>Invalid pin.</p>";
+                    $leftColumn .= "<img src=\"img/monkey-puppet.jpg\">";
+                    $rightColumn .= "<h2>Incorrect Pin Number</h2>";
+                    $rightColumn .= "<p>Kindly, If you are not an admin get out of here right now, please.
+                    You are not allowed to be here and that is not cool of you to try to break into here. 
+                    It really is quite rude.</p>";
+                    $rightColumn .= "<p>If you are an admin and simply forgot your pin, sorry.</p>";
+                    $mainContent .= twoColumnLayout($leftColumn, presentationalWrapper($rightColumn));
                 }
             //Change Password
             //generates a change password form that lets the admin input a username and a new password for that chosen user
