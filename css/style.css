@@ -229,3 +229,8 @@ article.h-entry {
 .review-blurb {
     margin-block: 2rem;
 }
+
+.locations-imgs {
+    max-width: 100%;
+    max-height: 100%;
+}
