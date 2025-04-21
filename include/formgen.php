@@ -141,7 +141,9 @@ class SimpleForm {
             $html .= "<header id=\"$instructionsId\" aria-label=\"$instructionsLabel\" role=\"region\">";
         }
         $html .= "<h2 id=\"$formNameId\">$formName</h2>";
-        $html .= "<p>$formInstuctions</p>";
+        if($formInstuctions) {
+            $html .= "<p>$formInstuctions</p>";
+        }
         $html .= "</header>";
         if(strtoupper($this->method) == "POST") {
             $enctype = "multipart/form-data";

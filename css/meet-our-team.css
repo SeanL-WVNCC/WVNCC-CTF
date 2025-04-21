@@ -1,0 +1,34 @@
+#meet-our-team tbody {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+    background-color: transparent;
+    padding: 1rem;
+}
+
+#meet-our-team img {
+    width: 100%;
+    display: block;
+}
+
+#meet-our-team td {
+    flex-basis: 2rem;
+    padding: 0;
+    line-height: 1em;
+}
+
+#meet-our-team tr, #meet-our-team td {
+    display: block;
+    text-align: center;
+}
+
+#meet-our-team .vcard {
+    background-color: aliceblue;
+    border: 2px solid black;
+}
+
+#meet-our-team .vcard .fn {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0;
+}

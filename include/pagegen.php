@@ -29,9 +29,9 @@ function createHeadElement(): string {
     $result = "";
     $result .= "<head>";
     $result .= "<meta charset=\"utf-8\">";
-    $result .= "<meta name=\"author\" content=\"Everyone's names will go here\">";
+    $result .= "<meta name=\"author\" content=\"West Virginia Northern Community College, Department of Computer Information Technology\">";
     $result .= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
-    $result .= createStylesheetLinks(array("./css/style.css", "./css/header.css", "./css/footer.css", "./css/home.css", "./css/banner.css", "./css/simpleform.css", "./css/dashboard.css", "./css/account.css", "./css/media-queries.css", "./css/important.css"));
+    $result .= createStylesheetLinks(array("./css/style.css", "./css/header.css", "./css/footer.css", "./css/home.css", "./css/banner.css", "./css/simpleform.css", "./css/dashboard.css", "./css/account.css", "./css/meet-our-team.css", "./css/media-queries.css", "./css/important.css"));
     $result .= "<link rel=\"icon\" type=\"img/x-icon\" href=\"./img/logo.png\">";
     $result .= "<script src=\"./js/script.js\"></script>";
     $result .= "<title>Northern Phish &amp; Loan</title>";
@@ -76,7 +76,7 @@ function createHeaderElement(): string {
     $result .= "<li><a href=\"feedback.php\">Feedback</a></li>";
     $result .= "<li><button id=\"about-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"about-dropdown\">About</button>";
     $result .= "<ul id=\"about-dropdown\" hidden>";
-    $result .= "<li><a href=\"about.php\">About Us</a></li>";
+    $result .= "<li><a href=\"our-team.php\">Our team</a></li>";
     $result .= "<li><a href=\"locations.php\">Locations</a></li>";
     $result .= "<li><a href=\"legal.php\">Legal</a></li>";
     $result .= "</ul>";
@@ -135,8 +135,8 @@ function generatePage(string $mainContent): string {
     $footerRight .= "<li><a href=\"loanApplication.php\">Loan Application</a></li>";
     $footerRight .= "<li><a href=\"feedback.php\">Contact</a></li>";
     $footerRight .= "<li><a href=\"about.php\">About</a></li>";
-    $footerRight .= "<li><a title=\"lol nope\" disabled>Careers</a></li>";
-    $footerRight .= "</ul><nav>";
+    $footerRight .= "<li><a title=\"lol nope\">Careers</a></li>";
+    $footerRight .= "</ul></nav>";
     $result .= threeColumnLayout(presentationalWrapper($footerLeft), presentationalWrapper($footerMiddle), presentationalWrapper($footerRight));
     $result .= "<hr>";
     $realDisclamer = "";

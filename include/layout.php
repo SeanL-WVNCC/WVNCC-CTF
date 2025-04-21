@@ -61,10 +61,26 @@ function createNewsletterArticle(string $title, DateTime $date, string $content)
     $html .= "<h3 class=\"p-name\">$title</h3>";
     $dateIso = date_format($date, "Y-m-d");
     $dateUsa = date_format($date, "F jS, Y");
-    $html .= "<p><date datetime=\"$dateIso\">$dateUsa</date></p>";
+    $html .= "<p><time datetime=\"$dateIso\">$dateUsa</time></p>";
     $html .= "</hgroup>";
     $html .= "<div class=\"e-content\">$content</div>";
     $html .= "</article>";
+
+    return $html;
+}
+
+/**
+ * Returns HTML an entry in the "our team" section.
+ */
+function createOurTeamEntry(string $name, string $position, string $phoneNumber, int|null $phoneNumberExt=null, string $email=null, string|null $portraitUrl=null) {
+
+    $html = "";
+    $html .= "<tr class=\"vcard\">";
+    $html .= "<td><img class=\"photo\" src=\"$portraitUrl\" alt=\"portrait of $name\"></td>";
+    $html .= "<td class=\"fn\">$name</td>";
+    $html .= "<td>$position</td>";
+    $html .= "<td class=\"tel\"><a href=\"tel:$phoneNumber;ext=301\">$phoneNumber <abbr>Ext. $phoneNumberExt</abbr></a></td>";
+    $html .= "</tr>";
 
     return $html;
 }
