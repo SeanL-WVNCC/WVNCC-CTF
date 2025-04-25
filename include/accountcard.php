@@ -30,7 +30,7 @@ function generateAccountCard(BankAccount $account, $currentBalance, bool $isLink
     $accountNameAndNumberSection = "<div class=\"account-name-and-number-section\">$icon<div class=\"account-type-section\"><p class=\"account-name\">$accountName account</p><p>$accountType #$accountNumber</p></div></div>";
     $accountBalanceSection = "<div class=\"account-balance-section\"><p class=\"account-balance\">$$dollars.$cents</p><p>Current balance</p></div>";
     if($isLink) {
-        $html .= "<a class=\"account-card\" href=\"banking/account.php?account-number=$accountNumber\" aria-label=\"$label\">$accountNameAndNumberSection$accountBalanceSection</a>";
+        $html .= "<a class=\"account-card\" href=\"/banking/account.php?account-number=$accountNumber\" aria-label=\"$label\">$accountNameAndNumberSection$accountBalanceSection</a>";
     } else {
         $html .= "<section class=\"account-card\" aria-label=\"Account summary\">$accountNameAndNumberSection$accountBalanceSection</section>";
     }

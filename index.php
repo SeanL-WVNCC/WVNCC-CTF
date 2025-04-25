@@ -4,7 +4,7 @@
     Static page with some promotional content.
 */
 session_start();
-include "include/functions.php";
+include "/var/www/html/include/functions.php";
 
 $mainContent = "";
 $mainContent .= createBanner("Northern Phish &amp; Loan", "The Ohio Valley's Leading Financial Institution", "/img/bank.webp");
@@ -21,7 +21,7 @@ $leftColumn .= "<h2 id=\"northern-phish-history\">Our story</h2>";
 $leftColumn .= "<p>Northern Phish &amp; Loan is a bank that has been committed to serving the Ohio Valley since 1953. When Richard Nixon first founded Northern Phish & Loan, he truly believed that honesty and integrity was the key to success. In the intervening seventy years, we have proven him right. Our reputation for reliability, trust, and personalized service has resulted in Northern Phish becoming the leading bank in the entire Ohio Valley. From our humble beginnings, we&apos;ve grown into a pillar of the community, dedicated to meeting the financial needs of families and businesses alike.</p>";
 $leftColumn .= "<p>At Northern Phish &amp; Loan, we believe in putting our customers first. Whether you&apos;re looking for personal banking solutions, business loans, or financial advice, our team is here to guide you every step of the way. We offer a wide range of services, from savings and checking accounts to mortgage and investment options, all designed to help you achieve your financial goals.</p>";
 $leftColumn .= "<p>As a locally-owned institution, we understand the unique needs of the Ohio Valley and are proud to be a trusted partner in helping our community thrive. We strive to make banking easy, accessible, and convenient for everyone we serve. Join us at Northern Phish &amp; Loan—where your financial success is our top priority.</p>";
-$leftColumn .= "<form action=\"about-nixon.php\" method=\"POST\">";
+$leftColumn .= "<form action=\"/about/about-nixon.php\" method=\"POST\">";
 $leftColumn .= "<input type=\"hidden\" name=\"tmp\" value=\"\"/>";
 $leftColumn .= "<input type=\"hidden\" name=\"tmp2\" value=\"\"/>";
 $leftColumn .= "<button> type=\"submit\"/>Learn More About Richard Nixon</button>";

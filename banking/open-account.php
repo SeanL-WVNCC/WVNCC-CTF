@@ -9,7 +9,7 @@ include "/var/www/html/include/functions.php";
 $user = getCurrentUser();
 if(!$user) {
     // Not logged in? Go away!
-    header("Location: /login.php");
+    header("Location: /banking/login.php");
     exit();
 }
 if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -24,6 +24,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     insertAccountIntoDb(new BankAccount(0, $user->userId, AccountType::fromString($_POST["account-type"]), $_POST["account-nickname"]));
 } else {
-    header("Location: /dashboard.php");
+    header("Location: /banking/dashboard.php");
 }
-header("Location: /dashboard.php");
+header("Location: /banking/dashboard.php");

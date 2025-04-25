@@ -1,6 +1,6 @@
 <?php
 /*
-    daskboard.php
+    dashboard.php
     Page for users to manage their finances. 
 */
 session_start();
@@ -46,12 +46,12 @@ if(isLoggedIn()) {
         ),
         instructions: $formInstructions,
         method: "POST",
-        action: "/open-account.php",
+        action: "/banking/open-account.php",
         submitButtonName: "Open Account"
     );
     $rightColumn .= $loginForm->generateHtml();
     $mainContent .= twoColumnLayout($leftColumn, $rightColumn);
     echo generatePage($mainContent);
 } else {
-    header("Location: /login.php");
+    header("Location: /banking/login.php");
 }

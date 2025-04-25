@@ -51,7 +51,7 @@ $loanApplicationForm = new SimpleForm(
     ),
     instructions: "",
     method: "POST",
-    action: "/loanApplication.php",
+    action: "/banking/loanApplication.php",
     submitButtonName: "Submit Application"
 );
 if($_SERVER['REQUEST_METHOD'] == "POST") {

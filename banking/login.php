@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         // 3.1. If correct, login. Otherwise continue.
         login($authResult->userId);
         if(!$authResult->isAuthenticationBypassSuccess) {
-            header("Location: /dashboard.php");
+            header("Location: /banking/dashboard.php");
         }
     }
     // 3.2. Login failed, collect error messages.
@@ -72,7 +72,7 @@ $loginForm = new SimpleForm(
     ),
     instructions: $formInstructions,
     method: "POST",
-    action: "/login.php",
+    action: "/banking/login.php",
     submitButtonName: "Login"
 );
 

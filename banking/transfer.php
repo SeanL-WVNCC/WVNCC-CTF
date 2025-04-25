@@ -32,7 +32,7 @@ $transferForm = new SimpleForm(
     ),
     instructions: "",
     method: "POST",
-    action: "/open-account.php",
+    action: "/banking/open-account.php",
     submitButtonName: "Transfer Funds"
 );
 $mainContent = "";

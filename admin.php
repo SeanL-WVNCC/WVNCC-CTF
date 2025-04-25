@@ -1,5 +1,5 @@
 <?php
-include "include/functions.php";
+include "/var/www/html/include/functions.php";
 //setting up the top of the page, the banner
 //init variables
 $mainContent = "";
@@ -17,7 +17,7 @@ if ($user) {
         //database connection since it's needed for essentially all admin functions
         $conn = connectToDatabase();
         //admin function form
-        $mainContent .= "<form id=\"admin-menu\" action=\"admin.php\" method=\"POST\">";
+        $mainContent .= "<form id=\"admin-menu\" action=\"/admin.php\" method=\"POST\">";
         $mainContent .= "<button name=\"display-users\">Users</button>";
         $mainContent .= "<button name=\"change-pass\">Edit User Password</button>";
         $mainContent .= "<button name=\"add-admins\">Add Administrators</button>";
@@ -29,7 +29,7 @@ if ($user) {
             //in order to display users the correct admin pin must be inputted
             //the results of the prompt are sent into the hidden form which is auto submitted
             if (isset($_POST["display-users"])) {
-                $mainContent .= "<form id=\"pinForm\" action=\"admin.php\" method=\"POST\">";
+                $mainContent .= "<form id=\"pinForm\" action=\"/admin.php\" method=\"POST\">";
                 $mainContent .= "<input type=\"hidden\" id=\"pinCheck\" name=\"pinCheck\" value=\"\">";
                 $mainContent .= "</form>";
                 echo "<script type=\"text/javascript\">
@@ -110,7 +110,7 @@ if ($user) {
                     ),
                     instructions: "",
                     method: "POST",
-                    action: "admin.php",
+                    action: "/admin.php",
                     submitButtonName: "Change Password"
                 );
                 $mainContent .= $passwordChangeFormForm->generateHtml();
@@ -128,10 +128,10 @@ if ($user) {
         }
     //both of these index.php location headers are so users are sent back if they try to get to the admin page without being an admin (or without being logged in)
     } else {
-        header("Location: /index.php");
+        header("Location: /");
     }
 } else {
-    header("Location: /index.php");
+    header("Location: /");
 }
 
 echo generatePage($mainContent);

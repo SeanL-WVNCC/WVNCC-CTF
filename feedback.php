@@ -1,5 +1,5 @@
 <?php
-include "include/functions.php";
+include "/var/www/html/include/functions.php";
 $mainContent = "";
 $mainContent .= createBanner("Customer Feedback", "We value your opinion!", "/img/review-compressed.webp");
 $user = getCurrentUser();
@@ -143,7 +143,7 @@ if($user) {
         $mainContent .= "<div class=\"single-column\"><h2>Recent reviews</h2>" . perhapsSanitizeAgainstXss(file_get_contents("reviews/Reviews.txt") . "</div>", XssType::STORED);
     }
 } else {
-    header("Location: /login.php");
+    header("Location: /banking/login.php");
 }
 
 

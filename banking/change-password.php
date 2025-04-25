@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             
         }
     } else {
-        header("Location: /login.php");
+        header("Location: /banking/login.php");
     }
 }   
     global $susIcon;
@@ -73,7 +73,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         ),
         instructions: "",
         method: "POST",
-        action: "/change-password.php",
+        action: "/banking/change-password.php",
         submitButtonName: "Change Password"
     );
     $mainContent .= $passwordChangeFormForm->generateHtml();

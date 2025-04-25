@@ -14,12 +14,12 @@ $keyTerms = array(
     array("contract", "legal", "term", "arbitration", "privacy", "agreement"),
 );
 $resultingPages = array(
-    array("login.php", "Log in to your account"),
-    array("register.php", "Sign up for an account"),
-    array("feedback.php", "Tell us how we're doing"),
-    array("about.php", "About Northern Phish &amp; Loan"),
+    array("/banking/login.php", "Log in to your account"),
+    array("/banking/register.php", "Sign up for an account"),
+    array("/feedback.php", "Tell us how we're doing"),
+    array("/about/our-team.php.php", "About Northern Phish &amp; Loan"),
     array("https://play.google.com/store/apps/details?id=edu.wvncc.northernphish", "Download our app"),
-    array("legal.php", "Terms of Service")
+    array("/about/legal.php", "Terms of Service")
 );
 
 /**

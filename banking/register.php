@@ -57,7 +57,7 @@ $registrationForm = new SimpleForm(
     ),
     instructions: "Fill the following form to create your Northern Phish &amp; Loan mobile banking account. Once completed, you will need to go to your local Northern Phish branch to complete setup.",
     method: "POST",
-    action: "/register.php",
+    action: "/banking/register.php",
     submitButtonName: "Register"
 );
 if($_SERVER['REQUEST_METHOD'] == "POST") {

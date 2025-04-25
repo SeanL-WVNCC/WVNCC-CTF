@@ -4,7 +4,7 @@
     Endpoint for the site-wide keyword search.
 */
 session_start();
-include "include/functions.php";
+include "/var/www/html/include/functions.php";
 
 $mainContent = "";
 $banner = createBanner("Search Results", "", "/img/search-banner.jpg");

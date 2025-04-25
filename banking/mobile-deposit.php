@@ -71,7 +71,7 @@ $mobileDepositForm = new SimpleForm(
     ),
     instructions: "Snap a picture of a check and mobile deposit it here. Once the image is processed and reviewed, the funds will be deposited into your account.",
     method: "POST",
-    action: "/mobile-deposit.php",
+    action: "/banking/mobile-deposit.php",
     submitButtonName: "Upload Image"
 );
 
