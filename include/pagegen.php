@@ -4,7 +4,7 @@
     Code for generating the markup that appears on all pages.
 */
 
-include "include/search.php";
+include "/var/www/html/include/search.php";
 
 /**
  * Returns HTML that links to the list of stylesheets provided.
@@ -31,7 +31,19 @@ function createHeadElement(): string {
     $result .= "<meta charset=\"utf-8\">";
     $result .= "<meta name=\"author\" content=\"West Virginia Northern Community College, Department of Computer Information Technology\">";
     $result .= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
-    $result .= createStylesheetLinks(array("./css/style.css", "./css/header.css", "./css/footer.css", "./css/home.css", "./css/banner.css", "./css/simpleform.css", "./css/dashboard.css", "./css/account.css", "./css/meet-our-team.css", "./css/media-queries.css", "./css/important.css"));
+    $result .= createStylesheetLinks(array(
+        "/var/www/html/css/style.css",
+        "/var/www/html/css/header.css",
+        "/var/www/html/css/footer.css",
+        "/var/www/html/css/home.css",
+        "/var/www/html/css/banner.css",
+        "/var/www/html/css/simpleform.css",
+        "/var/www/html/css/dashboard.css",
+        "/var/www/html/css/account.css",
+        "/var/www/html/css/meet-our-team.css",
+        "/var/www/html/css/media-queries.css",
+        "/var/www/html/css/important.css"
+    ));
     $result .= "<link rel=\"icon\" type=\"img/x-icon\" href=\"./img/logo.png\">";
     $result .= "<script src=\"./js/script.js\"></script>";
     $result .= "<title>Northern Phish &amp; Loan</title>";
@@ -57,12 +69,12 @@ function createHeaderElement(): string {
         $adminCheck = $user->isAdmin;
         $result .= "<li><button id=\"online-banking-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"online-banking-dropdown\">Online Banking</button>";
         $result .= "<ul id=\"online-banking-dropdown\" hidden>";
-        $result .= "<li><a href=\"dashboard.php\">Dashboard</a></li>";
-        $result .= "<li><a href=\"mobile-deposit.php\">Mobile deposit</a></li>";
-        $result .= "<li><a href=\"transfer.php\">Funds transfer</a></li>";
-        $result .= "<li><a href=\"loanApplication.php\">Apply For Loan</a></li>";
-        $result .= "<li><a href=\"change-password.php\">Change Password</a></li>";
-        $result .= "<li><a href=\"logout.php\">Log Out</a></li>";
+        $result .= "<li><a href=\"banking/dashboard.php\">Dashboard</a></li>";
+        $result .= "<li><a href=\"banking/mobile-deposit.php\">Mobile deposit</a></li>";
+        $result .= "<li><a href=\"banking/transfer.php\">Funds transfer</a></li>";
+        $result .= "<li><a href=\"banking/loanApplication.php\">Apply For Loan</a></li>";
+        $result .= "<li><a href=\"banking/change-password.php\">Change Password</a></li>";
+        $result .= "<li><a href=\"banking/logout.php\">Log Out</a></li>";
         $result .= "</ul>";
         $result .= "</li>";
         //link to the admin page only appears if the logged in user's "isAdmin" field = true
@@ -70,15 +82,15 @@ function createHeaderElement(): string {
             $result .= "<li><a href=\"admin.php\">Admin</a></li>";
         }
     } else {
-        $result .= "<li><a href=\"login.php\">Login</a></li>";
-        $result .= "<li><a href=\"register.php\">Register</a></li>";
+        $result .= "<li><a href=\"banking/login.php\">Login</a></li>";
+        $result .= "<li><a href=\"banking/register.php\">Register</a></li>";
     }
     $result .= "<li><a href=\"feedback.php\">Feedback</a></li>";
     $result .= "<li><button id=\"about-menu-button\" type=\"button\" aria-expanded=\"false\" aria-controls=\"about-dropdown\">About</button>";
     $result .= "<ul id=\"about-dropdown\" hidden>";
-    $result .= "<li><a href=\"our-team.php\">Our team</a></li>";
-    $result .= "<li><a href=\"locations.php\">Locations</a></li>";
-    $result .= "<li><a href=\"legal.php\">Legal</a></li>";
+    $result .= "<li><a href=\"about/our-team.php\">Our team</a></li>";
+    $result .= "<li><a href=\"about/locations.php\">Locations</a></li>";
+    $result .= "<li><a href=\"about/legal.php\">Legal</a></li>";
     $result .= "</ul>";
     $result .= "</li>";
     $result .= "</ul>";
@@ -119,22 +131,22 @@ function generatePage(string $mainContent): string {
     $footerLeft .= "<p>Northern Phish &amp; Loan, member FDIC.</p>";
     $footerLeft .= "<p>ADA NOTICE: This site meets or exceeds <abbr title=\"Web Content Accessibility Guidlines version 2.1\">WCAG 2.1</abbr>. Trust us, we <em>totally</em> checked.</p>";
     $footerLeft .= "<p>Diversity, Equity, Inclusion, and Accessibility</p>";
-    $footerLeft .= "<p><a href=\"/legal.php#dark-vault-terms\">Dark Vault Credit terms of service</a></p>";
-    $footerLeft .= "<p><a href=\"/legal.php#attribution\">Attributions</a></p>";
+    $footerLeft .= "<p><a href=\"about/legal.php#dark-vault-terms\">Dark Vault Credit terms of service</a></p>";
+    $footerLeft .= "<p><a href=\"about/legal.php#attribution\">Attributions</a></p>";
     $footerMiddle = "";
     $footerMiddle .= "<h2>Locations</h2>";
     $footerMiddle .= "<ul>";
-    $footerMiddle .= "<li><a href=\"/locations.php\">Weirton</a></li>";
-    $footerMiddle .= "<li><a href=\"/locations.php\">Wheeling</a></li>";
-    $footerMiddle .= "<li><a href=\"/locations.php\">New Martinsville</a></li>";
+    $footerMiddle .= "<li><a href=\"about/locations.php\">Weirton</a></li>";
+    $footerMiddle .= "<li><a href=\"about/locations.php\">Wheeling</a></li>";
+    $footerMiddle .= "<li><a href=\"about/locations.php\">New Martinsville</a></li>";
     $footerMiddle .= "</ul>";
     $footerRight = "";
     $footerRight .= "<h2>Quick Links</h2>";
     $footerRight .= "<nav><ul>";
-    $footerRight .= "<li><a href=\"login.php\">Login</a></li>";
-    $footerRight .= "<li><a href=\"loanApplication.php\">Loan Application</a></li>";
+    $footerRight .= "<li><a href=\"banking/login.php\">Login</a></li>";
+    $footerRight .= "<li><a href=\"banking/loanApplication.php\">Loan Application</a></li>";
     $footerRight .= "<li><a href=\"feedback.php\">Contact</a></li>";
-    $footerRight .= "<li><a href=\"about.php\">About</a></li>";
+    $footerRight .= "<li><a href=\"about/our-team.php\">Our Team</a></li>";
     $footerRight .= "<li><a title=\"lol nope\">Careers</a></li>";
     $footerRight .= "</ul></nav>";
     $result .= threeColumnLayout(presentationalWrapper($footerLeft), presentationalWrapper($footerMiddle), presentationalWrapper($footerRight));

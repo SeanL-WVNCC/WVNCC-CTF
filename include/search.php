@@ -3,7 +3,7 @@
     include/search.php
     Code enabling the keyword search feature
 */
-include "include/vulnconfig.php";
+include "/var/www/html/include/vulnconfig.php";
 
 $keyTerms = array(
     array("login", "log", "account", "sign"),

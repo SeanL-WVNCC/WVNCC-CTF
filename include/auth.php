@@ -3,8 +3,8 @@
     auth.php
     Code for authenticating users and managing sessions.
 */
-include "include/pagegen.php";
-include "include/user.php";
+include "/var/www/html/include/pagegen.php";
+include "/var/www/html/include/user.php";
 
 /**
  * This gets sent back whenever you try to log in.

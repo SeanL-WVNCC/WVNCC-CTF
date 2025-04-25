@@ -4,11 +4,14 @@
     gap: 1rem;
     background-color: transparent;
     padding: 1rem;
+    max-width: 70rem;
 }
 
 #meet-our-team img {
     width: 100%;
     display: block;
+    aspect-ratio: 1;
+    object-fit: cover;
 }
 
 #meet-our-team td {
@@ -18,6 +21,16 @@
 }
 
 #meet-our-team tr, #meet-our-team td {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#meet-our-team td:has(img) {
+    margin-bottom: auto;
+}
+
+#meet-our-team td {
     display: block;
     text-align: center;
 }

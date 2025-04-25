@@ -6,11 +6,11 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-include "include/auth.php";
-include "include/formgen.php";
-include "include/accountcard.php";
-include "include/layout.php";
-include "include/transaction.php";
+include "/var/www/html/include/auth.php";
+include "/var/www/html/include/formgen.php";
+include "/var/www/html/include/accountcard.php";
+include "/var/www/html/include/layout.php";
+include "/var/www/html/include/transaction.php";
 
 /**
  * An analysis of user input. Has methods for checking for XSS, SQL injection, etc.
