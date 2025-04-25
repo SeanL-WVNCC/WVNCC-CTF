@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $allowedFileTypesStr = implode(", ", $permittedFileTypes);
 
     // Directory for Upload Files
-    $fileUploadDirectory = "uploads/";
+    $fileUploadDirectory = "/var/www/html/uploads/";
 
     // File Info
     $filename = $_FILES["file-to-upload"]["name"];
