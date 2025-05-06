@@ -40,7 +40,7 @@ function createBanner(string $title, string $subtitle, string $backgroundImageUr
         $html .= "<p>$subtitle</p>";
     }
     $html .= "</hgroup>";
-    $html .= "<img src=\"$backgroundImageUrl\" role=\"presentation\" alt=\"\">";
+    $html .= "<img src=\"$backgroundImageUrl\" role=\"presentation\" alt=\"\" fetchpriority=\"high\">";
     $html .= "</div>";
 
     return $html;

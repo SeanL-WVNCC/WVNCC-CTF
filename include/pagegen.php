@@ -44,7 +44,7 @@ function createHeadElement(): string {
         "/css/media-queries.css",
         "/css/important.css"
     ));
-    $result .= "<link rel=\"icon\" type=\"img/x-icon\" href=\"./img/logo.png\">";
+    $result .= "<link rel=\"icon\" type=\"img/x-icon\" href=\"/img/logo_small.webp\">";
     $result .= "<script src=\"/js/script.js\"></script>";
     $result .= "<title>Northern Phish &amp; Loan</title>";
     $result .= "</head>";
@@ -62,7 +62,7 @@ function createHeaderElement(): string {
     $result .= "<a id=\"skip-link\" href=\"#main\">Skip to content</a>";
     $result .= "<nav id=\"primary-navigation\" aria-label=\"Site\">";
     $result .= "<ul>";
-    $result .= "<li><a href=\"/\"><img src=\"/img/logo.png\" alt=\"Home\"></a></li>";
+    $result .= "<li><a href=\"/\"><img srcset=\"/img/logo_small.webp, /img/logo_large.webp 3x\" alt=\"Home\" width=\"232\" height=\"64\" fetchpriority=\"high\"></a></li>";
     if(isLoggedIn()) {
         //gets the logged in user, their account info, and sets the "isAdmin" field's true/false to the admin check variable
         $user = getCurrentUser();

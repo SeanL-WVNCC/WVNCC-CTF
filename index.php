@@ -24,10 +24,10 @@ $leftColumn .= "<p>As a locally-owned institution, we understand the unique need
 $leftColumn .= "<form action=\"/about/about-nixon.php\" method=\"POST\">";
 $leftColumn .= "<input type=\"hidden\" name=\"tmp\" value=\"\"/>";
 $leftColumn .= "<input type=\"hidden\" name=\"tmp2\" value=\"\"/>";
-$leftColumn .= "<button> type=\"submit\"/>Learn More About Richard Nixon</button>";
+$leftColumn .= "<button type=\"submit\"/>Learn More About Richard Nixon</button>";
 $leftColumn .= "</form>";
 $rightColumn .= "<figure>";
-$rightColumn .= "<img src=\"img/dick_nixon.jpg\" alt=\"\">";
+$rightColumn .= "<img srcset=\"/img/dick_nixon.webp, /img/dick_nixon.jpg\" alt=\"\">";
 $rightColumn .= "<figcaption>Richard Nixon, founder of Northern Phish &amp; Loan</figcaption>";
 $rightColumn .= "</figure>";
 $mainContent .= twoColumnLayout(presentationalWrapper($leftColumn), $rightColumn);
