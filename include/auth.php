@@ -142,7 +142,7 @@ function isLoggedIn() {
  * @return void
  */
 function login(int $userId) {
-    setcookie("logged-in-user", $userId);
+    setcookie("logged-in-user", $userId, 0, "/");
 }
 
 /**
